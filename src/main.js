@@ -1,28 +1,46 @@
-// rotas, suitch
-// import { myFunction } from "./lib/index.js";
-import "./produtosFirebase/config-firebase.js";
-import {templateLogin } from "./pages/newLogin/newLogin.js"
+//rotas, suitch
+import register from "./pages/register/register.js"; //export default é exportado com o nome register
 
 
+//base para rotas
+window.addEventListener("load", () => {
+  const template = document.querySelector("#template");
+  const pagina = register();
+  template.appendChild(pagina);
+});
 
+// evento + função
 
-// myFunction();
-const email = "teste3@teste.com"
-const senha = "1234567" 
-
-import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.6.8/firebase-auth.js";
-const auth = getAuth();
-createUserWithEmailAndPassword(auth, email, senha)
-  .then((userCredential) => {
-    // Signed in
-    const user = userCredential.user;
-    console.log("deu certo");
-    // ...
-  })
-  .catch((error) => {
-    const errorCode = error.code;
-    const errorMessage = error.message;
-    console.log("deu errado");
-    // ..
-  });
-console.log(templateLogin );
+// const rots = () => {
+//   window.addEventListener("hashchange", () => {
+//     template.innerHTML = "";
+//     switch (window.location.hash) {
+//       case "":
+//         template.appendChild(register());
+//         break
+//     }
+//   })
+// }
+// window.addEventListener("load", () => {
+//   template.appendChild(register());
+// rots();
+// });
+// const init = () => {
+//   window.addEventListener("hashchange", () => {
+//     template.innerHTML = "";
+//     switch (window.location.hash) {
+//       case "#register":
+//         template.appendChild(register());
+//         break;
+//       case "#timeline":
+//         template.appendChild(timeline());
+//         break;
+//       default:
+//         template.appendChild(home());
+//     }
+//   });
+// };
+// window.addEventListener("load", () => {
+//   template.appendChild(home());
+//   init();
+// });
