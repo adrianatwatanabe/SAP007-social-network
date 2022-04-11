@@ -4,16 +4,12 @@ import { auth, provider } from "./config-firebase.js";
 // Registro de usuários novos com email e senha
 export function newUserWithEmailAndPassword(email, password) {
   return createUserWithEmailAndPassword(auth, email, password)
-    .then((userCredential) => {
+    .then((userCredential) => { //pra onde mudar 
       // Signed in
       const user = userCredential.user;
       // ...
     })
-    .catch((error) => {
-      const errorCode = error.code;
-      const errorMessage = error.message;
-      // ..
-    });
+    
 }
 //Registro de novos usuários com o Google
 export function nerwUserWithGoogle(auth, provider) {

@@ -1,12 +1,14 @@
 //rotas, suitch
 import register from "./pages/register/register.js"; //export default é exportado com o nome register
-import {banana} from "./pages/register/functions.js"
 
-
+//mudar para o lugar que o then mandar 
 //base para rotas
 window.addEventListener("load", () => {
   const template = document.querySelector("#template");
   const pagina = register();
+  console.log(pagina);
+  console.log(template);
+  console.log(register);
   template.appendChild(pagina);
 });
 
