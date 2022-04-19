@@ -2,7 +2,7 @@ import login from "./pages/login.js";
 import register from "./pages/register.js";
 import timeline from "./pages/timeline.js";
 //import friends from "./pages/friends.js";
-//import perfil from "./pages/perfil.js";
+import profile from "./pages/profile.js";
 
 const container = document.getElementById("container-general");
 
@@ -35,9 +35,9 @@ function redirectPages() {
     case "#friends":
     //container.appendChild(friends.createFriendsList());
     //break;
-    case "#perfil":
-    //container.appendChild(perfil.createPerfil());
-    //break;
+    case "#profile":
+    container.appendChild(profile.createProfile());
+    break;
     default:
       container.appendChild(login.createLogin());
   }

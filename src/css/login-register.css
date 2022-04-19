@@ -1,7 +1,7 @@
 .background {
   /* background-image: url("../img/background-pink-light.gif"); */
   min-height: 100vh;
-  background-color: gray;
+  background-color: var(--color-dark-gray);
   background-position: top center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -18,6 +18,13 @@
   justify-content: center;
   align-items: center;
 }
+
+textarea {
+  width: 100% !important;
+  min-height: 80px;
+  resize: vertical;
+}
+
 #user-form {
   display: flex;
   flex-direction: column;
@@ -42,11 +49,12 @@ label,
   align-self: center;
 }
 a,
-.user-input::placeholder input {
+.user-input::placeholder, input, textarea {
   text-decoration: none;
   color: var(--color-black);
 }
-.user-input {
+.user-input, input, textarea {
+  box-sizing: border-box;
   background-color: var(--color-light-yellow);
 }
 .user-button:active {
@@ -161,7 +169,7 @@ a,
     font-size: 0.75rem;
     margin-bottom: var(--spacing-little-bottom);
   }
-  .user-input, input {
+  .user-input, input, textarea {
     width: 270px;
     height: 36px;
     border: var(--border-input);
@@ -169,7 +177,7 @@ a,
     padding-left: 10px;
     margin-bottom: var(--spacing-medium-bottom);
   }
-  .user-input::placeholder, input::placeholder input {
+  .user-input::placeholder, input::placeholder, textarea::placeholder {
     font-size: 0.75rem;
   }
   .small-text-right {
@@ -214,7 +222,7 @@ a,
     font-size: 1.125rem;
     margin-bottom: var(--spacing-little-bottom);
   }
-  .user-input, input {
+  .user-input, input, textarea {
     width: 334px;
     height: 46px;
     border: var(--border-input);
@@ -222,7 +230,7 @@ a,
     padding-left: 10px;
     margin-bottom: var(--spacing-medium-bottom);
   }
-  .user-input::placeholder, input::placeholder input {
+  .user-input::placeholder, input::placeholder, textarea::placeholder {
     font-size: 1.125rem;
   }
   .small-text-right {
@@ -267,7 +275,7 @@ a,
     font-size: 1.3125rem;
     margin-bottom: var(--spacing-medium-bottom);
   }
-  .user-input, input {
+  .user-input, input, textarea {
     width: 424px;
     height: 51px;
     border: var(--border-input);
@@ -275,7 +283,7 @@ a,
     padding-left: 10px;
     margin-bottom: var(--spacing-great-bottom);
   }
-  .user-input::placeholder, input::placeholder input {
+  .user-input::placeholder, input::placeholder, textarea::placeholder {
     font-size: 1.3125rem;
   }
   .small-text-right {

@@ -14,9 +14,9 @@ const profile = {
       <div class="foto-perfil"></div>
      </div>
       
-     <div class="linha">
-      <img />
-      <span> Alterar Imagem </span>
+     <div class="linha centralizar-verticalmente">
+      <img id="img-alterar-imagem" src="./../img/icons/icon-add-image.png" />
+      <span id="alterar-imagem"> Alterar Imagem </span>
      </div>
      
      <div class="linha">
@@ -26,7 +26,7 @@ const profile = {
 
      <div class="linha">
       <label>Breve descrição sobre você</label>
-      <input type="text">
+      <textarea type="text"></textarea>
      </div>
 
      <div class="linha">
@@ -38,13 +38,9 @@ const profile = {
       <label>Área de atuação</label>
       <input type="text">
      </div>
-
     </form>
-    
-    <div>
-      <input class="btn-atualizar" type="submit" value="ATUALIZAR PERFIL">
 
-    </div>
+    <input class="btn-atualizar" type="submit" value="ATUALIZAR PERFIL">
     `;
     return container;
   },
