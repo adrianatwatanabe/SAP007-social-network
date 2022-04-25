@@ -1,4 +1,4 @@
-import header from "../../components/header/index.js";
+import header from "../components/header.js";
 
 const profile = {
   createProfile: function () {
@@ -21,7 +21,7 @@ const profile = {
      
      <div class="linha">
       <label>Nome Social</label>
-      <input type="text">
+      <textarea type="text"></textarea>
      </div>
 
      <div class="linha">
@@ -31,12 +31,12 @@ const profile = {
 
      <div class="linha">
       <label>Assuntos que você domina</label>
-      <input type="text">
+      <textarea type="text"></textarea>
      </div>
 
      <div class="linha">
       <label>Área de atuação</label>
-      <input type="text">
+      <textarea type="text"></textarea>
      </div>
     </form>
 
