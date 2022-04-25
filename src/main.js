@@ -2,7 +2,7 @@ import login from "./pages/login.js";
 import register from "./pages/register.js";
 import timeline from "./pages/timeline.js";
 //import friends from "./pages/friends.js";
-import profile from "./pages/profile.js";
+import profile from "./js/pages/profile.js";
 
 const container = document.getElementById("container-general");
 

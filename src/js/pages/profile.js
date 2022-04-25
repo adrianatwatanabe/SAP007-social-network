@@ -1,4 +1,4 @@
-import header from "../components/header.js";
+import header from "./../../components/header/index.js";
 
 const profile = {
   createProfile: function () {
@@ -21,7 +21,7 @@ const profile = {
      
      <div class="linha">
       <label>Nome Social</label>
-      <textarea type="text"></textarea>
+      <input type="text">
      </div>
 
      <div class="linha">
