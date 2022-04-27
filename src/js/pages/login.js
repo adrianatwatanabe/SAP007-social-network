@@ -9,40 +9,40 @@ const login = {
     const container = document.createElement("div");
     container.setAttribute("class", "container-secondary");
     container.innerHTML = `
-      <form class="user-form">
-        <img src="./img/log-labfriends-black.png" id="logo" alt="Logo da LabFriends">
-        <label for="user-email" class="user-label">Email</label>
-        <input type="email" id="user-email" class="user-input" placeholder="Digite seu email">
-        <label for="user-password" class="user-label">Senha</label>
-        <input type="password" id="user-password" class="user-input input-password-spacing" placeholder="Digite sua senha">
-        <a href="#" type="button" class="small-text-right modal-open">
+      <form class='user-form'>
+        <img src='./img/log-labfriends-black.png' id='logo' alt='Logo da LabFriends'>
+        <label for='user-email' class='user-label'>Email</label>
+        <input type='email' id='user-email' class='user-input' placeholder='Digite seu email'>
+        <label for='user-password' class='user-label'>Senha</label>
+        <input type='password' id='user-password' class='user-input input-password-spacing' placeholder='Digite sua senha'>
+        <a href='#' type='button' class='small-text-right modal-open'>
           Esqueceu a senha?
         </a>
-        <span id="message"></span>
-        <button type="submit" id="login-labfriends" class="user-button button-pink">
+        <span id='message'></span>
+        <button type='submit' id='login-labfriends' class='user-button button-pink'>
           ENTRAR
         </button>
-        <div class="line">
-          <span class="text-line">ou</span>
+        <div class='line'>
+          <span class='text-line'>ou</span>
         </div>
-        <button id="login-google" class="user-button  button-green"> 
-          <img class="icon-button" src="./img/icons/icon-logo-google.ico">  
+        <button id='login-google' class='user-button  button-green'> 
+          <img class='icon-button' src='./img/icons/icon-logo-google.ico'>  
           ENTRAR COM GOOGLE
         </button>
-        <p class="new-account" >
-          Não tem conta?<br> <a href="#register" class="emphasis-pink">Crie uma conta agora!</a>
+        <p class='new-account' >
+          Não tem conta?<br> <a href='#register' class='emphasis-pink'>Crie uma conta agora!</a>
         </p>
       </form>
 
-      <section id="modal-container" class="modal-container">
-        <div class="modal">
-          <button id="modal-close" class="modal-close">X</button>
-          <label for="user-email-reset" class="title-modal">Informe o seu email</label>
-          <input type="email" id="user-email-reset" class="user-input-modal" placeholder="Digite seu email">
-          <button type="submit" id="button-reset-password" class="user-button button-pink">
+      <section id='modal-container' class='modal-container'>
+        <div class='modal'>
+          <button id='modal-close' class='modal-close'>X</button>
+          <label for='user-email-reset' class='title-modal'>Informe o seu email</label>
+          <input type='email' id='user-email-reset' class='user-input-modal' placeholder='Digite seu email'>
+          <button type='submit' id='button-reset-password' class='user-button button-pink'>
             ENVIAR POR EMAIL
           </button>
-          <span id="message-reset"></span>
+          <span id='message-reset'></span>
         </div>
       </section>
     `;

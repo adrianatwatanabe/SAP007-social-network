@@ -6,20 +6,20 @@ import {
   onAuthStateChanged,
   signOut,
   sendPasswordResetEmail,
-} from "https://www.gstatic.com/firebasejs/9.6.9/firebase-auth.js";
-import { auth } from "./start-firebase.js";
+} from 'https://www.gstatic.com/firebasejs/9.6.9/firebase-auth.js';
+import { auth } from './start-firebase.js';
 
 export const registerNewUser = (email, password) => {
   return createUserWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
       const user = userCredential.user;
-      console.log("Cadastrou novo usuário!");
+      console.log('Cadastrou novo usuário!');
       return user;
     })
     .catch((error) => {
       const errorCode = error.code;
       const errorMessage = error.message;
-      console.log("Não cadastrou novo usuário!");
+      console.log('Não cadastrou novo usuário!');
     });
 };
 
@@ -61,7 +61,7 @@ export function logout() {
 export function forgotPassword(email) {
   return sendPasswordResetEmail(auth, email)
     .then(() => {
-      console.log("consegui");
+      console.log('consegui');
     })
     .catch((error) => {
       const errorCode = error.code;

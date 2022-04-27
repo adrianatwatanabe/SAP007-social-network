@@ -1,20 +1,20 @@
-import login from "./pages/login.js";
-import register from "./pages/register.js";
-import timeline from "./pages/timeline.js";
-import friends from "./pages/friends.js";
-import profile from "./pages/profile.js";
-import { authChange } from "../config/authentication.js";
+import login from './pages/login.js';
+import register from './pages/register.js';
+import timeline from './pages/timeline.js';
+import friends from './pages/friends.js';
+import profile from './pages/profile.js';
+import { authChange } from '../config/authentication.js';
 
-const container = document.getElementById("container-general");
+const container = document.getElementById('container-general');
 
-window.addEventListener("load", () => {
+window.addEventListener('load', () => {
   redirectPages();
   initPages();
 });
 
 const initPages = () => {
-  window.addEventListener("hashchange", () => {
-    container.innerHTML = "";
+  window.addEventListener('hashchange', () => {
+    container.innerHTML = '';
     redirectPages();
   });
 };
@@ -22,31 +22,31 @@ const initPages = () => {
 function redirectPages() {
   switch (window.location.hash) {
     default:
-    case "#login":
+    case '#login':
       container.appendChild(login.createLogin());
       break;
-    case "#register":
+    case '#register':
       container.appendChild(register.createRegister());
       break;
-    case "#timeline":
+    case '#timeline':
       authChange((logged) => {
         if (logged) {
           container.appendChild(timeline.createTimeline());
-        } else window.location.hash = "#home";
+        } else window.location.hash = '#home';
       });
       break;
-    case "#friends":
+    case '#friends':
       authChange((logged) => {
         if (logged) {
           container.appendChild(friends.createFriendsList());
-        } else window.location.hash = "#home";
+        } else window.location.hash = '#home';
       });
       break;
-    case "#profile":
+    case '#profile':
       authChange((logged) => {
         if (logged) {
           container.appendChild(profile.createProfile());
-        } else window.location.hash = "#home";
+        } else window.location.hash = '#home';
       });
       break;
   }
