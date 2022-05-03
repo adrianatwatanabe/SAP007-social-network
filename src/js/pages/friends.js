@@ -1,17 +1,3 @@
-export function createFriends() {
-  const container = document.createElement('main');
-  container.setAttribute('id', 'main-container');
-  container.innerHTML = `
-    <section class="container-internal">
-      <input type="search" id="search-name" class="search-input" placeholder="Pesquisar pelo nome" required>
-      <ul class="container-internal-list">
-        ${createUserFriends()}
-      </ul>
-    </section>
-    `;
-  return container;
-}
-
 function createUserFriends() {
   const templateUser = `
     <li class="friend-card">
@@ -28,4 +14,18 @@ function createUserFriends() {
     </li>
   `;
   return templateUser;
+}
+
+export function createFriends() {
+  const container = document.createElement('main');
+  container.setAttribute('id', 'main-container');
+  container.innerHTML = `
+    <section class="container-internal">
+      <input type="search" id="search-name" class="search-input" placeholder="Pesquisar pelo nome" required>
+      <ul class="container-internal-list">
+        ${createUserFriends()}
+      </ul>
+    </section>
+    `;
+  return container;
 }

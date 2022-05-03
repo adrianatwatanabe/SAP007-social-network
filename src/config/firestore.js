@@ -1,7 +1,7 @@
 import { collection, addDoc } from './export.js';
 import { db, auth } from './start-firebase.js';
 
-export function createNewPost(newText) {
+export function createUserPost(newText) {
   try {
     if (newText.length === 0) {
       // colocar mensagem avisando que não tem texto na postagem

@@ -1,5 +1,5 @@
-import { initModal } from '../components/modal.js';
-import { userValidation, resetEmailValidation } from '../components/user-validation.js';
+import { initModal } from '../components/general/modal.js';
+import { userValidation, resetEmailValidation } from '../components/authentications/user-validation.js';
 import { GoogleAuthProvider } from '../../config/export.js';
 import { authUserWithGoogle } from '../../config/authentication.js';
 
