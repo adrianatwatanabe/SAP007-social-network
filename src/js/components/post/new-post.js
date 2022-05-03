@@ -1,6 +1,6 @@
-import { auth } from '../../config/start-firebase.js';
+import { auth } from '../../../config/start-firebase.js';
 
-export function createAddPost() {
+export function createNewPost() {
   const template = `
     <section class="modal-container-light" data-post="container">
       <div class="modal-add-post">
@@ -17,7 +17,7 @@ export function createAddPost() {
               <time class="post-date">01 de abril de 2022</time>
             </div>
           </header>
-          <textarea class="add-post-input" autocomplete="on" minlength="1" maxlength="1000" placeholder="Escreva uma mensagem..."></textarea>
+          <textarea id="create-post" class="add-post-input" autocomplete="on" minlength="1" maxlength="1000" placeholder="Escreva uma mensagem..."></textarea>
           <footer>
             <label class="add-post-footer">
               <img src="../img/icons/icon-add-image.png" class="post-icon" alt="Ícone de adicionar imagens">

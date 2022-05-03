@@ -39,6 +39,5 @@ export function createPost() {
       </section>
       `;
 
-  
   return template;
 }

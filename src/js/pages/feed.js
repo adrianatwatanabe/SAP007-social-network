@@ -1,7 +1,4 @@
-import { createNewPost } from '../../config/posts.js';
-import { createPost } from '../components/post.js';
-import { createAddComment } from '../components/add-comment.js';
-import { createComment } from '../components/comments.js';
+import { createPost } from '../components/post/view-post.js';
 
 export function createFeed() {
   const container = document.createElement('main');
@@ -15,22 +12,5 @@ export function createFeed() {
       </li>
     </ul>
   `;
-
-  const userPost = container.querySelector('.user-post');
-  userPost.append(createAddComment());
-  userPost.append(createComment());
   return container;
-}
-
-function publish() {
-  const message = document.querySelector('#message');
-  const newPost = message.value;
-  message.value = '';
-  message.focus();
-  createNewPost(newPost);
-}
-
-export function feedWorking() {
-  const btnPublish = document.querySelector('#button-publish');
-  btnPublish.addEventListener('click', publish);
 }

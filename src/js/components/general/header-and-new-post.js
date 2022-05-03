@@ -1,7 +1,15 @@
-import { auth } from '../../config/start-firebase.js';
+import { createNewPost } from '../post/new-post.js';
 import { initModal } from './modal.js';
-import { logout } from '../../config/authentication.js';
-import { createAddPost } from './add-post.js';
+import { logout } from '../../../config/authentication.js';
+import { createUserPost } from '../../../config/firestore.js';
+
+function publish() {
+  const message = document.querySelector('#create-post');
+  const newPost = message.value;
+  message.value = '';
+  message.focus();
+  createUserPost(newPost);
+}
 
 export function createHeader() {
   const header = `
@@ -64,7 +72,7 @@ export function createHeader() {
           </nav>
         </section>
 
-        ${ createAddPost()}
+        ${createNewPost()}
 
       </header>
     `;
@@ -98,4 +106,7 @@ export function headerWorking() {
       window.location.hash = '#login';
     });
   });
+
+  const btnPublish = document.querySelector('#button-publish');
+  btnPublish.addEventListener('click', publish);
 }

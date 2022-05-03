@@ -1,7 +1,7 @@
 import { createLogin, loginWorking } from './pages/login.js';
 import { createRegister } from './pages/register.js';
-import { createHeader, headerWorking } from './components/header.js';
-import { createFeed, feedWorking } from './pages/feed.js';
+import { createHeader, headerWorking } from './components/general/header-and-new-post.js';
+import { createFeed } from './pages/feed.js';
 import { createFriends } from './pages/friends.js';
 import { createProfile } from './pages/profile.js';
 import { createEditProfile } from './pages/edit-profile.js';
@@ -36,12 +36,11 @@ function redirectPages() {
           header.after(createProfile());
           break;
         case '#edit-profile':
-            header.after(createEditProfile());
-            break;
+          header.after(createEditProfile());
+          break;
         case '#feed':
         default:
           header.after(createFeed());
-          feedWorking();
           break;
       }
     } else {

@@ -1,8 +1,21 @@
-import { createPost } from '../components/post.js';
-import { createAddComment } from '../components/add-comment.js';
-import { createComment } from '../components/comments.js';
+import { createPost } from '../components/post/view-post.js';
 
-const textPost = `Mãe de gatos...`;
+const textPost = 'Mãe de gatos...';
+
+function createListPost() {
+  const container = document.createElement('section');
+  container.setAttribute('class', 'container-internal-list');
+  container.innerHTML = `
+    <ul class="cards-timeline">
+      <li class="post-card-timeline">
+        <article class="user-post">
+          ${createPost()}
+        </article>
+      </li>
+    </ul>
+  `;
+  return container;
+}
 
 export function createProfile() {
   const container = document.createElement('main');
@@ -34,23 +47,5 @@ export function createProfile() {
   const listPost = container.querySelector('.container-internal');
   listPost.append(createListPost());
 
-  return container;
-}
-
-function createListPost (){
-  const container = document.createElement('section');
-  container.setAttribute('class', 'container-internal-list');
-  container.innerHTML = `
-    <ul class="cards-timeline">
-      <li class="post-card-timeline">
-        <article class="user-post">
-          ${createPost()}
-        </article>
-      </li>
-    </ul>
-  `;
-  const userPost = container.querySelector('.user-post');
-  userPost.append(createAddComment());
-  userPost.append(createComment());
   return container;
 }
