@@ -1,16 +1,15 @@
 import { createLogin, loginWorking } from './pages/login.js';
-import { createRegister } from './pages/register.js';
-import { createHeader, headerWorking } from './components/general/header-and-new-post.js';
+import { createRegister } from './pages/user-register.js';
+import { createHeader, headerWorking } from './components/posts/header-and-new-post.js';
 import { createFeed } from './pages/feed.js';
-import { createFriends } from './pages/friends.js';
-import { createProfile } from './pages/profile.js';
-import { createEditProfile } from './pages/edit-profile.js';
-import { authChange } from '../config/authentication.js';
+import { createFriends } from './pages/friends-list.js';
+import { createProfile } from './pages/user-profile.js';
+import { createEditProfile } from './pages/user-profile-editing';
+import { authChange } from '../firebase-configuration/authentication.js';
 
 function creatingInternalElements() {
   const container = document.getElementById('root');
   const sectionGeneral = document.createElement('section');
-
   container.style.backgroundImage = 'none';
   sectionGeneral.classList.add('container-labfriends');
   sectionGeneral.innerHTML = createHeader();

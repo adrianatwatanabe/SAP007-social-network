@@ -1,4 +1,5 @@
-import { createPost } from '../components/post/view-post.js';
+import { createPost } from '../components/posts/template-view-post.js';
+import { getPosts } from '../../firebase-configuration/firestore.js';
 
 export function createFeed() {
   const container = document.createElement('main');
@@ -12,5 +13,6 @@ export function createFeed() {
       </li>
     </ul>
   `;
+  getPosts();
   return container;
 }

@@ -1,4 +1,4 @@
-import { auth } from '../../../config/start-firebase.js';
+import { auth } from '../../../firebase-configuration/start-firebase.js';
 
 export function createNewPost() {
   const template = `

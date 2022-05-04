@@ -1,6 +1,6 @@
-import { authUserLabFriends, registerNewUser, forgotPassword } from '../../../config/authentication.js';
+import { authUserLabFriends, registerNewUser, forgotPassword } from '../../../firebase-configuration/authentication.js';
 import { errorsFirebase, errorsFirebaseModal } from './errors-firebase.js';
-import { closeModalAutomatically } from '../general/modal.js';
+import { closeModalAutomatically } from '../general-site-components/modal.js';
 
 export const redirectedPage = '#feed';
 
