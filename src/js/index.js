@@ -4,7 +4,7 @@ import { createHeader, headerWorking } from './components/posts/header-and-new-p
 import { createFeed } from './pages/feed.js';
 import { createFriends } from './pages/friends-list.js';
 import { createProfile } from './pages/user-profile.js';
-import { createEditProfile } from './pages/user-profile-editing';
+import { createEditProfile } from './pages/user-profile-editing.js';
 import { authChange } from '../firebase-configuration/authentication.js';
 
 function creatingInternalElements() {
@@ -28,13 +28,13 @@ function redirectPages() {
     if (logged) {
       const header = creatingInternalElements();
       switch (window.location.hash) {
-        case '#friends':
+        case '#friends-list':
           header.after(createFriends());
           break;
-        case '#profile':
+        case '#user-profile':
           header.after(createProfile());
           break;
-        case '#edit-profile':
+        case '#user-profile-editing':
           header.after(createEditProfile());
           break;
         case '#feed':
@@ -46,7 +46,7 @@ function redirectPages() {
       const background = document.querySelector('#root');
       background.style.backgroundImage = 'url(../../img/background.gif)';
       switch (window.location.hash) {
-        case '#register':
+        case '#user-register':
           container.append(createRegister());
           break;
         case '#login':

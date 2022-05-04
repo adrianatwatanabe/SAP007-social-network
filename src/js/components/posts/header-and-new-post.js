@@ -20,7 +20,7 @@ export function createHeader() {
           <nav class="menu">
             <ul>
               <li class="menu-list">
-                <a href="#friends">
+                <a href="#friends-list">
                   <img src="../img/icons/icon-frinds-list.png" class="menu-icon" alt="Ícone de lista de amigas">
                   <p class="menu-text">Amigas</p>
                 </a>
@@ -49,7 +49,7 @@ export function createHeader() {
                     <div class="container-dropdown">
                       <ul class="dropdown-ul">
                         <li>
-                          <a href="#profile" class="dropdown-link-icon">
+                          <a href="#user-profile" class="dropdown-link-icon">
                             <img src="../img/icons/icon-profile.png" class="drop-icon" alt="Ícone do meu perfil">
                             <div class="drop-text">
                               <p class="name-user">Nome do Usuário</p>

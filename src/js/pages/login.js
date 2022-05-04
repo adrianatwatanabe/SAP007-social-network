@@ -35,7 +35,7 @@ export function createLogin() {
           ENTRAR COM GOOGLE
         </button>
         <p class="new-account" >
-          Não tem conta?<br> <a href="#register" class="emphasis-pink">Crie uma conta agora!</a>
+          Não tem conta?<br> <a href="#user-register" class="emphasis-pink">Crie uma conta agora!</a>
         </p>
       </section>
 

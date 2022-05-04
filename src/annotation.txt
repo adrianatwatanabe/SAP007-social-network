@@ -6,6 +6,7 @@ FAZER:
     - Função que receba e atribua os valores para o post que será mostrado na página FEED
     - Retirar o template da parte de Add Comentário (input de adicionar comentário) (para a página de FEED  e PROFILE)
     - Retirar o template de mostrar TODOS OS COMENTÁRIOS EM CADA POST (para a página de FEED  e PROFILE)
+    - Fechar o modal usando a função de fechar encontrado do arquivo modal.js
   
   Posts (Deletar e Editar):
     - Criar html que confirme a exclusão do post
