@@ -27,7 +27,7 @@ export function createProfile() {
             <a class="user-link-photo  user-link-photo-profile">
               <img src="../img/icons/icon-photo.png" class="user-photo-profile" alt="Foto do perfil">
             </a>
-            <a href="#edit-profile" class="button-icon-profile">
+            <a href="#user-profile-editing" class="button-icon-profile">
               <img src="../img/icons/icon-edit.png" class="icon-user-profile" alt="Editar perfil">
               <p class="post-icon-text">editar</p>
             </a>
