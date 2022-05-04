@@ -1,4 +1,4 @@
-import { createPost } from '../components/post/view-post.js';
+import { createPost } from '../components/posts/template-view-post.js';
 
 const textPost = 'Mãe de gatos...';
 

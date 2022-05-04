@@ -1,7 +1,7 @@
-import { createNewPost } from '../post/new-post.js';
-import { initModal } from './modal.js';
-import { logout } from '../../../config/authentication.js';
-import { createUserPost } from '../../../config/firestore.js';
+import { createNewPost } from './template-new-post.js';
+import { initModal } from '../general-site-components/modal.js';
+import { logout } from '../../../firebase-configuration/authentication.js';
+import { createUserPost } from '../../../firebase-configuration/firestore.js';
 
 function publish() {
   const message = document.querySelector('#create-post');

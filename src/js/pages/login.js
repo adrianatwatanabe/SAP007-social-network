@@ -1,7 +1,7 @@
-import { initModal } from '../components/general/modal.js';
-import { userValidation, resetEmailValidation } from '../components/authentications/user-validation.js';
-import { GoogleAuthProvider } from '../../config/export.js';
-import { authUserWithGoogle } from '../../config/authentication.js';
+import { initModal } from '../components/general-site-components/modal.js';
+import { userValidation, resetEmailValidation } from '../components/authentications/login-and-registration-validation.js';
+import { GoogleAuthProvider } from '../../firebase-configuration/export.js';
+import { authUserWithGoogle } from '../../firebase-configuration/authentication.js';
 
 const redirectedPage = '#feed';
 const regexEmail = /[\w.\-+]+@[\w-]+\.[\w-.]+/gi;
