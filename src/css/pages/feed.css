@@ -31,7 +31,9 @@
 }
 .user-name-comment,
 .comment-text,
-.list-comments {
+.list-comments,
+.work,
+.language {
   width: 100%;
 }
 #form-profile {
@@ -278,12 +280,9 @@ input[type='file'] {
 .user-information {
   width: 100%;
 }
-.user-information p {
-  display: block;
-  width: 100%;
-}
 .user-link-photo,
-.user-link-photo-comment {
+.user-link-photo-comment,
+.user-link-photo-modal {
   border-radius: 4px;
   background-color: var(--color-dark-yellow);
   margin-right: 10px;
@@ -310,6 +309,11 @@ input[type='file'] {
 .user-photo-profile {
   width: 55px;
   height: 55px;
+}
+.user-link-photo-modal,
+.user-photo-post-modal {
+  width: 45px;
+  height: 45px;
 }
 .user-link-photo-profile {
   margin-right: 15px;

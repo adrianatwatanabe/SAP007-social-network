@@ -92,6 +92,13 @@ textarea {
   text-align: center;
   color: var(--color-dark-green);
 }
+.button-comment,
+.add-post-footer,
+.button-icon-profile,
+.user-description-text,
+.work {
+  display: none;
+}
 
 @media screen and (min-width: 550px) {
   #main-container {
