@@ -1,6 +1,7 @@
 import { createLogin, loginWorking } from './pages/login.js';
 import { createRegister } from './pages/user-register.js';
 import { createHeader, headerWorking } from './components/posts/header-and-new-post.js';
+import { creationTextareaSize } from './components/general-site-components/textarea-size.js';
 import { createFeed } from './pages/feed.js';
 import { createFriends } from './pages/friends-list.js';
 import { createProfile } from './pages/user-profile.js';
@@ -15,7 +16,8 @@ function creatingInternalElements() {
   sectionGeneral.innerHTML = createHeader();
   container.append(sectionGeneral);
 
-  headerWorking();
+  headerWorking();  
+  creationTextareaSize();
 
   const headerGeneral = document.querySelector('header');
   return headerGeneral;

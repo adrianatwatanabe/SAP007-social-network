@@ -68,6 +68,12 @@ ul li {
   text-decoration: none;
   list-style: none;
 }
+textarea {
+  overflow-y: hidden;
+  resize: none;
+  outline: none;
+  height: 20px;
+}
 
 @media screen and (min-width: 550px) {
   #main-container {
