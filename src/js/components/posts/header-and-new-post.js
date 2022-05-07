@@ -1,16 +1,8 @@
 import { createNewPost } from './template-new-post.js';
 import { initModal } from '../general-site-components/modal.js';
 import { logout } from '../../../firebase-configuration/authentication.js';
-import { createUserPost } from '../../../firebase-configuration/firestore.js';
 import { auth } from '../../../firebase-configuration/start-firebase.js';
-
-function publish() {
-  const message = document.querySelector('#create-post');
-  const newPost = message.value;
-  message.value = '';
-  message.focus();
-  createUserPost(newPost);
-}
+import { publishPost } from './post-validation.js';
 
 export function createHeader() {
   const header = `
@@ -108,7 +100,6 @@ export function headerWorking() {
     });
   });
 
-  const btnPublish = document.querySelector('#button-publish');
-  btnPublish.addEventListener('click', publish);
-
+  const buttonPublish = document.querySelector('#button-publish');
+  buttonPublish.addEventListener('click', publishPost);
 }

@@ -1,34 +1,25 @@
-import { addDoc, getDocs, query, collection } from './export.js';
+import { 
+  collection,
+  addDoc,
+  orderBy,
+  query,
+  getDocs,
+  where,
+} from './export.js';
 import { db, auth } from './start-firebase.js';
 
-export function createUserPost(newText) {
+export async function createUserPost(newText) {
   try {
-    //Colocar esse if no arquivo post-validation.js pois é uma manipulação do DOM
-    /*
-        if (newText.length === 0) {
-        // colocar mensagem avisando que não tem texto na postagem
-        return;
-      */
-
     const postsCollection = collection(db, 'posts');
     const newPost = {
+      socialName: auth.currentUser.displayName,
       userId: auth.currentUser.uid,
       text: newText,
-      like: 0,
+      like: [],
       createdAt: new Date(),
     };
-
-    addDoc(postsCollection, newPost);
-
-    // Para a manipulação de hash e mostrar erros, é a parte do DOM que estará em um dos arquivos da pasta posts
-    /*
-        .then(() => {
-          window.location.hash = '#feed';
-        })
-        .catch((error) => {
-          return error; // só return ?
-        });
-      */
+    const docRef = await addDoc(postsCollection, newPost);
+    return docRef;
   } catch (e) {
     return e;
   }
@@ -42,6 +33,32 @@ export async function getPosts() {
     const posts = doc.data();
     postsArray.push(posts);
   });
-  console.log(postsArray);
   return postsArray;
 }
+
+export const allPosts = async () => {
+  const arrayOfPosts = [];
+  const sortingPosts = query(collection(db, 'posts'), orderBy('date', 'desc'));
+  const querySnapshot = await getDocs(sortingPosts);
+  querySnapshot.forEach((item) => {
+    const posts = item.data();
+    const postId = item.id;
+    posts.id = postId;
+    arrayOfPosts.push(posts);
+  });
+  return arrayOfPosts;
+};
+
+export const getUserPosts = async (id) => {
+  const arrayOfMyPosts = [];
+  const clause = where('userId', '==', id);
+  const querySnapshot = query(collection(db, 'posts'), orderBy('date', 'desc'), clause);
+  const test = await getDocs(querySnapshot);
+  test.forEach((item) => {
+    const post = item.data();
+    const postId = item.id;
+    post.id = postId;
+    arrayOfMyPosts.push(post);
+  });
+  return arrayOfMyPosts;
+};

@@ -7,7 +7,6 @@ function toogle(e) {
 
 function outside(e) {
   if (e.target === this) {
-    // alvo é igual o evento?
     e.preventDefault();
     modalContainer.classList.toggle('active');
   }
@@ -28,10 +27,11 @@ export function initModal(open, container, close) {
   }
 }
 
-export function closeModalAutomatically(modalClose, container) {
+export function closeModalAutomatically(modalClose, container, message) {
   modalContainer = container;
   const event = new Event('click');
   modalClose.addEventListener('click', toogle, false);
   modalClose.addEventListener('touchstart', toogle, false);
   modalClose.dispatchEvent(event);
+  message.value = '';
 }
