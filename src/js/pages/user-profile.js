@@ -25,7 +25,7 @@ export function createProfile() {
       <header class="header-profile">
           <div class="user-photo-container-profile">
             <a class="user-link-photo  user-link-photo-profile">
-              <img src="../img/icons/icon-photo.png" class="user-photo-profile" alt="Foto do perfil">
+              <img src="./img/icons/icon-photo.png" class="user-photo-profile" alt="Foto do perfil">
             </a>
             <a href="#user-profile-editing" class="button-icon-profile">
               <img src="../img/icons/icon-edit.png" class="icon-user-profile" alt="Editar perfil">

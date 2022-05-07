@@ -3,10 +3,9 @@ import { createRegister } from './pages/user-register.js';
 import { createHeader, headerWorking } from './components/posts/header-and-new-post.js';
 import { creationTextareaSize } from './components/general-site-components/textarea-size.js';
 import { createFeed } from './pages/feed.js';
-import { createFriends } from './pages/friends-list.js';
 import { createProfile } from './pages/user-profile.js';
-import { createEditProfile } from './pages/user-profile-editing.js';
 import { authChange } from '../firebase-configuration/authentication.js';
+import { error404 } from './pages/error404.js';
 
 function creatingInternalElements() {
   const container = document.getElementById('root');
@@ -31,18 +30,21 @@ function redirectPages() {
       const header = creatingInternalElements();
       switch (window.location.hash) {
         case '#friends-list':
-          header.after(createFriends());
+          // header.after(createFriends());
+          header.after(error404());
           break;
         case '#user-profile':
           header.after(createProfile());
           break;
         case '#user-profile-editing':
-          header.after(createEditProfile());
+          // header.after(createEditProfile());
+          header.after(error404());
           break;
         case '#feed':
-        default:
           header.after(createFeed());
           break;
+        default:
+          header.after(error404());
       }
     } else {
       const background = document.querySelector('#root');

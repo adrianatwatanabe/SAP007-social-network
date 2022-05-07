@@ -45,7 +45,7 @@
 
 @media screen and (min-width: 450px) and (max-width: 549px) {
   .container-logo {
-    background-image: url(../../img/log-labfriends-yellow.png);
+    background-image: url(../../img/site/log-labfriends-yellow.png);
     background-size: 120px;
   }
   .menu-header {
@@ -62,7 +62,7 @@
     grid-template-columns: 200px 2fr;
   }
   .container-logo {
-    background-image: url(../../img/log-labfriends-yellow.png);
+    background-image: url(../../img/site/log-labfriends-yellow.png);
     background-size: 160px;
   }
   .menu-list,

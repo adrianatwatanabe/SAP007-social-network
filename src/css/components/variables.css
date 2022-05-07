@@ -1,8 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Bree+Serif&family=Lato:wght@400;700&family=Lora:wght@700&family=Roboto:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Staatliches&display=swap');
 
 :root {
   --font-default: 'Robato', 'Lato', 'Segoe UI', Arial, sans-serif;
   --font-emphasis: 'Lora', 'Bree Serif', serif;
+  --font-404: 'Staatliches', cursive;
 
   --color-dark-pink: #ff009e;
   --color-light-pink: #ffb8e1;
