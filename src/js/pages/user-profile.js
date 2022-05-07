@@ -1,4 +1,5 @@
 import { createPost } from '../components/posts/template-view-post.js';
+import { auth } from '../../../firebase-configuration/start-firebase.js';
 
 const textPost = 'Mãe de gatos...';
 
@@ -34,9 +35,9 @@ export function createProfile() {
           </div>
           <div class="user-information">
             <a>
-              <p class="user-name">Nome do Usuário</p>
+              <p class="user-name">${auth.currentUser.displayName}</p>
             </a>
-            <p class="language">Javascript, HTML, CSS</p>
+            <p class="language">${auth.currentUser.email}</p>
             <p class="work">Desenvolvedora Front-End</p>
             <textarea class="user-description-text" autocomplete="on" rows="1" cols="70" minlength="2" spellcheck="true" wrap="hard" readonly>${textPost}</textarea>
           </div>

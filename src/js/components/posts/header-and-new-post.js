@@ -2,6 +2,7 @@ import { createNewPost } from './template-new-post.js';
 import { initModal } from '../general-site-components/modal.js';
 import { logout } from '../../../firebase-configuration/authentication.js';
 import { createUserPost } from '../../../firebase-configuration/firestore.js';
+import { auth } from '../../../firebase-configuration/start-firebase.js';
 
 function publish() {
   const message = document.querySelector('#create-post');
@@ -52,8 +53,8 @@ export function createHeader() {
                           <a href="#user-profile" class="dropdown-link-icon">
                             <img src="../img/icons/icon-profile.png" class="drop-icon" alt="Ícone do meu perfil">
                             <div class="drop-text">
-                              <p class="name-user">Nome do Usuário</p>
-                              <p class="text-small">Veja seu perfil</p>
+                              <p class="menu-name-user">${auth.currentUser.displayName}</p>
+                              <p class="menu-text-small">Veja seu perfil</p>
                             </div>
                           </a>
                         </li>
@@ -109,4 +110,5 @@ export function headerWorking() {
 
   const btnPublish = document.querySelector('#button-publish');
   btnPublish.addEventListener('click', publish);
+
 }

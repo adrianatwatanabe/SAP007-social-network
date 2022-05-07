@@ -66,10 +66,6 @@ button {
   justify-self: end;
   margin-right: 8px;
 }
-.button-add-post {
-  width: 100%;
-  border: none;
-}
 .icon-button {
   width: 1.2rem;
   height: 1.2rem;
@@ -79,10 +75,9 @@ button {
   width: calc(100% * 0.9);
 }
 #button-logout {
-  border: var(--border-input-post);
-  width: 100%;
-  font-size: 0.75rem;
+  height: auto;
 }
+
 @media screen and (min-width: 550px) and (max-width: 1799px) {
   .user-button {
     height: 3.125rem;

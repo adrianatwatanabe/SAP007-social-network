@@ -12,10 +12,4 @@ FAZER:
 
   Curtir:
     - Estudar e escrever os babys steps da ação de CLICAR E DESCLICAR NO LIKE
-    
-  - Fazer uma página de erro 404 para links e páginas que não serão mostradas 
-
-
-FAZENDO:
-- fazer função que verifique o tamanho do container header e atribua o tamanho para o modal menu --> class="modal-dropdown"
 
