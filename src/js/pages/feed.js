@@ -1,4 +1,4 @@
-import { createUserPost, viewPostsCollection } from '../../../firebase-configuration/firestore.js';
+import { createUserPost, viewPostsCollection, postIdUpdate } from '../../../firebase-configuration/firestore.js';
 import { closeModalAutomatically } from '../components/general-site-components/modal.js';
 import { createPost } from '../components/posts/template-view-post.js';
 import { readingTextareaSize } from '../components/general-site-components/textarea-size.js';
@@ -45,12 +45,16 @@ export function publishPost() {
     }, 3000);
     addNewMessage.value = '';
   } else if (validatedText || validatedTextTab || validatedTabText) {
-    createUserPost(newMessage).then(() => {
-      closeModalAutomatically(postClose, postContainer);
-      showAllPosts();
-      const initialSizeTextarea = document.getElementById('create-post');
-      initialSizeTextarea.setAttribute('style', 'height: 80px;');
-    });
+    createUserPost(newMessage)
+      .then((docRef) => {
+        closeModalAutomatically(postClose, postContainer);
+        const listPost = document.querySelector('.list-posts');
+        listPost.innerHTML = '';
+        postIdUpdate(docRef.id);
+        showAllPosts();
+        const initialSizeTextarea = document.getElementById('create-post');
+        initialSizeTextarea.setAttribute('style', 'height: 80px;');
+      });
     addNewMessage.value = '';
   } else {
     message.innerHTML = 'Não é possível enviar um post vazio!';

@@ -9,6 +9,8 @@ FAZER:
     - Estudar e escrever os babys steps da ação de CLICAR E DESCLICAR NO LIKE
 
 
-ordenar Posts
+
+
+ordenar Posts - atual em primeiro
 arrumar horário e data das postagen
-botão de limpar mensagem
+botão de limpar mensagem no modal do novo post

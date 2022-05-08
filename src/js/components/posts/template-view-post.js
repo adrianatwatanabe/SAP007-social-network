@@ -1,5 +1,4 @@
 export function createPost(post) {
-  console.log(post);
   const template = `
     <article class="user-post">
       <section class="post-timeline">

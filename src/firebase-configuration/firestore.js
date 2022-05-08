@@ -20,7 +20,7 @@ export async function createUserPost(newText) {
       socialName: auth.currentUser.displayName,
       text: newText,
       like: [],
-      date: new Date(),
+      date: new Date().toLocaleString(),
       userId: auth.currentUser.uid,
     };
     const docRef = await addDoc(postsCollection, newPost);
@@ -30,12 +30,23 @@ export async function createUserPost(newText) {
   }
 }
 
+export async function postIdUpdate(id){
+  const post = doc(db, "posts", id);
+  await updateDoc(post, {
+    postId: id,
+  });
+}
+
 export async function viewPostsCollection() {
   const postsArray = [];
   const postsCollection = query(collection(db, 'posts'));
   const docSnap = await getDocs(postsCollection);
   docSnap.forEach((doc) => {
     const posts = doc.data();
+    /* deve-se guardar o id no post para like
+      console.log(doc.id);
+      console.log(doc.id, " => ", doc.data());
+    */
     postsArray.push(posts);
   });
   return postsArray;
