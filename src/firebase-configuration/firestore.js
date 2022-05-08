@@ -13,10 +13,10 @@ export async function createUserPost(newText) {
     const postsCollection = collection(db, 'posts');
     const newPost = {
       socialName: auth.currentUser.displayName,
-      userId: auth.currentUser.uid,
       text: newText,
       like: [],
-      createdAt: new Date(),
+      date: new Date(),
+      userId: auth.currentUser.uid,
     };
     const docRef = await addDoc(postsCollection, newPost);
     return docRef;
@@ -25,7 +25,7 @@ export async function createUserPost(newText) {
   }
 }
 
-export async function getPosts() {
+export async function viewPostsCollection() {
   const postsArray = [];
   const postsCollection = query(collection(db, 'posts'));
   const docSnap = await getDocs(postsCollection);
@@ -36,25 +36,11 @@ export async function getPosts() {
   return postsArray;
 }
 
-export const allPosts = async () => {
-  const arrayOfPosts = [];
-  const sortingPosts = query(collection(db, 'posts'), orderBy('date', 'desc'));
-  const querySnapshot = await getDocs(sortingPosts);
-  querySnapshot.forEach((item) => {
-    const posts = item.data();
-    const postId = item.id;
-    posts.id = postId;
-    arrayOfPosts.push(posts);
-  });
-  return arrayOfPosts;
-};
-
-export const getUserPosts = async (id) => {
+export async function getUserPosts(id) {
   const arrayOfMyPosts = [];
-  const clause = where('userId', '==', id);
-  const querySnapshot = query(collection(db, 'posts'), orderBy('date', 'desc'), clause);
-  const test = await getDocs(querySnapshot);
-  test.forEach((item) => {
+  const docSnap = query(collection(db, 'posts'), orderBy('createdAt', 'desc'), where('userId', '==', id));
+  const postsUser = await getPosts(docSnap);
+  postsUser.forEach((item) => {
     const post = item.data();
     const postId = item.id;
     post.id = postId;

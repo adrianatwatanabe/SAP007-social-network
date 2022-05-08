@@ -1,6 +1,9 @@
 import { auth } from '../../../firebase-configuration/start-firebase.js';
 
 export function createNewPost() {
+  let now = new Date;
+  let monthName = ["janeiro", "fevereiro", "março", "abril", "maio", "junho", "julho", "agosto", "setembro", "outubro", "novembro", "dezembro"];
+
   const template = `
     <section class="modal-container-light" data-post="container">
       <div class="modal-add-post">
@@ -14,7 +17,7 @@ export function createNewPost() {
               <a href="/#">
                 <p class="user-name">${auth.currentUser.displayName}</p>
               </a>
-              <time class="post-date">01 de abril de 2022</time>
+              <time class="post-date">${now.getDate()} de ${monthName [now.getMonth()]} de ${now.getFullYear()}</time>
             </div>
           </header>
           <textarea id="create-post" class="add-post-input" autocomplete="on" minlength="1" maxlength="1000" placeholder="Escreva uma mensagem..."></textarea>
@@ -31,6 +34,5 @@ export function createNewPost() {
       </div>
     </section>
     `;
-
   return template;
 }

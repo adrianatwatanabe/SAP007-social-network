@@ -27,11 +27,10 @@ export function initModal(open, container, close) {
   }
 }
 
-export function closeModalAutomatically(modalClose, container, message) {
+export function closeModalAutomatically(modalClose, container) {
   modalContainer = container;
   const event = new Event('click');
   modalClose.addEventListener('click', toogle, false);
   modalClose.addEventListener('touchstart', toogle, false);
   modalClose.dispatchEvent(event);
-  message.value = '';
 }

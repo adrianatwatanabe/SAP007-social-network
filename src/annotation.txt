@@ -11,3 +11,5 @@ FAZER:
   Curtir:
     - Estudar e escrever os babys steps da ação de CLICAR E DESCLICAR NO LIKE
 
+  atualização em tempo real
+

@@ -1,8 +1,6 @@
-const textPost = `There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable. The generated Lorem Ipsum is therefore always free from repetition, injected humour, or non-characteristic words etc.
-`;
-
-export function createPost() {
+export function createPost(post) {
   const template = `
+    <article class="user-post">
       <section class="post-timeline">
         <header class="post-header">
           <a href="/#" class="user-link-photo">
@@ -10,7 +8,7 @@ export function createPost() {
           </a>
           <div>
             <a href="/#">
-              <p class="user-name">Nome do Usuário</p>
+              <p class="user-name">${post.socialName}</p>
             </a>
             <time class="post-date">01 de abril de 2022</time>
           </div>
@@ -23,7 +21,7 @@ export function createPost() {
             </button>
           </div>
         </header>
-        <textarea class="post-text" autocomplete="on" rows="1" cols="70" minlength="2" spellcheck="true" wrap="hard" readonly>${textPost}</textarea>
+        <textarea class="post-text" autocomplete="on" rows="1" cols="70" minlength="2" spellcheck="true" wrap="hard" readonly></textarea>
         <footer class="post-footer">
           <button class="button-icon-post button-like">
             <img src="../img/icons/icon-unlike.png" class="post-icon" alt="Ícone de curtir">
@@ -37,6 +35,7 @@ export function createPost() {
           </button>
         </footer>
       </section>
+    </article>
       `;
 
   return template;

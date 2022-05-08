@@ -2,7 +2,7 @@ import { createNewPost } from './template-new-post.js';
 import { initModal } from '../general-site-components/modal.js';
 import { logout } from '../../../firebase-configuration/authentication.js';
 import { auth } from '../../../firebase-configuration/start-firebase.js';
-import { publishPost } from './post-validation.js';
+import { publishPost } from '../../pages/feed.js';
 
 export function createHeader() {
   const header = `
