@@ -2,9 +2,7 @@
 
 FAZER:
   Posts (Criar e Mostrar na Tela):
-    - Função que valide a criação de postagem ao clicar em enviar no modal 
     - Função que receba e atribua os valores para o post que será mostrado na página FEED
-    - Fechar o modal usando a função de fechar encontrado do arquivo modal.js
   
   Posts (Deletar e Editar):
     - Criar html que confirme a exclusão do post

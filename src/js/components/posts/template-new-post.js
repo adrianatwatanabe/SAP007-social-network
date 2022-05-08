@@ -26,6 +26,7 @@ export function createNewPost() {
             </label>
           </footer>
         </section>
+        <p id="message-new-post"></p>
         <input id="button-publish" class="user-button button-pink button-add-post" type="button" value="PUBLICAR"/>
       </div>
     </section>

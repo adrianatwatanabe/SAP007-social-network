@@ -1,7 +1,6 @@
 import { createLogin, loginWorking } from './pages/login.js';
 import { createRegister } from './pages/user-register.js';
 import { createHeader, headerWorking } from './components/posts/header-and-new-post.js';
-import { creationTextareaSize } from './components/general-site-components/textarea-size.js';
 import { createFeed } from './pages/feed.js';
 import { createProfile } from './pages/user-profile.js';
 import { authChange } from '../firebase-configuration/authentication.js';
@@ -16,7 +15,6 @@ function creatingInternalElements() {
   container.append(sectionGeneral);
 
   headerWorking();  
-  creationTextareaSize();
 
   const headerGeneral = document.querySelector('header');
   return headerGeneral;
