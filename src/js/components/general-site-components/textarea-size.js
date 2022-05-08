@@ -1,13 +1,11 @@
 export function creationTextareaSize (){
-  const textareaSize = document.getElementsByTagName('textarea');
-  for (let i = 0; i < textareaSize.length; i++) {
-    textareaSize[i].setAttribute('style', 'height: 80px;');
-    textareaSize[i].addEventListener('input', OnInput, false);
-  }
+  const textareaSize = document.getElementById('create-post');
+  textareaSize.setAttribute('style', 'height: 80px;');
+  textareaSize.addEventListener('input', OnInput, false);
 }
 
 export function readingTextareaSize (){
-  const textareaSize = document.getElementsByTagName('textarea');
+  const textareaSize = document.querySelectorAll('.post-reading');
   for (let i = 0; i < textareaSize.length; i++) {
     textareaSize[i].setAttribute('style', 'height:' + textareaSize[i].scrollHeight + 'px;');
     textareaSize[i].addEventListener('input', OnInput, false);

@@ -1,10 +1,12 @@
 import { createUserPost, viewPostsCollection} from '../../../firebase-configuration/firestore.js';
 import { closeModalAutomatically} from '../components/general-site-components/modal.js';
 import { createPost } from '../components/posts/template-view-post.js';
+import { readingTextareaSize } from '../components/general-site-components/textarea-size.js';
 
 export function createFeed() {
   const container = document.createElement('main');
   container.setAttribute('id', 'main-container');
+  container.setAttribute('class', 'scroll');
   container.innerHTML = `
     <ul class="list-posts">
     </ul>
@@ -21,9 +23,9 @@ export async function showAllPosts() {
     list.setAttribute('class', 'post-card');
     list.innerHTML = createPost(post);
     listPost.append(list);
+    readingTextareaSize();
   });
 }
-
 
 export function publishPost() {
   const postClose = document.querySelector('[data-post="close"]');

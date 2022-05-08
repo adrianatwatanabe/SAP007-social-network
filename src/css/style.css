@@ -60,16 +60,21 @@
 #main-container,
 #main-container-error {
   width: 100vw;
+  height: 100%;
   position: relative;
   top: 82px;
   display: grid;
   grid-template-columns: 1fr;
   justify-items: center;
   padding: 0 20px;
+  margin-bottom: 120px;
 }
 #main-container-error {
   height: 100vh;
   align-items: center;
+}
+.scroll {
+  overflow-y: scroll;
 }
 ul li {
   text-decoration: none;
@@ -79,7 +84,9 @@ textarea {
   overflow-y: hidden;
   resize: none;
   outline: none;
-  height: 20px;
+}
+#create-post {
+  height: 80px;
 }
 .image-404 {
   height: 200px;
@@ -98,6 +105,20 @@ textarea {
 .user-description-text,
 .work {
   display: none;
+}
+.scroll::-webkit-scrollbar {
+  width: 7px;
+}
+.scroll::-webkit-scrollbar-track {
+  background: var(--color-light-gray);
+  border-radius: 10px;
+}
+.scroll::-webkit-scrollbar-thumb {
+  background-color: var(--color-dark-green);
+  border-radius: 10px;
+}
+.scroll {
+  scrollbar-width: thin;
 }
 
 @media screen and (min-width: 550px) {

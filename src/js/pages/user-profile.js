@@ -1,23 +1,33 @@
 import { createPost } from '../components/posts/template-view-post.js';
 import { auth } from '../../../firebase-configuration/start-firebase.js';
+//import { viewUserPostsCollection} from '../../../firebase-configuration/firestore.js';
 
 const textPost = 'Mãe de gatos...';
 
+/*
 function createListPost() {
   const container = document.createElement('section');
   container.setAttribute('class', 'container-internal-list');
   container.innerHTML = `
     <ul class="cards-timeline">
-      <li class="post-card-timeline">
-        <article class="user-post">
-          ${createPost()}
-        </article>
-      </li>
     </ul>
   `;
+  viewPostsUser();
   return container;
 }
 
+export async function viewPostsUser() {
+  const id = auth.currentUser.uid;
+  const postsCollection = await viewUserPostsCollection(id);
+  postsCollection.filter((post) => {
+    const listPost = document.querySelector('.list-posts');
+    const list = document.createElement('li');
+    list.setAttribute('class', 'post-card');
+    list.innerHTML = createPost();
+    listPost.append(list);
+  });
+}
+*/
 export function createProfile() {
   const container = document.createElement('main');
   container.setAttribute('id', 'main-container');
