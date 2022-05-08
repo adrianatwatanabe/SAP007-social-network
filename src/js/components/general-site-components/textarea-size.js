@@ -1,7 +1,7 @@
 export function creationTextareaSize (){
-  const textareaSize = document.getElementById('create-post');
-  textareaSize.setAttribute('style', 'height: 80px;');
-  textareaSize.addEventListener('input', OnInput, false);
+  const initialSizeTextarea = document.getElementById('create-post');
+  initialSizeTextarea.setAttribute('style', 'height: 80px;');
+  initialSizeTextarea.addEventListener('input', OnInput, false); //dispara constantemente
 }
 
 export function readingTextareaSize (){
@@ -13,6 +13,13 @@ export function readingTextareaSize (){
 }
 
 function OnInput() {
-  this.style.height = 'auto';
-  this.style.height = this.scrollHeight + 'px';
+  let heightWindow = Number(window.innerHeight);
+  let heighModal = Number(document.querySelector('#create-post').offsetHeight);
+  if (heighModal >= heightWindow * 0.6) {
+    this.style.height = '60vh';
+    this.style.overflow = 'scroll';
+  } else {
+    this.style.height = 'auto';
+    this.style.height = this.scrollHeight + 'px';
+  }
 }

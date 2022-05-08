@@ -85,9 +85,6 @@ textarea {
   resize: none;
   outline: none;
 }
-#create-post {
-  height: 80px;
-}
 .image-404 {
   height: 200px;
   opacity: 50%;
@@ -111,7 +108,7 @@ textarea {
 }
 .scroll::-webkit-scrollbar-track {
   background: var(--color-light-gray);
-  border-radius: 10px;
+  border-radius: 5px;
 }
 .scroll::-webkit-scrollbar-thumb {
   background-color: var(--color-dark-green);

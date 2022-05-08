@@ -1,9 +1,6 @@
 
 
 FAZER:
-  Posts (Criar e Mostrar na Tela):
-    - Função que receba e atribua os valores para o post que será mostrado na página FEED
-  
   Posts (Deletar e Editar):
     - Criar html que confirme a exclusão do post
     - Criar html que edite cada postagem do próprio usuário logado 
@@ -13,4 +10,5 @@ FAZER:
 
 
 ordenar Posts
-arrumar horário e data das postagens
+arrumar horário e data das postagen
+botão de limpar mensagem

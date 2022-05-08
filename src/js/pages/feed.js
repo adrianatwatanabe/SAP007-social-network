@@ -43,6 +43,8 @@ export function publishPost() {
       .then(()=>{
         closeModalAutomatically(postClose, postContainer);
         showAllPosts();
+        const initialSizeTextarea = document.getElementById('create-post');
+        initialSizeTextarea.setAttribute('style', 'height: 80px;');
       });
   }
   addNewMessage.value = '';

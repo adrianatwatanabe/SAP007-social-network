@@ -21,7 +21,7 @@ export function createNewPost() {
             </div>
           </header>
           <textarea id="create-post" class="add-post-input" autocomplete="on" rows="1" minlength="2" spellcheck="true" wrap="hard" placeholder="Escreva uma mensagem..."></textarea>
-          <footer>
+          <footer class="modal-footer">
             <label class="add-post-footer">
               <img src="../img/icons/icon-add-image.png" class="post-icon" alt="Ícone de adicionar imagens">
               <input type="file" id="file-upload-image" accept="image/png, image/jpeg, image/jpg">
