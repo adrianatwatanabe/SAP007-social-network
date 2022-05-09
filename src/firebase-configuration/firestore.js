@@ -1,21 +1,19 @@
 import { 
-  collection,
+  collection, 
   addDoc,
-  orderBy,
-  query,
-  deleteDoc,
-  getDocs,
-  updateDoc,
-  doc,
-  where,
-  arrayUnion,
-  arrayRemove,
+  query, 
+  getDocs, 
+  updateDoc, 
+  doc, 
+  arrayUnion, 
+  arrayRemove 
 } from './export.js';
 import { db, auth } from './start-firebase.js';
 
+export const postsCollection = collection(db, 'posts');
+
 export async function createUserPost(newText) {
   try {
-    const postsCollection = collection(db, 'posts');
     const newPost = {
       socialName: auth.currentUser.displayName,
       text: newText,
@@ -30,8 +28,8 @@ export async function createUserPost(newText) {
   }
 }
 
-export async function postIdUpdate(id){
-  const post = doc(db, "posts", id);
+export async function postIdUpdate(id) {
+  const post = doc(db, 'posts', id);
   await updateDoc(post, {
     postId: id,
   });
@@ -39,40 +37,41 @@ export async function postIdUpdate(id){
 
 export async function viewPostsCollection() {
   const postsArray = [];
-  const postsCollection = query(collection(db, 'posts'));
-  const docSnap = await getDocs(postsCollection);
+  const searchedCollection = query(postsCollection);
+  const docSnap = await getDocs(searchedCollection);
   docSnap.forEach((doc) => {
     const posts = doc.data();
-    /* deve-se guardar o id no post para like
-      console.log(doc.id);
-      console.log(doc.id, " => ", doc.data());
-    */
     postsArray.push(posts);
   });
   return postsArray;
 }
 
-export const likePost = async (postId, user) => {
-  const postLiked = doc(db, 'posts', postId);
-  try {
-    return await updateDoc(postLiked, {
-      likes: arrayUnion(user),
-    });
-  } catch (e) {
-    return e;
-  }
+export async function addLikeToPost(postId) {
+  const post = doc(db, 'posts', postId);
+  await updateDoc(post, {
+    like: arrayUnion(auth.currentUser.uid),
+  });
+}
+
+export async function removeLikeToPost(postId) {
+  const post = doc(db, 'posts', postId);
+  await updateDoc(post, {
+    like: arrayRemove(auth.currentUser.uid),
+  });
 };
 
-export const dislikePost = async (postId, user) => {
-  const postLiked = doc(db, 'posts', postId);
-  try {
-    return await updateDoc(postLiked, {
-      likes: arrayRemove(user),
-    });
-  } catch (e) {
-    return e;
-  }
+/*
+export async function getFunctionDelet (postId) {
+  await deleteDoc(doc(db, 'posts', postId));
 };
+
+export async function editAPost (postId, editedMessage) {
+  const postToEdit = doc(db, 'posts', postId);
+  await updateDoc(postToEdit, {
+    message: editedMessage,
+  });
+};
+*/
 
 /*
 export async function viewUserPostsCollection(id) {
@@ -86,17 +85,6 @@ export async function viewUserPostsCollection(id) {
     postsArray.push(post);
   });
   return arrayOfMyPosts;
-};
-
-export const getFunctionDelet = async (postId) => {
-  await deleteDoc(doc(db, 'posts', postId));
-};
-
-export const editAPost = async (postId, editedMessage) => {
-  const postToEdit = doc(db, 'posts', postId);
-  await updateDoc(postToEdit, {
-    message: editedMessage,
-  });
 };
 
 */

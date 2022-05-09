@@ -48,7 +48,7 @@ function redirectPages() {
       }
     } else {
       const background = document.querySelector('#root');
-      background.style.backgroundImage = 'url(../../img/background.gif)';
+      background.style.backgroundImage = 'url(../img/site/background.gif)';
       switch (window.location.hash) {
         case '#user-register':
           container.append(createRegister());

@@ -14,6 +14,7 @@ export {
   getFirestore,
   collection,
   addDoc,
+  getDoc,
   orderBy,
   query,
   deleteDoc,

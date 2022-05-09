@@ -108,11 +108,11 @@ textarea {
 }
 .scroll::-webkit-scrollbar-track {
   background: var(--color-light-gray);
-  border-radius: 5px;
+  border-radius: 20px;
 }
 .scroll::-webkit-scrollbar-thumb {
   background-color: var(--color-dark-green);
-  border-radius: 10px;
+  border-radius: 20px;
 }
 .scroll {
   scrollbar-width: thin;

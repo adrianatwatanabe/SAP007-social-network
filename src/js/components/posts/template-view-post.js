@@ -1,4 +1,5 @@
 export function createPost(post) {
+  const likePost = post.like;
   const template = `
     <article class="user-post">
       <section class="post-timeline">
@@ -23,10 +24,10 @@ export function createPost(post) {
         </header>
         <textarea class="post-text post-reading" autocomplete="on" rows="1" minlength="2" spellcheck="true" wrap="hard" readonly>${post.text}</textarea>
         <footer class="post-footer">
-          <button class="button-icon-post button-like">
-            <img src="../img/icons/icon-unlike.png" class="post-icon" alt="Ícone de curtir">
-            <p class="post-icon-text post-number-like">${post.like}</p>
-            <p class="post-icon-text">curtidas</p>
+          <button class="button-icon-post button-like" data-idpost=${post.postId}>
+            <img src="../img/icons/icon-unlike.png" class="post-icon like-image" alt="Ícone de curtir">
+            <p class="post-icon-text post-number-like">${likePost.length}</p>
+            <p class="post-icon-text post-text-like">curtidas</p>
           </button>
           <button class="button-icon-post button-comment">
             <img src="../img/icons/icon-comment.png" class="post-icon" alt="Ícone de comentários">
@@ -36,7 +37,6 @@ export function createPost(post) {
         </footer>
       </section>
     </article>
-      `;
-
+  `;
   return template;
 }
