@@ -6,17 +6,6 @@ FAZER:
     - Criar html que edite cada postagem do próprio usuário logado 
 
 
-LIKE
-- pegar o id do usuário logado
-
-- preciso comparar o usuário logado com o usuário que deu like na postagem
-
-
-- se não é o mesmo, dar like - deve-se persistir com o like ao logar
-- mesmo usuário, dar deslike
-
-
 ordenar Posts - atual em primeiro
 arrumar horário e data das postagen
 botão de limpar mensagem no modal do novo post
-adicionar classe que muda a cor do ícone
