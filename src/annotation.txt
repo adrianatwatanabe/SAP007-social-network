@@ -8,4 +8,3 @@ FAZER:
 
 ordenar Posts - atual em primeiro
 arrumar horário e data das postagen
-botão de limpar mensagem no modal do novo post
