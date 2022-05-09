@@ -19,3 +19,4 @@ LIKE
 ordenar Posts - atual em primeiro
 arrumar horário e data das postagen
 botão de limpar mensagem no modal do novo post
+adicionar classe que muda a cor do ícone

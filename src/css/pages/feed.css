@@ -1,5 +1,12 @@
 @import url(./timeline/menu.css);
 
+.liked {
+  background-image: url('../../img/icons/icon-like.png');
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+}
+
 /* general */
 .post-card,
 .comments-general,

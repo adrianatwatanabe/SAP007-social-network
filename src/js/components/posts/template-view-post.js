@@ -1,5 +1,9 @@
+import { auth} from '../../../firebase-configuration/start-firebase.js';
+
 export function createPost(post) {
   const likePost = post.like;
+  const likeUserId = likePost.includes(auth.currentUser.uid);
+  
   const template = `
     <article class="user-post">
       <section class="post-timeline">
@@ -24,10 +28,10 @@ export function createPost(post) {
         </header>
         <textarea class="post-text post-reading" autocomplete="on" rows="1" minlength="2" spellcheck="true" wrap="hard" readonly>${post.text}</textarea>
         <footer class="post-footer">
-          <button class="button-icon-post button-like" data-idpost=${post.postId}>
-            <img src="../img/icons/icon-unlike.png" class="post-icon like-image" alt="Ícone de curtir">
-            <p class="post-icon-text post-number-like">${likePost.length}</p>
-            <p class="post-icon-text post-text-like">curtidas</p>
+          <button class="button-icon-post button-like" data-button-like=${post.postId}>
+            <img src="../img/icons/icon-unlike.png" class="post-icon like-image ${likeUserId ? 'liked' : ''}" alt="Ícone de curtir" data-image-like=${post.postId}>
+            <p class="post-icon-text post-number-like" data-like-number=${post.postId}>${likePost.length}</p>
+            <p class="post-icon-text post-text-like" data-like-text=${post.postId}>curtidas</p>
           </button>
           <button class="button-icon-post button-comment">
             <img src="../img/icons/icon-comment.png" class="post-icon" alt="Ícone de comentários">

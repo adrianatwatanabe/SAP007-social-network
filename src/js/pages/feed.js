@@ -12,27 +12,27 @@ import { createPost } from '../components/posts/template-view-post.js';
 import { readingTextareaSize } from '../components/general-site-components/textarea-size.js';
 
 export async function addRemoveLikeToPost(postId) {
-  const likeImage = document.querySelector('.like-image');
-  const numberLikes = document.querySelector('.post-number-like');
-
   const postRef = doc(db, 'posts', postId);
   const docSnap = await getDoc(postRef);
   const post = docSnap.data();
-  const likes = post.like;
+  const likeUserId = post.like.includes(auth.currentUser.uid);
 
-  if (!likes.includes(auth.currentUser.uid)) {
+  const numberLikes = document.querySelector(`[data-like-number="${postId}"]`);
+  const buttonLike = document.querySelector(`[data-image-like="${postId}"]`);
+
+  if (!likeUserId) {
     addLikeToPost(postId)
       .then(() => {
-        likeImage.setAttribute('src', './img/icons/icon-like.png');
-        const viewLikes = Number(numberLikes.innerHTML) + 1;
-        numberLikes.innerHTML = viewLikes;
+        let viewLikes = Number(numberLikes.innerHTML) + 1;
+        numberLikes.innerHTML = viewLikes;        
+        buttonLike.classList.add('liked');
     });
   } else {
     removeLikeToPost(postId)
       .then(() => {
-        likeImage.setAttribute('src', './img/icons/icon-unlike.png');
-        const viewLikes = Number(numberLikes.innerHTML) - 1;
+        let viewLikes = Number(numberLikes.innerHTML) - 1;
         numberLikes.innerHTML = viewLikes;
+        buttonLike.classList.remove('liked');
     });
   }
 }
@@ -50,7 +50,7 @@ export async function showAllPosts() {
   const buttonLike = document.querySelectorAll('.button-like');
   buttonLike.forEach((post) => {
     post.addEventListener('click', () => {
-      const postId = post.getAttribute('data-idpost');
+      const postId = post.getAttribute('data-button-like');
       addRemoveLikeToPost(postId);
     });
   });
