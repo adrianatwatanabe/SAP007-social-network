@@ -2,7 +2,6 @@ import {
   createUserPost,
   viewPostsCollection,
   postIdUpdate,
-  onlyPost,
   addLikeToPost,
   removeLikeToPost,
   deletePost,
@@ -14,12 +13,17 @@ import { createPost } from '../components/posts/template-view-post.js';
 import { readingTextareaSize } from '../components/general-site-components/textarea-size.js';
 
 export async function deleteUserPost(postId){
-  const post = onlyPost(postId);
+  const postRef = doc(db, 'posts', postId);
+  const docSnap = await getDoc(postRef);
+  const post = docSnap.data();
 }
 
 export async function addRemoveLikeToPost(postId) {
-  const post = onlyPost(postId);
+  const postRef = doc(db, 'posts', postId);
+  const docSnap = await getDoc(postRef);
+  const post = docSnap.data();
   const likeUserId = post.like.includes(auth.currentUser.uid);
+
   const numberLikes = document.querySelector(`[data-like-number="${postId}"]`);
   const textLike = document.querySelector(`[data-like-text="${postId}"]`);
   const buttonLike = document.querySelector(`[data-image-like="${postId}"]`);

@@ -46,13 +46,6 @@ export async function viewPostsCollection() {
   return postsArray;
 }
 
-export async function onlyPost (postId) {
-  const postRef = doc(db, 'posts', postId);
-  const docSnap = await getDoc(postRef);
-  const post = docSnap.data();
-  return post;
-}
-
 export async function addLikeToPost(postId) {
   const post = doc(db, 'posts', postId);
   await updateDoc(post, {
