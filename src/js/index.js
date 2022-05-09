@@ -43,8 +43,12 @@ function redirectPages() {
         case '#feed':
           header.after(createFeed());
           break;
+        case '':
+          header.after(createFeed());
+          break;
         default:
           header.after(error404());
+          break;
       }
     } else {
       const background = document.querySelector('#root');

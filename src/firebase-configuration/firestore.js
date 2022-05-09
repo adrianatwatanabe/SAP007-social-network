@@ -46,6 +46,13 @@ export async function viewPostsCollection() {
   return postsArray;
 }
 
+export async function onlyPost (postId) {
+  const postRef = doc(db, 'posts', postId);
+  const docSnap = await getDoc(postRef);
+  const post = docSnap.data();
+  return post;
+}
+
 export async function addLikeToPost(postId) {
   const post = doc(db, 'posts', postId);
   await updateDoc(post, {
@@ -60,31 +67,15 @@ export async function removeLikeToPost(postId) {
   });
 };
 
-/*
-export async function getFunctionDelet (postId) {
+export async function deletePost (postId) {
   await deleteDoc(doc(db, 'posts', postId));
 };
 
+/*
 export async function editAPost (postId, editedMessage) {
   const postToEdit = doc(db, 'posts', postId);
   await updateDoc(postToEdit, {
     message: editedMessage,
   });
 };
-*/
-
-/*
-export async function viewUserPostsCollection(id) {
-  const postsArray = [];
-  const filterUser = query(collection(db, 'posts'), orderBy('date', 'desc'), where('userId', '==', id));
-  const docSnap = await viewPostsCollection(filterUser);
-  docSnap.forEach((item) => {
-    const post = item.data();
-    const postId = item.id;
-    post.id = postId;
-    postsArray.push(post);
-  });
-  return arrayOfMyPosts;
-};
-
 */

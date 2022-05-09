@@ -19,17 +19,17 @@ export function createPost(post) {
             <time class="post-date"></time>
           </div>
           <div class="icon-container-edit-delete">
-            <button class="button-icon-post-edit">
+            <button class="button-icon-post-edit" data-post-delete=${post.postId}>
               <img src="../img/icons/icon-edit.png" class="post-icon-edit" alt="Editar post">
             </button>
-            <button class="button-icon-post-edit">
+            <button class="button-icon-post-edit" data-post-edit=${post.postId}>
               <img src="../img/icons/icon-delete.png" class="post-icon-edit" alt="Excluir post">
             </button>
           </div>
         </header>
         <textarea class="post-text post-reading" autocomplete="on" rows="1" minlength="2" spellcheck="true" wrap="hard" readonly>${post.text}</textarea>
         <footer class="post-footer">
-          <button class="button-icon-post button-like" data-button-like=${post.postId}>
+          <button class="button-icon-post button-like" data-like-button=${post.postId}>
             <img src="../img/icons/icon-unlike.png" class="post-icon like-image ${likeUserId ? 'liked' : ''}" alt="Ícone de curtir" data-image-like=${post.postId}>
             <p class="post-icon-text post-number-like" data-like-number=${post.postId}>${likePost.length}</p>
             <p class="post-icon-text post-text-like" data-like-text=${post.postId}>${numberLike === 1 ? 'curtida' : 'curtidas'}</p>
