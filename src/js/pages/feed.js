@@ -19,9 +19,14 @@ export async function deleteUserPost(postId){
   const postUserId = post.userId;
   const userId = auth.currentUser.uid;
 
-  console.log(postUserId);
-  console.log(userId);
-
+  if (postUserId === userId){
+    await deletePost(postId)
+      .then(()=> {
+        const listPost = document.querySelector('.list-posts');
+        listPost.innerHTML = "";
+        showAllPosts();
+      })
+  }
 }
 
 export async function addRemoveLikeToPost(postId) {
