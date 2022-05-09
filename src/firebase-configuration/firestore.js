@@ -6,7 +6,7 @@ import {
   updateDoc, 
   doc, 
   arrayUnion, 
-  arrayRemove 
+  arrayRemove, 
 } from './export.js';
 import { db, auth } from './start-firebase.js';
 

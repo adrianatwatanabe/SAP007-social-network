@@ -19,10 +19,10 @@ export function createPost(post) {
             <time class="post-date"></time>
           </div>
           <div class="icon-container-edit-delete">
-            <button class="button-icon-post-edit" data-post-delete=${post.postId}>
+            <button class="button-icon-post-edit button-post-edit" data-post-edit=${post.postId}>
               <img src="../img/icons/icon-edit.png" class="post-icon-edit" alt="Editar post">
             </button>
-            <button class="button-icon-post-edit" data-post-edit=${post.postId}>
+            <button class="button-icon-post-edit button-post-delete" data-post-delete=${post.postId}>
               <img src="../img/icons/icon-delete.png" class="post-icon-edit" alt="Excluir post">
             </button>
           </div>

@@ -16,6 +16,12 @@ export async function deleteUserPost(postId){
   const postRef = doc(db, 'posts', postId);
   const docSnap = await getDoc(postRef);
   const post = docSnap.data();
+  const postUserId = post.userId;
+  const userId = auth.currentUser.uid;
+
+  console.log(postUserId);
+  console.log(userId);
+
 }
 
 export async function addRemoveLikeToPost(postId) {
@@ -68,7 +74,7 @@ export async function showAllPosts() {
     });
   });
 
-  const buttonDelete = document.querySelectorAll('.button-like');
+  const buttonDelete = document.querySelectorAll('.button-post-delete');
   buttonDelete.forEach((post) => {
     post.addEventListener('click', () => {
       const postId = post.getAttribute('data-post-delete');
