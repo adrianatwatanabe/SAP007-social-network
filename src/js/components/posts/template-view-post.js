@@ -3,6 +3,7 @@ import { auth} from '../../../firebase-configuration/start-firebase.js';
 export function createPost(post) {
   const likePost = post.like;
   const likeUserId = likePost.includes(auth.currentUser.uid);
+  const numberLike = post.like.length;
   
   const template = `
     <article class="user-post">
@@ -31,7 +32,7 @@ export function createPost(post) {
           <button class="button-icon-post button-like" data-button-like=${post.postId}>
             <img src="../img/icons/icon-unlike.png" class="post-icon like-image ${likeUserId ? 'liked' : ''}" alt="Ícone de curtir" data-image-like=${post.postId}>
             <p class="post-icon-text post-number-like" data-like-number=${post.postId}>${likePost.length}</p>
-            <p class="post-icon-text post-text-like" data-like-text=${post.postId}>curtidas</p>
+            <p class="post-icon-text post-text-like" data-like-text=${post.postId}>${numberLike === 1 ? 'curtida' : 'curtidas'}</p>
           </button>
           <button class="button-icon-post button-comment">
             <img src="../img/icons/icon-comment.png" class="post-icon" alt="Ícone de comentários">

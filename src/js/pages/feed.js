@@ -18,6 +18,7 @@ export async function addRemoveLikeToPost(postId) {
   const likeUserId = post.like.includes(auth.currentUser.uid);
 
   const numberLikes = document.querySelector(`[data-like-number="${postId}"]`);
+  const textLike = document.querySelector(`[data-like-text="${postId}"]`);
   const buttonLike = document.querySelector(`[data-image-like="${postId}"]`);
 
   if (!likeUserId) {
@@ -26,6 +27,8 @@ export async function addRemoveLikeToPost(postId) {
         let viewLikes = Number(numberLikes.innerHTML) + 1;
         numberLikes.innerHTML = viewLikes;        
         buttonLike.classList.add('liked');
+        if (viewLikes === 1) textLike.innerHTML = 'curtida';
+        else textLike.innerHTML = 'curtidas';
     });
   } else {
     removeLikeToPost(postId)
@@ -33,6 +36,8 @@ export async function addRemoveLikeToPost(postId) {
         let viewLikes = Number(numberLikes.innerHTML) - 1;
         numberLikes.innerHTML = viewLikes;
         buttonLike.classList.remove('liked');
+        if (viewLikes === 1) textLike.innerHTML = 'curtida';
+        else textLike.innerHTML = 'curtidas';
     });
   }
 }
