@@ -1,3 +1,4 @@
+//aqui estão todas as funções do firebase que serão colocadas como dublê
 export const initializeApp = jest.fn();
 export const getAuth = jest.fn();
 export const createUserWithEmailAndPassword = jest.fn();
