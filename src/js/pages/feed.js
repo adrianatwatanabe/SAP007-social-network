@@ -103,7 +103,7 @@ export async function viewAllPosts() {
     listPost.append(list);
     readingTextareaSize();
     if (auth.currentUser.uid === post.userId){
-      const buttonDelete = document.querySelector(`[data-post-delete=${post.postId}]`);
+      const buttonDelete = document.querySelector(`[data-post-delete="${post.postId}"]`);
       buttonDelete.style.display = 'flex';
       buttonDelete.addEventListener('click', () => {
         deleteUserPost(post.postId);
