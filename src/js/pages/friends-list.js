@@ -2,7 +2,7 @@ function createUserFriends() {
   const templateUser = `
     <li class="friend-card">
       <a class="user-link-photo user-link-photo-card">
-        <img src="../img/icons/icon-profile.png" class="user-photo-post" alt="Foto do perfil">
+        <img src="img/icons/icon-profile.png" class="user-photo-post" alt="Foto do perfil">
       </a>
       <div>
         <a>

@@ -11,7 +11,7 @@ export function createLogin() {
   container.classList.add('container-login');
   container.innerHTML = `
       <section class="user-form">
-        <img src="./img/site/log-labfriends-black.png" id="logo" alt="Logo da LabFriends">
+        <img src="img/site/log-labfriends-black.png" id="logo" alt="Logo da LabFriends">
 
         <form class="user-form-login">
           <label for="user-email" class="user-label">Email</label>
@@ -31,7 +31,7 @@ export function createLogin() {
           <span class="text-line">ou</span>
         </div>
         <button id="login-google" class="user-button  button-green"> 
-          <img class="icon-button" src="./img/icons/icon-logo-google.ico">  
+          <img class="icon-button" src="img/icons/icon-logo-google.ico">  
           ENTRAR COM GOOGLE
         </button>
         <p class="new-account" >

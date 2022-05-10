@@ -3,7 +3,7 @@ export function error404() {
   container.setAttribute('id', 'main-container-error');
   container.innerHTML = `
     <section class="container-internal">
-      <img class="image-404" src="../img/icons/404.png" alt="Erro 404 - Página em construção">
+      <img class="image-404" src="img/icons/404.png" alt="Erro 404 - Página em construção">
       <p class="text-404">Página em Construção!!</p>
     </section>
   `;

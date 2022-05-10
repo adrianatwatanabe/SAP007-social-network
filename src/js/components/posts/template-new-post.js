@@ -11,7 +11,7 @@ export function createNewPost() {
         <section class="container-add-post">
           <header class="modal-header">
             <a href="/#" class="user-link-photo-modal">
-              <img src="../img/icons/icon-profile.png" class="user-photo-post-modal" alt="Foto do perfil">
+              <img src="img/icons/icon-profile.png" class="user-photo-post-modal" alt="Foto do perfil">
             </a>
             <div class="modal-post-user">
               <a href="/#">
@@ -23,7 +23,7 @@ export function createNewPost() {
           <textarea id="create-post" class="add-post-input" autocomplete="on" rows="1" minlength="2" spellcheck="true" wrap="hard" placeholder="Escreva uma mensagem..."></textarea>
           <footer class="modal-footer">
             <label class="add-post-footer">
-              <img src="../img/icons/icon-add-image.png" class="post-icon" alt="Ícone de adicionar imagens">
+              <img src="img/icons/icon-add-image.png" class="post-icon" alt="Ícone de adicionar imagens">
               <input type="file" id="file-upload-image" accept="image/png, image/jpeg, image/jpg">
               <p class="post-icon-text">adicionar imagem</p>
             </label>

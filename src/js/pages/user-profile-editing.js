@@ -8,11 +8,11 @@ export function createEditProfile() {
           <div class="foto-perfil"></div>
         </div>
         <figure class="user-container-image">
-          <img src="../img/icons/icon-photo.png" class="user-profile-image" alt="Foto do meu perfil">
+          <img src="img/icons/icon-photo.png" class="user-profile-image" alt="Foto do meu perfil">
         </figure>
 
         <label class="button-icon button-user-add-img">
-         <img src="./../img/icons/icon-add-image.png" class="post-icon"/>
+         <img src="img/icons/icon-add-image.png" class="post-icon"/>
          <input type="file" id="file-upload-image" accept="image/png, image/jpeg, image/jpg">
          <p class="post-icon-text">alterar imagem</p>
         </label>

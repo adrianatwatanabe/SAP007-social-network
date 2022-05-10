@@ -16,7 +16,7 @@ export function createRegister() {
   container.classList.add('container-login');
   container.innerHTML = `
     <form class="user-form">
-      <img src="./img/site/log-labfriends-black.png" id="logo" alt="Logo da LabFriends">
+      <img src="img/site/log-labfriends-black.png" id="logo" alt="Logo da LabFriends">
       <label for="user-name" class="user-label">
         Nome Social
       </label>
