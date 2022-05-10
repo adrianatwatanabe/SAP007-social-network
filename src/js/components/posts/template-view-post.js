@@ -45,9 +45,11 @@ export function createPost(post) {
 
     <section class="modal-container-light" data-post-delete-modal="${post.postId}">
       <section class="modal-delete-post">
-        <p>Tem certeza que você deseja deletar esse post?</p>
-        <button class="modal-close-delete-post" data-post-confirm-no="${post.postId}">Não</button>
-        <button data-post-confirm-yes="${post.postId}">Sim</button>
+        <p class="text-delete">Tem certeza que você deseja deletar esse post?</p>
+        <div class="container-modal-delete-button">
+          <button class="button-modal-delete modal-close-delete-post" data-post-confirm-no="${post.postId}">Não</button>
+          <button class="button-modal-delete button-yes" data-post-confirm-yes="${post.postId}">Sim</button>
+        </div>
       </section>
     </section> 
   `;

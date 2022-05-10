@@ -1,7 +1,8 @@
 button {
   cursor: pointer;
 }
-.user-button {
+.user-button,
+.button-modal-delete {
   width: 100%;
   padding: 8px 10px;
   font-size: 1rem;
@@ -13,7 +14,12 @@ button {
 .user-button:active {
   transform: translateY(2px);
 }
-.button-pink {
+.button-modal-delete {
+  background-color: var(--color-dark-yellow);
+  max-width: 50px;
+}
+.button-pink,
+.button-yes {
   background-color: var(--color-dark-pink);
   color: var(--color-white);
 }
