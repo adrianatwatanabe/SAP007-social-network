@@ -9,6 +9,7 @@ import {
   deleteDoc, 
   doc, 
   getDoc, 
+  orderBy,
 } from './export.js';
 import { db, auth } from './start-firebase.js';
 
@@ -35,7 +36,7 @@ export async function postIdUpdate(id) {
 
 export async function viewPostsCollection() {
   const postsArray = [];
-  const searchedCollection = query(postsCollection);
+  const searchedCollection = query(postsCollection, orderBy("date", "desc"));
   const docSnap = await getDocs(searchedCollection);
   docSnap.forEach((doc) => {
     const posts = doc.data();
@@ -68,12 +69,3 @@ export async function removeLikeToPost(postId) {
 export async function deletePost(postId) {
   await deleteDoc(doc(db, 'posts', postId));
 }
-
-/*
-export async function editAPost (postId, editedMessage) {
-  const postToEdit = doc(db, 'posts', postId);
-  await updateDoc(postToEdit, {
-    message: editedMessage,
-  });
-};
-*/

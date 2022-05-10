@@ -56,6 +56,12 @@
 .modal-delete-post {
   padding: 20px 20px 0 20px;
 }
+.container-add-post {
+  width: 100%;
+}
+.modal-add-post {
+  width: 90vw;
+}
 .modal-close {
   width: 2.5rem;
   height: 2.5rem;

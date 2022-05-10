@@ -4,7 +4,7 @@ export function createPost(post) {
   const likePost = post.like;
   const likeUserId = likePost.includes(auth.currentUser.uid);
   const numberLike = post.like.length;
-  
+
   const template = `
     <article class="user-post">
       <section class="post-timeline">
@@ -16,7 +16,7 @@ export function createPost(post) {
             <a>
               <p class="user-name">${post.socialName}</p>
             </a>
-            <time class="post-date"></time>
+            <time class="post-date">${post.date}</time>
           </div>
           <div class="icon-container-edit-delete">
             <button class="button-icon-post-edit button-post-edit" data-post-edit=${post.postId}>
@@ -27,7 +27,7 @@ export function createPost(post) {
             </button>
           </div>
         </header>
-        <textarea class="post-text post-reading" autocomplete="on" rows="1" minlength="2" spellcheck="true" wrap="hard" readonly>${post.text}</textarea>
+        <textarea class="post-text post-reading" autocomplete="on" rows="1" minlength="2" spellcheck="true" wrap="hard" data-edit-text="${post.postId}" readonly>${post.text}</textarea>
         <footer class="post-footer">
           <button class="button-icon-post button-like" data-like-button=${post.postId}>
             <img src="img/icons/icon-unlike.png" class="post-icon like-image ${likeUserId ? 'liked' : ''}" alt="Ícone de curtir" data-image-like=${post.postId}>

@@ -1,5 +1,6 @@
 import { authChange } from '../firebase-configuration/authentication.js';
-import { createHeader, headerWorking } from './components/posts/header-and-new-post.js';
+import { createHeader } from './components/general-site-components/template-header-and-new-post.js';
+import { headerWorking } from './components/general-site-components/header-functions.js';
 import { creationTextareaSize } from './components/general-site-components/textarea-size.js';
 import { createLogin, loginWorking } from './pages/login.js';
 import { createRegister } from './pages/user-register.js';

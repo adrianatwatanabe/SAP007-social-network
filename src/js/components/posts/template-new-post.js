@@ -2,7 +2,7 @@ import { auth } from '../../../firebase-configuration/start-firebase.js';
 
 export function createNewPost() {
   let now = new Date;
-  let monthName = ["janeiro", "fevereiro", "março", "abril", "maio", "junho", "julho", "agosto", "setembro", "outubro", "novembro", "dezembro"];
+  const monthName = ["janeiro", "fevereiro", "março", "abril", "maio", "junho", "julho", "agosto", "setembro", "outubro", "novembro", "dezembro"];
 
   const template = `
     <section class="modal-container-light" data-post="container">

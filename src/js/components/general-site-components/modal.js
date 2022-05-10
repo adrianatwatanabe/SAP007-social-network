@@ -18,6 +18,9 @@ function outside(e) {
 }
 
 export function initModal(open, container, close) {
+  const focusCreatePost = document.querySelector('#create-post');
+  focusCreatePost.setAttribute('style', 'outline: solid rgb(16 130 16 / 70%) 2px;');
+  focusCreatePost.focus();
   modalContainer = container;
   if (open && close && container) {
     open.addEventListener('click', openModal);

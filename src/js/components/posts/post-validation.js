@@ -104,10 +104,15 @@ export async function viewAllPosts() {
     readingTextareaSize();
     if (auth.currentUser.uid === post.userId){
       const buttonDelete = document.querySelector(`[data-post-delete="${post.postId}"]`);
+      const buttonEdit = document.querySelector(`[data-post-edit="${post.postId}"]`);
       const yesDelete = document.querySelector(`[data-post-confirm-yes="${post.postId}"]`);
       const noDelete = document.querySelector(`[data-post-confirm-no="${post.postId}"]`);
       const containerModal = document.querySelector(`[data-post-delete-modal="${post.postId}"]`);
+      const textEdit = document.querySelector(`[data-edit-text="${post.postId}"]`);
+
       buttonDelete.style.display = 'flex';
+      buttonEdit.style.display = 'flex';
+
       buttonDelete.addEventListener('click', (e) => {
         e.preventDefault();
         containerModal.classList.add('active');
@@ -119,6 +124,13 @@ export async function viewAllPosts() {
       yesDelete.addEventListener('click', () => {
         deleteUserPost(post.postId);
       });
+
+      buttonEdit.addEventListener('click', (e) => {
+        e.preventDefault();
+        textEdit.removeAttribute('readonly');
+        textEdit.setAttribute('style', 'outline: solid #56f894 2px;');
+        textEdit.focus();
+      })
     }
   });
   const buttonLike = document.querySelectorAll('.button-like');

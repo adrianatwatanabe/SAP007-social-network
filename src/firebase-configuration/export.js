@@ -25,3 +25,7 @@ export {
   arrayUnion,
   arrayRemove, 
 } from 'https://www.gstatic.com/firebasejs/9.6.9/firebase-firestore.js'; // eslint-disable-line
+
+export { 
+  initializeApp 
+} from 'https://www.gstatic.com/firebasejs/9.6.9/firebase-app.js'; // eslint-disable-line
