@@ -28,6 +28,10 @@ export function createPost(post) {
           </div>
         </header>
         <textarea class="post-text post-reading" autocomplete="on" rows="1" minlength="2" spellcheck="true" wrap="hard" data-edit-text="${post.postId}" readonly>${post.text}</textarea>
+        <div class="container-button-edit">
+          <input class="button-edit-post button-edit-post-cancel" type="button" value="CANCELAR"/>
+          <input class="button-edit-post button-edit-post-confirm" type="button" value="SALVAR"/>
+        </div>
         <footer class="post-footer">
           <button class="button-icon-post button-like" data-like-button=${post.postId}>
             <img src="img/icons/icon-unlike.png" class="post-icon like-image ${likeUserId ? 'liked' : ''}" alt="Ícone de curtir" data-image-like=${post.postId}>
@@ -43,7 +47,7 @@ export function createPost(post) {
       </section>
     </article>
 
-    <section class="modal-container-light" data-post-delete-modal="${post.postId}">
+    <section class="modal-container-dark" data-post-delete-modal="${post.postId}">
       <section class="modal-delete-post">
         <p class="text-delete">Tem certeza que você deseja deletar esse post?</p>
         <div class="container-modal-delete-button">

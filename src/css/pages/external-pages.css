@@ -133,8 +133,7 @@ input::placeholder {
     font-size: 1.125rem;
     display: block;
   }
-  .user-input,
-  input {
+  .user-input {
     height: 2.875rem;
     font-size: 1.125rem;
   }

@@ -67,7 +67,7 @@
   position: relative;
 }
 .user-post {
-  padding: 30px 15px 10px 15px;
+  padding: 30px 12px 15px 15px;
   position: relative;
 }
 #form-profile {
@@ -441,6 +441,9 @@ input[type='file'] {
     padding: 15px;
     font-size: 1.125rem;
   }
+  .user-post {
+    padding-bottom: 15px;
+  }
 }
 
 @media screen and (min-width: 1000px) {
@@ -487,5 +490,8 @@ input[type='file'] {
   .post-text {
     padding: 15px;
     font-size: 1.125rem;
+  }
+  .user-post {
+    padding-bottom: 20px;
   }
 }
