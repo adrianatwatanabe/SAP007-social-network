@@ -31,7 +31,7 @@ button {
   font-size: 0.75rem;
   font-weight: 600;
   margin: 0;
-  border: var(--border-input-post);
+  border: none;
   border-radius: var(--spacing-small);
   padding: 4px 10px;
   width: 50%;

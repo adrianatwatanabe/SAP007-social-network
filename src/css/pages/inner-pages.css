@@ -1,7 +1,8 @@
 .add-post-footer,
 .user-description-text,
 .work,
-.modal-footer {
+.modal-footer,
+.container-button-edit {
   display: none;
 }
 /* general */

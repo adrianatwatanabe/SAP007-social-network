@@ -28,7 +28,7 @@ export function createPost(post) {
           </div>
         </header>
         <textarea class="post-text post-reading" autocomplete="on" rows="1" minlength="2" spellcheck="true" wrap="hard" data-edit-text="${post.postId}" readonly>${post.text}</textarea>
-        <div class="container-button-edit">
+        <div class="container-button-edit" data-edit-button="${post.postId}">
           <input class="button-edit-post button-edit-post-cancel" type="button" value="CANCELAR"/>
           <input class="button-edit-post button-edit-post-confirm" type="button" value="SALVAR"/>
         </div>

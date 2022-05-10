@@ -109,6 +109,7 @@ export async function viewAllPosts() {
       const noDelete = document.querySelector(`[data-post-confirm-no="${post.postId}"]`);
       const containerModal = document.querySelector(`[data-post-delete-modal="${post.postId}"]`);
       const textEdit = document.querySelector(`[data-edit-text="${post.postId}"]`);
+      const containerButtonEdit = document.querySelector(`[data-edit-button="${post.postId}"]`);
 
       buttonDelete.style.display = 'flex';
       buttonEdit.style.display = 'flex';
@@ -127,8 +128,9 @@ export async function viewAllPosts() {
 
       buttonEdit.addEventListener('click', (e) => {
         e.preventDefault();
+        containerButtonEdit.style.display = 'flex';
         textEdit.removeAttribute('readonly');
-        textEdit.setAttribute('style', 'outline: solid #56f894 2px;');
+        textEdit.setAttribute('style', 'outline: solid #3a3a3a 1.5px;');
         textEdit.focus();
       })
     }
