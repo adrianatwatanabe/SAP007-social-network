@@ -1,6 +1,7 @@
 .add-post-footer,
 .user-description-text,
-.work {
+.work,
+.modal-footer {
   display: none;
 }
 /* general */
