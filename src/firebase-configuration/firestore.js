@@ -1,5 +1,14 @@
-import { addDoc, getDocs, query, collection } from './export.js';
-import { db, auth } from './start-firebase.js';
+import { 
+  addDoc, 
+  getDocs, 
+  query, 
+  collection 
+} from './export.js';
+
+import { 
+  db, 
+  auth 
+} from './start-firebase.js';
 
 export function createUserPost(newText) {
   try {
@@ -45,3 +54,5 @@ export async function getPosts() {
   console.log(postsArray);
   return postsArray;
 }
+//4;
+//tudo que é relarivo a página interna de logar na conta está aqui; 
