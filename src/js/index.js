@@ -43,8 +43,6 @@ function redirectPages() {
           header.after(createFeed());
           break;
         default:
-          header.after(error404());
-          break;
       }
     } else {
       const background = document.querySelector('#root');
