@@ -1,32 +1,29 @@
 import { 
   collection, 
-  addDoc,
+  addDoc, 
   query, 
   getDocs, 
   updateDoc, 
-  doc, 
   arrayUnion, 
   arrayRemove, 
-  deleteDoc,
+  deleteDoc, 
+  doc, 
+  getDoc, 
 } from './export.js';
 import { db, auth } from './start-firebase.js';
 
 export const postsCollection = collection(db, 'posts');
 
 export async function createUserPost(newText) {
-  try {
-    const newPost = {
-      socialName: auth.currentUser.displayName,
-      text: newText,
-      like: [],
-      date: new Date().toLocaleString(),
-      userId: auth.currentUser.uid,
-    };
-    const docRef = await addDoc(postsCollection, newPost);
-    return docRef;
-  } catch (e) {
-    return e;
-  }
+  const newPost = {
+    socialName: auth.currentUser.displayName,
+    text: newText,
+    like: [],
+    date: new Date().toLocaleString(),
+    userId: auth.currentUser.uid,
+  };
+  const docRef = await addDoc(postsCollection, newPost)
+  return docRef;
 }
 
 export async function postIdUpdate(id) {
@@ -47,6 +44,13 @@ export async function viewPostsCollection() {
   return postsArray;
 }
 
+export async function getSinglePost(postId) {
+  const postRef = doc(db, 'posts', postId);
+  const docSnap = await getDoc(postRef);
+  const post = docSnap.data();
+  return post;
+}
+
 export async function addLikeToPost(postId) {
   const post = doc(db, 'posts', postId);
   await updateDoc(post, {
@@ -59,11 +63,11 @@ export async function removeLikeToPost(postId) {
   await updateDoc(post, {
     like: arrayRemove(auth.currentUser.uid),
   });
-};
+}
 
-export async function deletePost (postId) {
+export async function deletePost(postId) {
   await deleteDoc(doc(db, 'posts', postId));
-};
+}
 
 /*
 export async function editAPost (postId, editedMessage) {

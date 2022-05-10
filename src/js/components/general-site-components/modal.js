@@ -15,6 +15,7 @@ function outside(e) {
 export function initModal(open, container, close) {
   modalContainer = container;
   const closeMenu = document.querySelector('.modal-dropdown');
+
   if (open && close && container) {
     open.addEventListener('click', toogle);
     close.addEventListener('click', toogle);

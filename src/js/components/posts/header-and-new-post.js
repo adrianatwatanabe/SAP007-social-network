@@ -2,7 +2,7 @@ import { createNewPost } from './template-new-post.js';
 import { initModal } from '../general-site-components/modal.js';
 import { logout } from '../../../firebase-configuration/authentication.js';
 import { auth } from '../../../firebase-configuration/start-firebase.js';
-import { publishPost } from '../../pages/feed.js';
+import { newPostValidation } from '../../pages/feed.js';
 
 export function createHeader() {
   const header = `
@@ -101,5 +101,5 @@ export function headerWorking() {
   });
 
   const buttonPublish = document.querySelector('#button-publish');
-  buttonPublish.addEventListener('click', publishPost);
+  buttonPublish.addEventListener('click', newPostValidation);
 }

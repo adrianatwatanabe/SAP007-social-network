@@ -4,7 +4,6 @@ import { creationTextareaSize } from './components/general-site-components/texta
 import { createLogin, loginWorking } from './pages/login.js';
 import { createRegister } from './pages/user-register.js';
 import { createFeed } from './pages/feed.js';
-import { createProfile } from './pages/user-profile.js';
 import { error404 } from './pages/error404.js';
 
 function creatingInternalElements() {
@@ -34,7 +33,7 @@ function redirectPages() {
           header.after(error404());
           break;
         case '#user-profile':
-          header.after(createProfile());
+          header.after(error404());
           break;
         case '#user-profile-editing':
           // header.after(createEditProfile());
