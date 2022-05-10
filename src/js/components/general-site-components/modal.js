@@ -1,8 +1,13 @@
 let modalContainer = '';
 
-function toogle(e) {
+export function openModal (e){
   e.preventDefault();
-  modalContainer.classList.toggle('active');
+  modalContainer.classList.add('active');
+}
+
+export function closeModal (e){
+  e.preventDefault();
+  modalContainer.classList.remove('active');
 }
 
 function outside(e) {
@@ -14,16 +19,25 @@ function outside(e) {
 
 export function initModal(open, container, close) {
   modalContainer = container;
-  const closeMenu = document.querySelector('.modal-dropdown');
-
   if (open && close && container) {
-    open.addEventListener('click', toogle);
-    close.addEventListener('click', toogle);
+    open.addEventListener('click', openModal);
+    close.addEventListener('click', closeModal);
+    container.addEventListener('click', outside);
+    open.addEventListener('touchstart', openModal);
+    close.addEventListener('touchstart', closeModal);
+    container.addEventListener('touchstart', outside);
+  }
+}
+
+export function initModalMenuDropdown (open, container, close, closeMenu){
+  modalContainer = container;
+  if (open && close && container && closeMenu) {
+    open.addEventListener('click', openModal);
+    close.addEventListener('click', closeModal);
     container.addEventListener('click', outside);
     closeMenu.addEventListener('click', outside);
-
-    open.addEventListener('touchstart', toogle);
-    close.addEventListener('touchstart', toogle);
+    open.addEventListener('touchstart', openModal);
+    close.addEventListener('touchstart', closeModal);
     container.addEventListener('touchstart', outside);
   }
 }
@@ -31,7 +45,7 @@ export function initModal(open, container, close) {
 export function closeModalAutomatically(modalClose, container) {
   modalContainer = container;
   const event = new Event('click');
-  modalClose.addEventListener('click', toogle, false);
-  modalClose.addEventListener('touchstart', toogle, false);
+  modalClose.addEventListener('click', closeModal, false);
+  modalClose.addEventListener('touchstart', closeModal, false);
   modalClose.dispatchEvent(event);
 }

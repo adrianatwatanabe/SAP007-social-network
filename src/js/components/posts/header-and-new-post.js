@@ -1,8 +1,8 @@
 import { createNewPost } from './template-new-post.js';
-import { initModal } from '../general-site-components/modal.js';
+import { initModal, initModalMenuDropdown } from '../general-site-components/modal.js';
 import { logout } from '../../../firebase-configuration/authentication.js';
 import { auth } from '../../../firebase-configuration/start-firebase.js';
-import { newPostValidation } from '../../pages/feed.js';
+import { newPostValidation } from '../../components/posts/post-validation.js';
 
 export function createHeader() {
   const header = `
@@ -80,6 +80,7 @@ export function headerWorking() {
   const menuOpen = document.querySelector('[data-menu="open"]');
   const menuClose = document.querySelector('[data-menu="close"]');
   const menuContainer = document.querySelector('[data-menu="container"]');
+  const closeMenu = document.querySelector('.modal-dropdown');
 
   postOpen.addEventListener('focus', () => {
     initModal(postOpen, postContainer, postClose);
@@ -88,10 +89,10 @@ export function headerWorking() {
     initModal(postOpen, postContainer, postClose);
   });
   menuOpen.addEventListener('focus', () => {
-    initModal(menuOpen, menuContainer, menuClose);
+    initModalMenuDropdown(menuOpen, menuContainer, menuClose, closeMenu);
   });
   menuOpen.addEventListener('touchstart', () => {
-    initModal(menuOpen, menuContainer, menuClose);
+    initModalMenuDropdown(menuOpen, menuContainer, menuClose, closeMenu);
   });
 
   document.querySelector('#button-logout').addEventListener('click', () => {

@@ -55,7 +55,6 @@ function redirectPages() {
           window.location.hash = '';
           container.append(createLogin());
           loginWorking();
-          break;
       }
     }
   });

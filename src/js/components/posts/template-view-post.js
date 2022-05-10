@@ -42,6 +42,14 @@ export function createPost(post) {
         </footer>
       </section>
     </article>
+
+    <section class="modal-container-light" data-post-delete-modal="${post.postId}">
+      <section class="modal-delete-post">
+        <p>Tem certeza que você deseja deletar esse post?</p>
+        <button class="modal-close-delete-post" data-post-confirm-no="${post.postId}">Não</button>
+        <button data-post-confirm-yes="${post.postId}">Sim</button>
+      </section>
+    </section> 
   `;
   return template;
 }
