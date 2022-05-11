@@ -109,7 +109,6 @@ export async function createNewPost(newMessage) {
   const postClose = document.querySelector('[data-post="close"]');
   const postContainer = document.querySelector('[data-post="container"]');
   const initialSizeTextarea = document.getElementById('create-post');
-  const listPost = document.querySelector('.list-posts');
   await createUserPost(newMessage)
     .then((docRef) => {
       postIdUpdate(docRef.id);
@@ -126,7 +125,6 @@ function startEditFunction (postId) {
   const yesDelete = document.querySelector(`[data-post-confirm-yes="${postId}"]`);
   const noDelete = document.querySelector(`[data-post-confirm-no="${postId}"]`);
   const containerModal = document.querySelector(`[data-post-delete-modal="${postId}"]`);
-
   buttonDelete.style.display = 'flex';
   buttonEdit.style.display = 'flex';
   buttonDelete.addEventListener('click', (e) => {
