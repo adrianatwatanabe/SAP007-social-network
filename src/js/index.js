@@ -5,8 +5,8 @@ import { creationTextareaSize } from './components/general-site-components/texta
 import { createLogin, loginWorking } from './pages/login.js';
 import { createRegister } from './pages/user-register.js';
 import { createFeed } from './pages/feed.js';
-import { error404 } from './pages/error404.js';
 import { createProfile } from './pages/user-profile.js';
+import { error404 } from './pages/error404.js';
 
 function creatingInternalElements() {
   const container = document.getElementById('root');
@@ -15,10 +15,8 @@ function creatingInternalElements() {
   sectionGeneral.classList.add('container-labfriends');
   sectionGeneral.innerHTML = createHeader();
   container.append(sectionGeneral);
-
-  headerWorking();  
+  headerWorking();
   creationTextareaSize();
-
   const headerGeneral = document.querySelector('header');
   return headerGeneral;
 }

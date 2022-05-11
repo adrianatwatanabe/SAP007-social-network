@@ -17,13 +17,11 @@ import { readingTextareaSize } from '../general-site-components/textarea-size.js
 async function editPostConfirm(postId, textEdit) {
   const textBox = document.querySelector(`[data-edit-post-text="${postId}"]`);
   const containerButtonEdit = document.querySelector(`[data-edit-post-button="${postId}"]`);
-  await editPost(postId, textEdit)
-    .then(() => {
-      containerButtonEdit.style.display = 'none';
-      textBox.setAttribute('readonly', 'true');
-      textBox.removeAttribute('style', 'outline: solid #3a3a3a 1.5px;');
-      (window.location.hash === '#feed') ? viewAllPosts() : viewSingleUserPosts();
-    })
+  await editPost(postId, textEdit).then(() => {
+    containerButtonEdit.style.display = 'none';
+    textBox.setAttribute('readonly', 'true');
+    textBox.removeAttribute('style', 'outline: solid #3a3a3a 1.5px;');
+  });
 }
 
 async function editUserPost(postId) {
@@ -39,11 +37,11 @@ async function editUserPost(postId) {
   buttonConfirmEdit.addEventListener('click', (e) => {
     e.preventDefault();
     const message = document.querySelector(`[data-edit-message="${postId}"]`);
-    let textEdit = document.querySelector('.post-text-reading');
+    const textEdit = document.querySelector('.post-text-reading');
     const textEditValue = textEdit.value;
-    let validatedText = textEditValue.match(/[\wÀ-ú]/g);
-    let validatedTextTab = textEditValue.match(/[\wÀ-ú]+\n{3}/g);
-    let validatedTabText = textEditValue.match(/\n+[\wÀ-ú]/g);
+    const validatedText = textEditValue.match(/[\wÀ-ú]/g);
+    const validatedTextTab = textEditValue.match(/[\wÀ-ú]+\n{3}/g);
+    const validatedTabText = textEditValue.match(/\n+[\wÀ-ú]/g);
     if (textEditValue === '') {
       message.innerHTML = 'Não é possível enviar um post vazio!';
       setTimeout(() => {
@@ -63,8 +61,8 @@ async function editUserPost(postId) {
     containerButtonEdit.style.display = 'none';
     textBox.setAttribute('readonly', 'true');
     textBox.removeAttribute('style', 'outline: solid #3a3a3a 1.5px;');
-    (window.location.hash === '#feed') ? viewAllPosts() : viewSingleUserPosts();
-  })
+    window.location.hash === '#feed' ? viewAllPosts() : viewSingleUserPosts();
+  });
 }
 
 async function deleteUserPost(postId) {
@@ -73,7 +71,7 @@ async function deleteUserPost(postId) {
   const userId = auth.currentUser.uid;
   if (postUserId === userId) {
     await deletePost(postId).then(() => {
-      (window.location.hash === '#feed') ? viewAllPosts() : viewSingleUserPosts();
+      window.location.hash === '#feed' ? viewAllPosts() : viewSingleUserPosts();
     });
   }
 }
@@ -85,23 +83,21 @@ async function addRemoveLikeToPost(postId) {
   const textLike = document.querySelector(`[data-like-text="${postId}"]`);
   const buttonLike = document.querySelector(`[data-image-like="${postId}"]`);
   if (!likeUserId) {
-    addLikeToPost(postId)
-      .then(() => {
-        let viewLikes = Number(numberLikes.innerHTML) + 1;
-        numberLikes.innerHTML = viewLikes;
-        buttonLike.classList.add('liked');
-        if (viewLikes === 1) textLike.innerHTML = 'curtida';
-        else textLike.innerHTML = 'curtidas';
-      });
+    addLikeToPost(postId).then(() => {
+      const viewLikes = Number(numberLikes.innerHTML) + 1;
+      numberLikes.innerHTML = viewLikes;
+      buttonLike.classList.add('liked');
+      if (viewLikes === 1) textLike.innerHTML = 'curtida';
+      else textLike.innerHTML = 'curtidas';
+    });
   } else {
-    removeLikeToPost(postId)
-      .then(() => {
-        let viewLikes = Number(numberLikes.innerHTML) - 1;
-        numberLikes.innerHTML = viewLikes;
-        buttonLike.classList.remove('liked');
-        if (viewLikes === 1) textLike.innerHTML = 'curtida';
-        else textLike.innerHTML = 'curtidas';
-      });
+    removeLikeToPost(postId).then(() => {
+      const viewLikes = Number(numberLikes.innerHTML) - 1;
+      numberLikes.innerHTML = viewLikes;
+      buttonLike.classList.remove('liked');
+      if (viewLikes === 1) textLike.innerHTML = 'curtida';
+      else textLike.innerHTML = 'curtidas';
+    });
   }
 }
 
@@ -109,18 +105,16 @@ export async function createNewPost(newMessage) {
   const postClose = document.querySelector('[data-post="close"]');
   const postContainer = document.querySelector('[data-post="container"]');
   const initialSizeTextarea = document.getElementById('create-post');
-  const listPost = document.querySelector('.list-posts');
-  await createUserPost(newMessage)
-    .then((docRef) => {
-      postIdUpdate(docRef.id);
-      getSinglePost(docRef.id);
-      closeModalAutomatically(postClose, postContainer);
-      initialSizeTextarea.setAttribute('style', 'height: 80px;');
-      (window.location.hash === '#feed') ? viewAllPosts() : viewSingleUserPosts();
-    });
+  await createUserPost(newMessage).then((docRef) => {
+    postIdUpdate(docRef.id);
+    getSinglePost(docRef.id);
+    closeModalAutomatically(postClose, postContainer);
+    initialSizeTextarea.setAttribute('style', 'height: 80px;');
+    window.location.hash === '#feed' ? viewAllPosts() : viewSingleUserPosts();
+  });
 }
 
-function startEditFunction (postId) {
+function startEditFunction(postId) {
   const buttonDelete = document.querySelector(`[data-post-delete="${postId}"]`);
   const buttonEdit = document.querySelector(`[data-post-edit="${postId}"]`);
   const yesDelete = document.querySelector(`[data-post-confirm-yes="${postId}"]`);
@@ -138,15 +132,15 @@ function startEditFunction (postId) {
     containerModal.classList.remove('active');
   });
   yesDelete.addEventListener('click', () => {
-    deleteUserPost(post.postId);
+    deleteUserPost(postId);
   });
   buttonEdit.addEventListener('click', (e) => {
     e.preventDefault();
-    editUserPost(post.postId);
-  })
+    editUserPost(postId);
+  });
 }
 
-function startLikeFunction(){
+function startLikeFunction() {
   const buttonLike = document.querySelectorAll('.button-like');
   buttonLike.forEach((post) => {
     post.addEventListener('click', () => {
@@ -156,7 +150,7 @@ function startLikeFunction(){
   });
 }
 
-export async function viewSingleUserPosts(){
+export async function viewSingleUserPosts() {
   const userPostsCollection = await viewPostCollectionSingle();
   const listPost = document.querySelector('.cards-timeline');
   listPost.innerHTML = '';
@@ -184,7 +178,7 @@ export async function viewAllPosts() {
     listPost.append(list);
     readingTextareaSize();
     if (auth.currentUser.uid === post.userId) {
-      startEditFunction(post.postId)
+      startEditFunction(post.postId);
     }
   });
   startLikeFunction();
@@ -192,12 +186,14 @@ export async function viewAllPosts() {
 
 export function newPostValidation(e) {
   e.preventDefault();
+  const postClose = document.querySelector('[data-post="close"]');
+  const postContainer = document.querySelector('[data-post="container"]');
   const message = document.querySelector('#message-new-post');
   const addNewMessage = document.querySelector('#create-post');
-  let newMessage = addNewMessage.value;
-  let validatedText = newMessage.match(/[\wÀ-ú]/g);
-  let validatedTextTab = newMessage.match(/[\wÀ-ú]+\n{3}/g);
-  let validatedTabText = newMessage.match(/\n+[\wÀ-ú]/g);
+  const newMessage = addNewMessage.value;
+  const validatedText = newMessage.match(/[\wÀ-ú]/g);
+  const validatedTextTab = newMessage.match(/[\wÀ-ú]+\n{3}/g);
+  const validatedTabText = newMessage.match(/\n+[\wÀ-ú]/g);
   if (newMessage === '') {
     message.innerHTML = 'Não é possível enviar um post vazio!';
     setTimeout(() => {
@@ -207,7 +203,7 @@ export function newPostValidation(e) {
   } else if (validatedText || validatedTextTab || validatedTabText) {
     createNewPost(newMessage);
     addNewMessage.value = '';
-    return;
+    closeModalAutomatically(postClose, postContainer);
   } else {
     message.innerHTML = 'Não é possível enviar um post vazio!';
     setTimeout(() => {
