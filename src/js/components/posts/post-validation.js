@@ -31,7 +31,6 @@ async function editUserPost(postId) {
   const containerButtonEdit = document.querySelector(`[data-edit-post-button="${postId}"]`);
   const buttonConfirmEdit = document.querySelector(`[data-edit-post-confirm="${postId}"]`);
   const buttonCancelEdit = document.querySelector(`[data-edit-post-cancel="${postId}"]`);
-
   containerButtonEdit.style.display = 'flex';
   textBox.removeAttribute('readonly');
   textBox.setAttribute('style', 'outline: solid #3a3a3a 1.5px;');
@@ -45,7 +44,6 @@ async function editUserPost(postId) {
     let validatedText = textEditValue.match(/[\wÀ-ú]/g);
     let validatedTextTab = textEditValue.match(/[\wÀ-ú]+\n{3}/g);
     let validatedTabText = textEditValue.match(/\n+[\wÀ-ú]/g);
-
     if (textEditValue === '') {
       message.innerHTML = 'Não é possível enviar um post vazio!';
       setTimeout(() => {
@@ -60,7 +58,6 @@ async function editUserPost(postId) {
       }, 3000);
     }
   });
-
   buttonCancelEdit.addEventListener('click', (e) => {
     e.preventDefault();
     containerButtonEdit.style.display = 'none';
@@ -123,6 +120,42 @@ export async function createNewPost(newMessage) {
     });
 }
 
+function startEditFunction (postId) {
+  const buttonDelete = document.querySelector(`[data-post-delete="${postId}"]`);
+  const buttonEdit = document.querySelector(`[data-post-edit="${postId}"]`);
+  const yesDelete = document.querySelector(`[data-post-confirm-yes="${postId}"]`);
+  const noDelete = document.querySelector(`[data-post-confirm-no="${postId}"]`);
+  const containerModal = document.querySelector(`[data-post-delete-modal="${postId}"]`);
+
+  buttonDelete.style.display = 'flex';
+  buttonEdit.style.display = 'flex';
+  buttonDelete.addEventListener('click', (e) => {
+    e.preventDefault();
+    containerModal.classList.add('active');
+  });
+  noDelete.addEventListener('click', (e) => {
+    e.preventDefault();
+    containerModal.classList.remove('active');
+  });
+  yesDelete.addEventListener('click', () => {
+    deleteUserPost(post.postId);
+  });
+  buttonEdit.addEventListener('click', (e) => {
+    e.preventDefault();
+    editUserPost(post.postId);
+  })
+}
+
+function startLikeFunction(){
+  const buttonLike = document.querySelectorAll('.button-like');
+  buttonLike.forEach((post) => {
+    post.addEventListener('click', () => {
+      const postId = post.getAttribute('data-like-button');
+      addRemoveLikeToPost(postId);
+    });
+  });
+}
+
 export async function viewSingleUserPosts(){
   const userPostsCollection = await viewPostCollectionSingle();
   const listPost = document.querySelector('.cards-timeline');
@@ -133,41 +166,11 @@ export async function viewSingleUserPosts(){
     list.innerHTML = createPost(post);
     listPost.append(list);
     readingTextareaSize();
-
-    const buttonDelete = document.querySelector(`[data-post-delete="${post.postId}"]`);
-    const buttonEdit = document.querySelector(`[data-post-edit="${post.postId}"]`);
-    const yesDelete = document.querySelector(`[data-post-confirm-yes="${post.postId}"]`);
-    const noDelete = document.querySelector(`[data-post-confirm-no="${post.postId}"]`);
-    const containerModal = document.querySelector(`[data-post-delete-modal="${post.postId}"]`);
-
-      buttonDelete.style.display = 'flex';
-      buttonEdit.style.display = 'flex';
-
-      buttonDelete.addEventListener('click', (e) => {
-        e.preventDefault();
-        containerModal.classList.add('active');
-      });
-      noDelete.addEventListener('click', (e) => {
-        e.preventDefault();
-        containerModal.classList.remove('active');
-      });
-      yesDelete.addEventListener('click', () => {
-        deleteUserPost(post.postId);
-      });
-
-      buttonEdit.addEventListener('click', (e) => {
-        e.preventDefault();
-        editUserPost(post.postId);
-      })
+    if (auth.currentUser.uid === post.userId) {
+      startEditFunction(post.postId);
+    }
   });
-
-  const buttonLike = document.querySelectorAll('.button-like');
-  buttonLike.forEach((post) => {
-    post.addEventListener('click', () => {
-      const postId = post.getAttribute('data-like-button');
-      addRemoveLikeToPost(postId);
-    });
-  });
+  startLikeFunction();
 }
 
 export async function viewAllPosts() {
@@ -180,42 +183,11 @@ export async function viewAllPosts() {
     list.innerHTML = createPost(post);
     listPost.append(list);
     readingTextareaSize();
-
     if (auth.currentUser.uid === post.userId) {
-      const buttonDelete = document.querySelector(`[data-post-delete="${post.postId}"]`);
-      const buttonEdit = document.querySelector(`[data-post-edit="${post.postId}"]`);
-      const yesDelete = document.querySelector(`[data-post-confirm-yes="${post.postId}"]`);
-      const noDelete = document.querySelector(`[data-post-confirm-no="${post.postId}"]`);
-      const containerModal = document.querySelector(`[data-post-delete-modal="${post.postId}"]`);
-
-      buttonDelete.style.display = 'flex';
-      buttonEdit.style.display = 'flex';
-
-      buttonDelete.addEventListener('click', (e) => {
-        e.preventDefault();
-        containerModal.classList.add('active');
-      });
-      noDelete.addEventListener('click', (e) => {
-        e.preventDefault();
-        containerModal.classList.remove('active');
-      });
-      yesDelete.addEventListener('click', () => {
-        deleteUserPost(post.postId);
-      });
-
-      buttonEdit.addEventListener('click', (e) => {
-        e.preventDefault();
-        editUserPost(post.postId);
-      })
+      startEditFunction(post.postId)
     }
   });
-  const buttonLike = document.querySelectorAll('.button-like');
-  buttonLike.forEach((post) => {
-    post.addEventListener('click', () => {
-      const postId = post.getAttribute('data-like-button');
-      addRemoveLikeToPost(postId);
-    });
-  });
+  startLikeFunction();
 }
 
 export function newPostValidation(e) {
