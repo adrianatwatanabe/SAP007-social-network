@@ -31,8 +31,7 @@ function redirectPages() {
       const header = creatingInternalElements();
       switch (window.location.hash) {
         case '#friends-list':
-          // header.after(createFriends());
-          header.after(error404());
+          header.after(createFriends());
           break;
         case '#user-profile':
           header.after(createProfile());

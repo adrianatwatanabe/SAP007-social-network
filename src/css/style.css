@@ -76,7 +76,7 @@ ul li {
   list-style: none;
 }
 textarea {
-  overflow-y: hidden;
+  overflow: hidden;
   resize: none;
   outline: none;
 }

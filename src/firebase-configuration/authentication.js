@@ -37,3 +37,4 @@ export function authChange(cb) {
     cb(user !== null);
   });
 }
+
