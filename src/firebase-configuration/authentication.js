@@ -25,7 +25,7 @@ export function authUserWithGoogle() {
 }
 
 export function logout() {
-  return signOut(auth).then();
+  return signOut(auth);
 }
 
 export function forgotPassword(email) {

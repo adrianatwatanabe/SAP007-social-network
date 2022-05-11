@@ -21,7 +21,6 @@ async function editPostConfirm(postId, textEdit) {
     containerButtonEdit.style.display = 'none';
     textBox.setAttribute('readonly', 'true');
     textBox.removeAttribute('style', 'outline: solid #3a3a3a 1.5px;');
-    window.location.hash === '#feed' ? viewAllPosts() : viewSingleUserPosts();
   });
 }
 
@@ -187,6 +186,8 @@ export async function viewAllPosts() {
 
 export function newPostValidation(e) {
   e.preventDefault();
+  const postClose = document.querySelector('[data-post="close"]');
+  const postContainer = document.querySelector('[data-post="container"]');
   const message = document.querySelector('#message-new-post');
   const addNewMessage = document.querySelector('#create-post');
   const newMessage = addNewMessage.value;
@@ -202,7 +203,7 @@ export function newPostValidation(e) {
   } else if (validatedText || validatedTextTab || validatedTabText) {
     createNewPost(newMessage);
     addNewMessage.value = '';
-    return;
+    closeModalAutomatically(postClose, postContainer);
   } else {
     message.innerHTML = 'Não é possível enviar um post vazio!';
     setTimeout(() => {
