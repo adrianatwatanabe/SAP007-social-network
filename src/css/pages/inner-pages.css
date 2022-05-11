@@ -43,7 +43,8 @@
 .comment-text,
 .list-comments,
 .work,
-.language {
+.language,
+#card-post {
   width: 100%;
 }
 #form-profile {
@@ -387,7 +388,8 @@ input[type='file'] {
 
 /* delete modal items */
 .text-delete,
-#message-new-post {
+#message-new-post,
+.message-edit-post {
   font-size: 1rem;
   font-weight: 600;
 }

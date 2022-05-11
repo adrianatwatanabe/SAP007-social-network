@@ -3,7 +3,7 @@ export {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   GoogleAuthProvider,
-  signInWithPopup,
+  signInWithRedirect,
   signOut,
   sendPasswordResetEmail,
   onAuthStateChanged,

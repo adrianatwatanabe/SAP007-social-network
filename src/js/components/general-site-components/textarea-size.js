@@ -5,7 +5,7 @@ export function creationTextareaSize (){
 }
 
 export function readingTextareaSize (){
-  const textareaSize = document.querySelectorAll('.post-reading');
+  const textareaSize = document.querySelectorAll('.post-text-reading');
   for (let i = 0; i < textareaSize.length; i++) {
     textareaSize[i].setAttribute('style', 'height:' + textareaSize[i].scrollHeight + 'px;');
     textareaSize[i].addEventListener('input', OnInput, false);

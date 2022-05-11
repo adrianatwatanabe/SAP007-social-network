@@ -69,3 +69,10 @@ export async function removeLikeToPost(postId) {
 export async function deletePost(postId) {
   await deleteDoc(doc(db, 'posts', postId));
 }
+
+export async function editPost(postId, editedText) {
+  const post = doc(db, 'posts', postId);
+  await updateDoc(post, {
+    text: editedText,
+  });
+}

@@ -8,7 +8,7 @@ export function createNewPost() {
     <section class="modal-container-light" data-post="container">
       <div class="modal-add-post">
         <button class="modal-close" data-post="close">X</button>
-        <section class="container-add-post">
+        <form id="new-post" class="container-add-post">
           <header class="modal-header">
             <a href="/#" class="user-link-photo-modal">
               <img src="img/icons/icon-profile.png" class="user-photo-post-modal" alt="Foto do perfil">
@@ -28,9 +28,9 @@ export function createNewPost() {
               <p class="post-icon-text">adicionar imagem</p>
             </label>
           </footer>
-        </section>
+        </form>
         <p id="message-new-post"></p>
-        <input id="button-publish" class="user-button button-pink button-add-post" type="button" value="PUBLICAR"/>
+        <input id="button-publish" form="new-post" class="user-button button-pink button-add-post" type="submit" value="PUBLICAR"/>
       </div>
     </section>
     `;

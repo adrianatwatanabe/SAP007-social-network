@@ -6,13 +6,69 @@ import {
   deletePost,
   getSinglePost,
   postIdUpdate,
+  editPost,
 } from '../../../firebase-configuration/firestore.js';
 import { auth } from '../../../firebase-configuration/start-firebase.js';
-import { closeModalAutomatically, openModal, closeModal } from '../general-site-components/modal.js';
+import { closeModalAutomatically } from '../general-site-components/modal.js';
 import { createPost } from './template-view-post.js';
 import { readingTextareaSize } from '../general-site-components/textarea-size.js';
 
-export async function deleteUserPost(postId) {
+async function editPostConfirm(postId, textEdit) {
+  const textBox = document.querySelector(`[data-edit-post-text="${postId}"]`);
+  const containerButtonEdit = document.querySelector(`[data-edit-post-button="${postId}"]`);
+  await editPost(postId, textEdit)
+    .then(() => {
+      containerButtonEdit.style.display = 'none';
+      textBox.setAttribute('readonly', 'true');
+      textBox.removeAttribute('style', 'outline: solid #3a3a3a 1.5px;');
+      viewAllPosts();
+    })
+}
+
+async function editUserPost(postId) {
+  const textBox = document.querySelector(`[data-edit-post-text="${postId}"]`);
+  const containerButtonEdit = document.querySelector(`[data-edit-post-button="${postId}"]`);
+  const buttonConfirmEdit = document.querySelector(`[data-edit-post-confirm="${postId}"]`);
+  const buttonCancelEdit = document.querySelector(`[data-edit-post-cancel="${postId}"]`);
+
+  containerButtonEdit.style.display = 'flex';
+  textBox.removeAttribute('readonly');
+  textBox.setAttribute('style', 'outline: solid #3a3a3a 1.5px;');
+  textBox.focus();
+
+  buttonConfirmEdit.addEventListener('click', (e) => {
+    e.preventDefault();
+    const message = document.querySelector(`[data-edit-message="${postId}"]`);
+    const textEdit = document.querySelector('.post-text-reading');
+    const textEditValue = textEdit.value;
+    let validatedText = textEditValue.match(/[\wÀ-ú]/g);
+    let validatedTextTab = textEditValue.match(/[\wÀ-ú]+\n{3}/g);
+    let validatedTabText = textEditValue.match(/\n+[\wÀ-ú]/g);
+
+    if (textEditValue === '') {
+      message.innerHTML = 'Não é possível enviar um post vazio!';
+      setTimeout(() => {
+        message.innerHTML = '';
+      }, 3000);
+    } else if (validatedText || validatedTextTab || validatedTabText) {
+      editPostConfirm(postId, textEditValue);
+    } else {
+      message.innerHTML = 'Não é possível enviar um post vazio!';
+      setTimeout(() => {
+        message.innerHTML = '';
+      }, 3000);
+    }
+  });
+
+  buttonCancelEdit.addEventListener('click', (e) => {
+    e.preventDefault();
+    containerButtonEdit.style.display = 'none';
+    textBox.setAttribute('readonly', 'true');
+    textBox.removeAttribute('style', 'outline: solid #3a3a3a 1.5px;');
+  })
+}
+
+async function deleteUserPost(postId) {
   const post = await getSinglePost(postId);
   const postUserId = post.userId;
   const userId = auth.currentUser.uid;
@@ -23,7 +79,7 @@ export async function deleteUserPost(postId) {
   }
 }
 
-export async function addRemoveLikeToPost(postId) {
+async function addRemoveLikeToPost(postId) {
   const post = await getSinglePost(postId);
   const likeUserId = post.like.includes(auth.currentUser.uid);
   const numberLikes = document.querySelector(`[data-like-number="${postId}"]`);
@@ -37,7 +93,7 @@ export async function addRemoveLikeToPost(postId) {
         buttonLike.classList.add('liked');
         if (viewLikes === 1) textLike.innerHTML = 'curtida';
         else textLike.innerHTML = 'curtidas';
-    });
+      });
   } else {
     removeLikeToPost(postId)
       .then(() => {
@@ -46,33 +102,7 @@ export async function addRemoveLikeToPost(postId) {
         buttonLike.classList.remove('liked');
         if (viewLikes === 1) textLike.innerHTML = 'curtida';
         else textLike.innerHTML = 'curtidas';
-    });
-  }
-}
-
-export function newPostValidation() {
-  const message = document.querySelector('#message-new-post');
-  const addNewMessage = document.querySelector('#create-post');
-  let newMessage = addNewMessage.value;
-  let validatedText = newMessage.match(/[\wÀ-ú]/g);
-  let validatedTextTab = newMessage.match(/[\wÀ-ú]+\n{3}/g);
-  let validatedTabText = newMessage.match(/\n+[\wÀ-ú]/g);
-  if (newMessage === '') {
-    message.innerHTML = 'Não é possível enviar um post vazio!';
-    setTimeout(() => {
-      message.innerHTML = '';
-    }, 3000);
-    addNewMessage.value = '';
-  } else if (validatedText || validatedTextTab || validatedTabText) {
-    createNewPost(newMessage);
-    addNewMessage.value = '';
-    return;
-  } else {
-    message.innerHTML = 'Não é possível enviar um post vazio!';
-    setTimeout(() => {
-      message.innerHTML = '';
-    }, 3000);
-    addNewMessage.value = '';
+      });
   }
 }
 
@@ -96,20 +126,19 @@ export async function viewAllPosts() {
   const postsCollection = await viewPostsCollection();
   const listPost = document.querySelector('.list-posts');
   listPost.innerHTML = '';
-  postsCollection.forEach((post) => {    
+  postsCollection.forEach((post) => {
     const list = document.createElement('li');
     list.setAttribute('class', 'post-card');
     list.innerHTML = createPost(post);
     listPost.append(list);
     readingTextareaSize();
-    if (auth.currentUser.uid === post.userId){
+
+    if (auth.currentUser.uid === post.userId) {
       const buttonDelete = document.querySelector(`[data-post-delete="${post.postId}"]`);
       const buttonEdit = document.querySelector(`[data-post-edit="${post.postId}"]`);
       const yesDelete = document.querySelector(`[data-post-confirm-yes="${post.postId}"]`);
       const noDelete = document.querySelector(`[data-post-confirm-no="${post.postId}"]`);
       const containerModal = document.querySelector(`[data-post-delete-modal="${post.postId}"]`);
-      const textEdit = document.querySelector(`[data-edit-text="${post.postId}"]`);
-      const containerButtonEdit = document.querySelector(`[data-edit-button="${post.postId}"]`);
 
       buttonDelete.style.display = 'flex';
       buttonEdit.style.display = 'flex';
@@ -128,10 +157,7 @@ export async function viewAllPosts() {
 
       buttonEdit.addEventListener('click', (e) => {
         e.preventDefault();
-        containerButtonEdit.style.display = 'flex';
-        textEdit.removeAttribute('readonly');
-        textEdit.setAttribute('style', 'outline: solid #3a3a3a 1.5px;');
-        textEdit.focus();
+        editUserPost(post.postId);
       })
     }
   });
@@ -142,4 +168,31 @@ export async function viewAllPosts() {
       addRemoveLikeToPost(postId);
     });
   });
+}
+
+export function newPostValidation(e) {
+  e.preventDefault();
+  const message = document.querySelector('#message-new-post');
+  const addNewMessage = document.querySelector('#create-post');
+  let newMessage = addNewMessage.value;
+  let validatedText = newMessage.match(/[\wÀ-ú]/g);
+  let validatedTextTab = newMessage.match(/[\wÀ-ú]+\n{3}/g);
+  let validatedTabText = newMessage.match(/\n+[\wÀ-ú]/g);
+  if (newMessage === '') {
+    message.innerHTML = 'Não é possível enviar um post vazio!';
+    setTimeout(() => {
+      message.innerHTML = '';
+    }, 3000);
+    addNewMessage.value = '';
+  } else if (validatedText || validatedTextTab || validatedTabText) {
+    createNewPost(newMessage);
+    addNewMessage.value = '';
+    return;
+  } else {
+    message.innerHTML = 'Não é possível enviar um post vazio!';
+    setTimeout(() => {
+      message.innerHTML = '';
+    }, 3000);
+    addNewMessage.value = '';
+  }
 }

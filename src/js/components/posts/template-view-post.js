@@ -27,11 +27,12 @@ export function createPost(post) {
             </button>
           </div>
         </header>
-        <textarea class="post-text post-reading" autocomplete="on" rows="1" minlength="2" spellcheck="true" wrap="hard" data-edit-text="${post.postId}" readonly>${post.text}</textarea>
-        <div class="container-button-edit" data-edit-button="${post.postId}">
-          <input class="button-edit-post button-edit-post-cancel" type="button" value="CANCELAR"/>
-          <input class="button-edit-post button-edit-post-confirm" type="button" value="SALVAR"/>
+        <textarea class="post-text post-text-reading" autocomplete="on" rows="1" minlength="2" spellcheck="true" wrap="hard" data-edit-post-text="${post.postId}" readonly>${post.text}</textarea>
+        <div class="container-button-edit" data-edit-post-button="${post.postId}">
+          <input class="button-edit-post button-edit-post-cancel" type="button" value="CANCELAR" data-edit-post-cancel="${post.postId}"/>
+          <input class="button-edit-post button-edit-post-confirm" type="button" value="SALVAR" data-edit-post-confirm="${post.postId}"/>
         </div>
+        <p class="message-edit-post" data-edit-message="${post.postId}"></p>
         <footer class="post-footer">
           <button class="button-icon-post button-like" data-like-button=${post.postId}>
             <img src="img/icons/icon-unlike.png" class="post-icon like-image ${likeUserId ? 'liked' : ''}" alt="Ícone de curtir" data-image-like=${post.postId}>
