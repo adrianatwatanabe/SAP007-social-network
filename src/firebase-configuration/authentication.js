@@ -13,7 +13,7 @@ import {
   auth 
 } from './start-firebase.js';
 
-//Função de registrar novo usuário. Ela autentica o usuário no FB e retorna (then) ...?;
+//Função de registrar novo usuário. Ela autentica o usuário no FB e retorna uma função para guardar o nome;
 export function registerNewUser(name, email, password) {
   return createUserWithEmailAndPassword(auth, email, password)
     .then(() => updateProfile(auth.currentUser, { displayName: name }));
@@ -27,15 +27,15 @@ export function authUserWithGoogle() {
   const provider = new GoogleAuthProvider();
   return signInWithPopup(auth, provider);
 }
-//Função de deslogar o usuário. Retorna ...?;
+//Função de deslogar o usuário. Retorna a função de sair;
 export function logout() {
-  return signOut(auth).then();
+  return signOut(auth);
 }
 // Função de redefinir senha; 
 export function forgotPassword(email) {
   return sendPasswordResetEmail(auth, email);
 }
-//Função que monitora quem está logado; ...?
+//Função que monitora quem está logado; ???????
 export function authChange(cb) {
   return onAuthStateChanged(auth, (user) => {
     cb(user !== null);
