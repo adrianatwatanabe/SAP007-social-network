@@ -6,6 +6,7 @@ import { createLogin, loginWorking } from './pages/login.js';
 import { createRegister } from './pages/user-register.js';
 import { createFeed } from './pages/feed.js';
 import { error404 } from './pages/error404.js';
+import { createProfile } from './pages/user-profile.js';
 
 function creatingInternalElements() {
   const container = document.getElementById('root');
@@ -34,7 +35,7 @@ function redirectPages() {
           header.after(error404());
           break;
         case '#user-profile':
-          header.after(error404());
+          header.after(createProfile());
           break;
         case '#user-profile-editing':
           // header.after(createEditProfile());

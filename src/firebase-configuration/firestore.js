@@ -1,15 +1,16 @@
 import { 
   collection, 
-  addDoc, 
+  addDoc,
+  doc,
+  updateDoc,  
   query, 
   getDocs, 
-  updateDoc, 
+  orderBy,
+  getDoc, 
   arrayUnion, 
   arrayRemove, 
   deleteDoc, 
-  doc, 
-  getDoc, 
-  orderBy,
+  where,
 } from './export.js';
 import { db, auth } from './start-firebase.js';
 
@@ -75,4 +76,16 @@ export async function editPost(postId, editedText) {
   await updateDoc(post, {
     text: editedText,
   });
+}
+
+export async function viewPostCollectionSingle() {
+  const postsArray = [];
+  const clause = where('userId', '==', auth.currentUser.uid);
+  const searchedCollection = query(postsCollection, orderBy("date", "desc"), clause);
+  const docSnap = await getDocs(searchedCollection);
+  docSnap.forEach((doc) => {
+    const posts = doc.data();
+    postsArray.push(posts);
+  });
+  return postsArray;
 }

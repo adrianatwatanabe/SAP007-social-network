@@ -12,18 +12,18 @@ export {
 
 export { 
   getFirestore,
-  collection,
+  collection, 
   addDoc,
-  getDoc,
-  orderBy,
-  query,
-  deleteDoc,
-  getDocs,
-  updateDoc,
   doc,
-  where,
-  arrayUnion,
+  updateDoc,  
+  query, 
+  getDocs, 
+  orderBy,
+  getDoc, 
+  arrayUnion, 
   arrayRemove, 
+  deleteDoc, 
+  where,
 } from 'https://www.gstatic.com/firebasejs/9.6.9/firebase-firestore.js'; // eslint-disable-line
 
 export { 
