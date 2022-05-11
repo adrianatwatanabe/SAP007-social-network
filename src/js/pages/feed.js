@@ -1,4 +1,4 @@
-import { viewAllPosts } from '../components/posts/post-validation.js'; 
+import { viewAllPosts } from '../components/posts/post-validation.js';
 
 export function createFeed() {
   const container = document.createElement('main');

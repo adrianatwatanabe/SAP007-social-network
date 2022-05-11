@@ -1,4 +1,4 @@
-import { auth} from '../../../firebase-configuration/start-firebase.js';
+import { auth } from '../../../firebase-configuration/start-firebase.js';
 
 export function createPost(post) {
   const likePost = post.like;

@@ -1,11 +1,11 @@
 let modalContainer = '';
 
-export function openModal (e){
+export function openModal(e) {
   e.preventDefault();
   modalContainer.classList.add('active');
 }
 
-export function closeModal (e){
+export function closeModal(e) {
   e.preventDefault();
   modalContainer.classList.remove('active');
 }
@@ -29,7 +29,7 @@ export function initModal(open, container, close) {
   }
 }
 
-export function initModalMenuDropdown (open, container, close, closeMenu){
+export function initModalMenuDropdown(open, container, close, closeMenu) {
   modalContainer = container;
   if (open && close && container && closeMenu) {
     open.addEventListener('click', openModal);

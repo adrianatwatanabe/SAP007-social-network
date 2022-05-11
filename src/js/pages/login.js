@@ -55,7 +55,7 @@ export function createLogin() {
   return container;
 }
 
-function loginLabFriends(e) {
+export function loginLabFriends(e) {
   e.preventDefault();
   const name = '';
   const email = document.querySelector('#user-email').value;

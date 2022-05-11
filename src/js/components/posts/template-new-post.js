@@ -1,8 +1,21 @@
 import { auth } from '../../../firebase-configuration/start-firebase.js';
 
 export function createNewPost() {
-  let now = new Date;
-  const monthName = ["janeiro", "fevereiro", "março", "abril", "maio", "junho", "julho", "agosto", "setembro", "outubro", "novembro", "dezembro"];
+  const now = new Date();
+  const monthName = [
+    'janeiro',
+    'fevereiro',
+    'março',
+    'abril',
+    'maio',
+    'junho',
+    'julho',
+    'agosto',
+    'setembro',
+    'outubro',
+    'novembro',
+    'dezembro',
+  ];
 
   const template = `
     <section class="modal-container-light" data-post="container">
@@ -17,7 +30,7 @@ export function createNewPost() {
               <a href="/#">
                 <p class="user-name">${auth.currentUser.displayName}</p>
               </a>
-              <time class="post-date">${now.getDate()} de ${monthName [now.getMonth()]} de ${now.getFullYear()}</time>
+              <time class="post-date">${now.getDate()} de ${monthName[now.getMonth()]} de ${now.getFullYear()}</time>
             </div>
           </header>
           <textarea id="create-post" class="add-post-input" autocomplete="on" rows="1" minlength="2" spellcheck="true" wrap="hard" placeholder="Escreva uma mensagem..." autofocus="true"></textarea>

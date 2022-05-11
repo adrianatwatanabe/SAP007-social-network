@@ -6,7 +6,6 @@ import { createLogin, loginWorking } from './pages/login.js';
 import { createRegister } from './pages/user-register.js';
 import { createFeed } from './pages/feed.js';
 import { createProfile } from './pages/user-profile.js';
-import { createFriends } from './pages/friends-list.js';
 import { error404 } from './pages/error404.js';
 
 function creatingInternalElements() {
@@ -16,7 +15,7 @@ function creatingInternalElements() {
   sectionGeneral.classList.add('container-labfriends');
   sectionGeneral.innerHTML = createHeader();
   container.append(sectionGeneral);
-  headerWorking();  
+  headerWorking();
   creationTextareaSize();
   const headerGeneral = document.querySelector('header');
   return headerGeneral;
@@ -30,7 +29,8 @@ function redirectPages() {
       const header = creatingInternalElements();
       switch (window.location.hash) {
         case '#friends-list':
-          header.after(createFriends());
+          // header.after(createFriends());
+          header.after(error404());
           break;
         case '#user-profile':
           header.after(createProfile());

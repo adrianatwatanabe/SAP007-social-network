@@ -1,7 +1,4 @@
-import { singleUser } from '../../firebase-configuration/authentication.js';
-import { auth } from '../../firebase-configuration/start-firebase.js';
-
-function createUserFriends(user) {
+export function createUserFriends(user) {
   const templateUser = `
     <a class="user-link-photo user-link-photo-card">
       <img src="img/icons/icon-profile.png" class="user-photo-post" alt="Foto do perfil">
@@ -17,18 +14,18 @@ function createUserFriends(user) {
   return templateUser;
 }
 
-async function viewAllUsers() {
-  const userCollection = await singleUser();
+function viewAllUsers() {
+  // const userCollection = await singleUser();
   const listPost = document.querySelector('.container-internal-list');
   listPost.innerHTML = '';
+  /*
   userCollection.forEach((users) => {
     const list = document.createElement('li');
     list.setAttribute('class', 'friend-card');
     list.innerHTML = createUserFriends(users);
     listPost.append(list);
   });
-  const infoUser = singleUser();
-    console.log(infoUser);
+  */
 }
 
 export function createFriends() {

@@ -7,7 +7,6 @@ import {
   sendPasswordResetEmail,
   onAuthStateChanged,
   updateProfile,
-  getAuth,
 } from './export.js';
 import { auth } from './start-firebase.js';
 
@@ -37,15 +36,4 @@ export function authChange(cb) {
   return onAuthStateChanged(auth, (user) => {
     cb(user !== null);
   });
-}
-
-export function singleUser() {
-  const userInformation = [];
-  const user = auth.currentUser;
-  if (user !== null) {
-    user.providerData.forEach((profile) => {
-      userInformation.push(profile);
-    });
-  }
-  return userInformation;
 }

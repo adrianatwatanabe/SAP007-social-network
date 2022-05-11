@@ -1,4 +1,4 @@
-import { auth } from '../../../firebase-configuration/start-firebase.js';
+import { auth } from '../../firebase-configuration/start-firebase.js';
 import { viewSingleUserPosts } from '../components/posts/post-validation.js';
 
 export function createProfile() {
