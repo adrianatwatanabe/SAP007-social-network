@@ -2,13 +2,12 @@ import { userValidation } from '../components/authentications/login-and-registra
 
 function registerUser(e) {
   e.preventDefault();
-  const name = document.querySelector('#user-name').value;
-  const email = document.querySelector('#user-email').value;
-  const password = document.querySelector('#user-password').value;
-  const passwordRepeat = document.querySelector('#user-password-repeat').value;
-  const validatedEmail = email.match(/[\w.\-+]+@[\w-]+\.[\w-.]+/gi);
-  const message = document.querySelector('#message');
-  userValidation(name, email, validatedEmail, password, passwordRepeat, message);
+  const name = document.querySelector('#user-name');
+  const email = document.querySelector('#user-email');
+  const password = document.querySelector('#user-password');
+  const passwordRepeat = document.querySelector('#user-password-repeat');
+  const validatedEmail = email.value.match(/[\w.\-+]+@[\w-]+\.[\w-.]+/gi);
+  userValidation(name.value, email.value, validatedEmail, password.value, passwordRepeat.value);
 }
 
 export function createRegister() {

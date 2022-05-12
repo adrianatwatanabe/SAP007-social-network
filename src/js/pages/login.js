@@ -15,9 +15,9 @@ export function createLogin() {
 
         <form class="user-form-login">
           <label for="user-email" class="user-label">Email</label>
-          <input type="email" id="user-email" class="user-input" placeholder="Digite seu email">
+          <input type="email" id="user-email-login" class="user-input" placeholder="Digite seu email">
           <label for="user-password" class="user-label">Senha</label>
-          <input type="password" id="user-password" class="user-input input-password-spacing" placeholder="Digite sua senha">
+          <input type="password" id="user-password-login" class="user-input input-password-spacing" placeholder="Digite sua senha">
           <a href="#" type="button" class="link small-text-right" data-email="open">
             Esqueceu a senha?
           </a>
@@ -58,8 +58,8 @@ export function createLogin() {
 export function loginLabFriends(e) {
   e.preventDefault();
   const name = '';
-  const email = document.querySelector('#user-email').value;
-  const password = document.querySelector('#user-password').value;
+  const email = document.querySelector('#user-email-login').value;
+  const password = document.querySelector('#user-password-login').value;
   const passwordRepeat = '';
   const validatedEmail = email.match(regexEmail);
   userValidation(name, email, validatedEmail, password, passwordRepeat);

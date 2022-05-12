@@ -4,7 +4,7 @@ import { closeModalAutomatically } from '../general-site-components/modal.js';
 
 export const redirectedPage = '#feed';
 
-export function userValidation(name, email, validatedEmail, password, passwordRepeat) {
+export async function userValidation(name, email, validatedEmail, password, passwordRepeat) {
   const message = document.querySelector('#message');
 
   if (!email || !password) {
@@ -19,7 +19,7 @@ export function userValidation(name, email, validatedEmail, password, passwordRe
     if (password !== passwordRepeat) {
       message.innerHTML = 'As duas senhas não coincidem.<br>Digite-as novamente!';
     } else {
-      registerNewUser(name, email, password)
+      await registerNewUser(name, email, password)
         .then(() => {
           window.location.hash = redirectedPage;
         })
@@ -28,7 +28,7 @@ export function userValidation(name, email, validatedEmail, password, passwordRe
         });
     }
   } else {
-    authUserLabFriends(email, password)
+    await authUserLabFriends(email, password)
       .then(() => {
         window.location.hash = redirectedPage;
       })
