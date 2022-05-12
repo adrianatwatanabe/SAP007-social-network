@@ -61,7 +61,8 @@ async function editUserPost(postId) {
     containerButtonEdit.style.display = 'none';
     textBox.setAttribute('readonly', 'true');
     textBox.removeAttribute('style', 'outline: solid #3a3a3a 1.5px;');
-    window.location.hash === '#feed' ? viewAllPosts() : viewSingleUserPosts();
+    if (window.location.hash === '#feed') viewAllPosts(); // eslint-disable-line
+    else viewSingleUserPosts(); // eslint-disable-line
   });
 }
 
@@ -71,7 +72,8 @@ async function deleteUserPost(postId) {
   const userId = auth.currentUser.uid;
   if (postUserId === userId) {
     await deletePost(postId).then(() => {
-      window.location.hash === '#feed' ? viewAllPosts() : viewSingleUserPosts();
+      if (window.location.hash === '#feed') viewAllPosts(); // eslint-disable-line
+      else viewSingleUserPosts(); // eslint-disable-line
     });
   }
 }
@@ -99,19 +101,6 @@ async function addRemoveLikeToPost(postId) {
       else textLike.innerHTML = 'curtidas';
     });
   }
-}
-
-export async function createNewPost(newMessage) {
-  const postClose = document.querySelector('[data-post="close"]');
-  const postContainer = document.querySelector('[data-post="container"]');
-  const initialSizeTextarea = document.getElementById('create-post');
-  await createUserPost(newMessage).then((docRef) => {
-    postIdUpdate(docRef.id);
-    getSinglePost(docRef.id);
-    closeModalAutomatically(postClose, postContainer);
-    initialSizeTextarea.setAttribute('style', 'height: 80px;');
-    window.location.hash === '#feed' ? viewAllPosts() : viewSingleUserPosts();
-  });
 }
 
 function startEditFunction(postId) {
@@ -182,6 +171,20 @@ export async function viewAllPosts() {
     }
   });
   startLikeFunction();
+}
+
+export async function createNewPost(newMessage) {
+  const postClose = document.querySelector('[data-post="close"]');
+  const postContainer = document.querySelector('[data-post="container"]');
+  const initialSizeTextarea = document.getElementById('create-post');
+  await createUserPost(newMessage).then((docRef) => {
+    postIdUpdate(docRef.id);
+    getSinglePost(docRef.id);
+    closeModalAutomatically(postClose, postContainer);
+    initialSizeTextarea.setAttribute('style', 'height: 80px;');
+    if (window.location.hash === '#feed') viewAllPosts();
+    else viewSingleUserPosts();
+  });
 }
 
 export function newPostValidation(e) {
