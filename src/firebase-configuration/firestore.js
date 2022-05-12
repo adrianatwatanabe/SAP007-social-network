@@ -1,58 +1,91 @@
 import { 
-  addDoc, 
-  getDocs, 
+  collection, 
+  addDoc,
+  doc,
+  updateDoc,  
   query, 
-  collection 
+  getDocs, 
+  orderBy,
+  getDoc, 
+  arrayUnion, 
+  arrayRemove, 
+  deleteDoc, 
+  where,
 } from './export.js';
+import { db, auth } from './start-firebase.js';
 
-import { 
-  db, 
-  auth 
-} from './start-firebase.js';
+export const postsCollection = collection(db, 'posts');
 
-export function createUserPost(newText) {
-  try {
-    //Colocar esse if no arquivo post-validation.js pois é uma manipulação do DOM
-    /*
-        if (newText.length === 0) {
-        // colocar mensagem avisando que não tem texto na postagem
-        return;
-      */
-
-    const postsCollection = collection(db, 'posts');
-    const newPost = {
-      userId: auth.currentUser.uid,
-      text: newText,
-      like: 0,
-      createdAt: new Date(),
-    };
-
-    addDoc(postsCollection, newPost);
-
-    // Para a manipulação de hash e mostrar erros, é a parte do DOM que estará em um dos arquivos da pasta posts
-    /*
-        .then(() => {
-          window.location.hash = '#feed';
-        })
-        .catch((error) => {
-          return error; // só return ?
-        });
-      */
-  } catch (e) {
-    return e;
-  }
+export async function createUserPost(newText) {
+  const newPost = {
+    socialName: auth.currentUser.displayName,
+    text: newText,
+    like: [],
+    date: new Date().toLocaleString(),
+    userId: auth.currentUser.uid,
+  };
+  const docRef = await addDoc(postsCollection, newPost)
+  return docRef;
 }
 
-export async function getPosts() {
+export async function postIdUpdate(id) {
+  const post = doc(db, 'posts', id);
+  await updateDoc(post, {
+    postId: id,
+  });
+}
+// Trazer todos os posts
+export async function viewPostsCollection() {
   const postsArray = [];
-  const postsCollection = query(collection(db, 'posts'));
-  const docSnap = await getDocs(postsCollection);
+  const searchedCollection = query(postsCollection, orderBy("date", "desc"));
+  const docSnap = await getDocs(searchedCollection);
   docSnap.forEach((doc) => {
     const posts = doc.data();
     postsArray.push(posts);
   });
-  console.log(postsArray);
   return postsArray;
 }
-//4;
-//tudo que é relarivo a página interna de logar na conta está aqui; 
+// Trazer post específico pelo id;
+export async function getSinglePost(postId) {
+  const postRef = doc(db, 'posts', postId);
+  const docSnap = await getDoc(postRef);
+  const post = docSnap.data();
+  return post;
+}
+// Dar like
+export async function addLikeToPost(postId) {
+  const post = doc(db, 'posts', postId);
+  await updateDoc(post, {
+    like: arrayUnion(auth.currentUser.uid),
+  });
+}
+// Tirar like
+export async function removeLikeToPost(postId) {
+  const post = doc(db, 'posts', postId);
+  await updateDoc(post, {
+    like: arrayRemove(auth.currentUser.uid),
+  });
+}
+//
+export async function deletePost(postId) {
+  await deleteDoc(doc(db, 'posts', postId));
+}
+
+export async function editPost(postId, editedText) {
+  const post = doc(db, 'posts', postId);
+  await updateDoc(post, {
+    text: editedText,
+  });
+}
+
+export async function viewPostCollectionSingle() {
+  const postsArray = [];
+  const clause = where('userId', '==', auth.currentUser.uid);
+  const searchedCollection = query(postsCollection, orderBy("date", "desc"), clause);
+  const docSnap = await getDocs(searchedCollection);
+  docSnap.forEach((doc) => {
+    const posts = doc.data();
+    postsArray.push(posts);
+  });
+  return postsArray;
+}
