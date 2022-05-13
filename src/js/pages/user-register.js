@@ -11,13 +11,12 @@ async function registerUser(e) {
   const password = document.querySelector('#user-password');
   const passRepeat = document.querySelector('#user-password-repeat');
   const message = document.querySelector('#message');
-
   const validation = validationMessage(name.value, email.value, password.value, passRepeat.value);
 
-  if (validation === ' ') {
+  if (validation !== '') {
     message.innerHTML = validation;
   } else {
-    await registerNewUser(name, email, password)
+    await registerNewUser(name.value, email.value, password.value)
       .then(() => {
         window.location.hash = redirectedPage;
       })

@@ -65,10 +65,10 @@ export async function loginLabFriends(e) {
 
   const validation = validationMessage(name, email.value, password.value, passRepeat);
 
-  if (validation === ' ') {
+  if (validation !== '') {
     message.innerHTML = validation;
   } else {
-    await authUserLabFriends(email, password)
+    await authUserLabFriends(email.value, password.value)
       .then(() => {
         window.location.hash = redirectedPage;
       })
@@ -87,10 +87,10 @@ async function resetPassword(e) {
 
   const validation = resetEmailValidation(email.value);
 
-  if (validation === ' ') {
+  if (validation !== '') {
     messageReset.innerHTML = validation;
   } else {
-    await forgotPassword(email)
+    await forgotPassword(email.value)
       .then(() => {
         messageReset.innerHTML = 'Email enviado com sucesso!';
         setTimeout(() => {
