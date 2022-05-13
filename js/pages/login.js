@@ -1,10 +1,10 @@
-import { initModal } from '../components/general-site-components/modal.js';
-import { userValidation, resetEmailValidation } from '../components/authentications/login-and-registration-validation.js';
+import { closeModalAutomatically, initModal } from '../components/general-site-components/modal.js';
+import { validationMessage, resetEmailValidation } from '../components/authentications/login-and-registration-validation.js';
 import { GoogleAuthProvider } from '../../firebase-configuration/export.js';
-import { authUserWithGoogle } from '../../firebase-configuration/authentication.js';
+import { authUserLabFriends, authUserWithGoogle, forgotPassword } from '../../firebase-configuration/authentication.js';
+import { errorsFirebase, errorsFirebaseModal } from '../components/authentications/errors-firebase.js';
 
 const redirectedPage = '#feed';
-const regexEmail = /[\w.\-+]+@[\w-]+\.[\w-.]+/gi;
 
 export function createLogin() {
   const container = document.createElement('section');
@@ -15,9 +15,9 @@ export function createLogin() {
 
         <form class="user-form-login">
           <label for="user-email" class="user-label">Email</label>
-          <input type="email" id="user-email" class="user-input" placeholder="Digite seu email">
+          <input type="email" id="user-email-login" class="user-input" placeholder="Digite seu email">
           <label for="user-password" class="user-label">Senha</label>
-          <input type="password" id="user-password" class="user-input input-password-spacing" placeholder="Digite sua senha">
+          <input type="password" id="user-password-login" class="user-input input-password-spacing" placeholder="Digite sua senha">
           <a href="#" type="button" class="link small-text-right" data-email="open">
             Esqueceu a senha?
           </a>
@@ -55,27 +55,63 @@ export function createLogin() {
   return container;
 }
 
-function loginLabFriends(e) {
+export async function loginLabFriends(e) {
   e.preventDefault();
   const name = '';
-  const email = document.querySelector('#user-email').value;
-  const password = document.querySelector('#user-password').value;
-  const passwordRepeat = '';
-  const validatedEmail = email.match(regexEmail);
-  userValidation(name, email, validatedEmail, password, passwordRepeat);
+  const email = document.querySelector('#user-email-login');
+  const password = document.querySelector('#user-password-login');
+  const passRepeat = '';
+  const message = document.querySelector('#message');
+
+  const validation = validationMessage(name, email.value, password.value, passRepeat);
+
+  if (validation !== '') {
+    message.innerHTML = validation;
+  } else {
+    await authUserLabFriends(email.value, password.value)
+      .then(() => {
+        window.location.hash = redirectedPage;
+      })
+      .catch((error) => {
+        errorsFirebase(error.code);
+      });
+  }
 }
 
-function resetPassword(e) {
+async function resetPassword(e) {
   e.preventDefault();
-  const emailClean = document.querySelector('#user-email-reset');
-  const emailReset = emailClean.value;
-  const validatedEmail = emailReset.match(regexEmail);
-  resetEmailValidation(emailReset, validatedEmail);
+  const email = document.querySelector('#user-email-reset');
+  const messageReset = document.querySelector('#message-reset');
+  const modalClose = document.querySelector('[data-email="close"]');
+  const modalContainer = document.querySelector('[data-email="container"]');
+
+  const validation = resetEmailValidation(email.value);
+
+  if (validation !== '') {
+    messageReset.innerHTML = validation;
+  } else {
+    await forgotPassword(email.value)
+      .then(() => {
+        messageReset.innerHTML = 'Email enviado com sucesso!';
+        setTimeout(() => {
+          email.value = '';
+          messageReset.innerHTML = '';
+          closeModalAutomatically(modalClose, modalContainer);
+        }, 3000);
+      })
+      .catch((error) => {
+        errorsFirebaseModal(error.code);
+        setTimeout(() => {
+          email.value = '';
+          messageReset.innerHTML = '';
+        }, 3000);
+      });
+  }
 }
 
-function loginGoogle(e) {
+async function loginGoogle(e) {
   e.preventDefault();
-  authUserWithGoogle()
+  await authUserWithGoogle()
     .then(() => {
       window.location.hash = redirectedPage;
     })

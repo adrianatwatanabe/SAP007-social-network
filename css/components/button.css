@@ -1,7 +1,8 @@
 button {
   cursor: pointer;
 }
-.user-button {
+.user-button,
+.button-modal-delete {
   width: 100%;
   padding: 8px 10px;
   font-size: 1rem;
@@ -10,10 +11,40 @@ button {
   border: var(--border-input);
   border-radius: var(--spacing-small);
 }
-.user-button:active {
+.user-button:active,
+.button-edit-post:active {
   transform: translateY(2px);
 }
-.button-pink {
+.button-modal-delete {
+  background-color: var(--color-dark-yellow);
+  max-width: 100px;
+}
+.container-button-edit {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  column-gap: 10px;
+  margin: 10px 0;
+}
+.button-edit-post {
+  background-color: var(--color-dark-yellow);
+  font-size: 0.75rem;
+  font-weight: 600;
+  margin: 0;
+  border: none;
+  border-radius: var(--spacing-small);
+  padding: 4px 10px;
+  width: 50%;
+}
+.button-edit-post-cancel {
+  background: var(--color-dark-green);
+}
+.button-edit-post-confirm {
+  background: var(--color-dark-pink);
+  color: var(--color-white);
+}
+.button-pink,
+.button-yes {
   background-color: var(--color-dark-pink);
   color: var(--color-white);
 }
@@ -29,6 +60,8 @@ button {
   display: flex;
   border: none;
   cursor: pointer;
+  align-items: center;
+  justify-content: flex-start;
 }
 .button-icon,
 .button-icon-post,
@@ -58,10 +91,6 @@ button {
   margin: 0;
   padding-bottom: 0;
 }
-.button-like {
-  justify-self: start;
-  margin-left: 5px;
-}
 .button-comment {
   justify-self: end;
   margin-right: 8px;
@@ -71,24 +100,92 @@ button {
   height: 1.2rem;
   margin-right: 10px;
 }
+.post-icon,
+.post-icon-edit {
+  height: 16px;
+}
+.post-icon-edit {
+  margin: 8px;
+}
+.post-number-like,
+.post-icon-text {
+  font-size: 0.875rem;
+}
+.post-number-like {
+  margin-right: 5px;
+}
 #button-reset-password {
   width: calc(100% * 0.9);
 }
 #button-logout {
   height: auto;
 }
+.button-like {
+  justify-self: start;
+}
+.like-image {
+  margin-right: 5px;
+  padding: 0 5px;
+}
 
 .liked {
   background-image: url('../../img/icons/icon-like.png');
   background-repeat: no-repeat;
   background-position: center center;
-  background-size: cover;
+  background-size: 16px;
 }
 .button-comment,
 .button-icon-profile,
 .button-post-edit,
 .button-post-delete {
   display: none;
+}
+
+@media screen and (min-width: 550px) {
+  .post-number-like,
+  .post-icon-text {
+    font-size: 1rem;
+  }
+  .post-icon-edit {
+    margin: 10px 15px;
+  }
+  .liked {
+    background-size: 20px;
+  }
+}
+
+@media screen and (min-width: 1000px) {
+  .post-icon-edit {
+    height: 25px;
+    margin-top: 15px;
+  }
+  .post-icon {
+    height: 20px;
+  }
+}
+
+@media screen and (min-width: 550px) and (max-width: 999px) {
+  .post-icon-edit,
+  .post-icon {
+    height: 20px;
+  }
+  .container-button-edit {
+    margin: 15px 0;
+  }
+  .button-edit-post {
+    padding: 8px 12px;
+    font-size: 0.875rem;
+  }
+}
+
+@media screen and (min-width: 1000px) {
+  .container-button-edit {
+    margin: 15px;
+  }
+  .button-edit-post {
+    padding: 10px 0;
+    font-size: 1rem;
+  }
 }
 
 @media screen and (min-width: 550px) and (max-width: 1799px) {

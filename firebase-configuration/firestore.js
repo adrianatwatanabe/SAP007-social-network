@@ -1,14 +1,16 @@
-import { 
-  collection, 
-  addDoc, 
-  query, 
-  getDocs, 
-  updateDoc, 
-  arrayUnion, 
-  arrayRemove, 
-  deleteDoc, 
-  doc, 
-  getDoc, 
+import {
+  collection,
+  addDoc,
+  doc,
+  updateDoc,
+  query,
+  getDocs,
+  orderBy,
+  getDoc,
+  arrayUnion,
+  arrayRemove,
+  deleteDoc,
+  where,
 } from './export.js';
 import { db, auth } from './start-firebase.js';
 
@@ -22,7 +24,7 @@ export async function createUserPost(newText) {
     date: new Date().toLocaleString(),
     userId: auth.currentUser.uid,
   };
-  const docRef = await addDoc(postsCollection, newPost)
+  const docRef = await addDoc(postsCollection, newPost);
   return docRef;
 }
 
@@ -35,10 +37,10 @@ export async function postIdUpdate(id) {
 
 export async function viewPostsCollection() {
   const postsArray = [];
-  const searchedCollection = query(postsCollection);
+  const searchedCollection = query(postsCollection, orderBy('date', 'desc'));
   const docSnap = await getDocs(searchedCollection);
-  docSnap.forEach((doc) => {
-    const posts = doc.data();
+  docSnap.forEach((post) => {
+    const posts = post.data();
     postsArray.push(posts);
   });
   return postsArray;
@@ -69,11 +71,21 @@ export async function deletePost(postId) {
   await deleteDoc(doc(db, 'posts', postId));
 }
 
-/*
-export async function editAPost (postId, editedMessage) {
-  const postToEdit = doc(db, 'posts', postId);
-  await updateDoc(postToEdit, {
-    message: editedMessage,
+export async function editPost(postId, editedText) {
+  const post = doc(db, 'posts', postId);
+  await updateDoc(post, {
+    text: editedText,
   });
-};
-*/
+}
+
+export async function viewPostCollectionSingle() {
+  const postsArray = [];
+  const clause = where('userId', '==', auth.currentUser.uid);
+  const searchedCollection = query(postsCollection, orderBy('date', 'desc'), clause);
+  const docSnap = await getDocs(searchedCollection);
+  docSnap.forEach((post) => {
+    const posts = post.data();
+    postsArray.push(posts);
+  });
+  return postsArray;
+}

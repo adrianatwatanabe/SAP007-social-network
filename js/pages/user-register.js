@@ -1,14 +1,30 @@
-import { userValidation } from '../components/authentications/login-and-registration-validation.js';
+import { registerNewUser } from '../../firebase-configuration/authentication.js';
+import { errorsFirebase } from '../components/authentications/errors-firebase.js';
+import { validationMessage } from '../components/authentications/login-and-registration-validation.js';
 
-function registerUser(e) {
+const redirectedPage = '#feed';
+
+async function registerUser(e) {
   e.preventDefault();
-  const name = document.querySelector('#user-name').value;
-  const email = document.querySelector('#user-email').value;
-  const password = document.querySelector('#user-password').value;
-  const passwordRepeat = document.querySelector('#user-password-repeat').value;
-  const validatedEmail = email.match(/[\w.\-+]+@[\w-]+\.[\w-.]+/gi);
+  const name = document.querySelector('#user-name');
+  const email = document.querySelector('#user-email');
+  const password = document.querySelector('#user-password');
+  const passRepeat = document.querySelector('#user-password-repeat');
   const message = document.querySelector('#message');
-  userValidation(name, email, validatedEmail, password, passwordRepeat, message);
+  const validation = validationMessage(name.value, email.value, password.value, passRepeat.value);
+
+  if (validation !== '') {
+    message.innerHTML = validation;
+  } else {
+    await registerNewUser(name.value, email.value, password.value)
+      .then(() => {
+        window.location.hash = redirectedPage;
+      })
+      .catch((error) => {
+        const errorMessage = errorsFirebase(error.code);
+        message.innerHTML = errorMessage;
+      });
+  }
 }
 
 export function createRegister() {

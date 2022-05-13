@@ -1,19 +1,31 @@
-function createUserFriends() {
+export function createUserFriends(user) {
   const templateUser = `
-    <li class="friend-card">
-      <a class="user-link-photo user-link-photo-card">
-        <img src="img/icons/icon-profile.png" class="user-photo-post" alt="Foto do perfil">
+    <a class="user-link-photo user-link-photo-card">
+      <img src="img/icons/icon-profile.png" class="user-photo-post" alt="Foto do perfil">
+    </a>
+    <div>
+      <a>
+        <p class="user-name user-friend-name">${user.displayName}</p>
       </a>
-      <div>
-        <a>
-          <p class="user-name user-friend-name">Nome do Usuário</p>
-        </a>
-        <p class="language">Javascript, HTML, CSS</p>
-        <p class="work">Desenvolvedora Front-End</p>
-      </div>
-    </li>
+      <p class="language">${user.email}</p>
+      <p class="work">Desenvolvedora Front-End</p>
+    </div>
   `;
   return templateUser;
+}
+
+function viewAllUsers() {
+  // const userCollection = await singleUser();
+  const listPost = document.querySelector('.container-internal-list');
+  listPost.innerHTML = '';
+  /*
+  userCollection.forEach((users) => {
+    const list = document.createElement('li');
+    list.setAttribute('class', 'friend-card');
+    list.innerHTML = createUserFriends(users);
+    listPost.append(list);
+  });
+  */
 }
 
 export function createFriends() {
@@ -23,9 +35,9 @@ export function createFriends() {
     <section class="container-internal">
       <input type="search" id="search-name" class="search-input" placeholder="Pesquisar pelo nome" required>
       <ul class="container-internal-list">
-        ${createUserFriends()}
       </ul>
     </section>
     `;
+  viewAllUsers();
   return container;
 }

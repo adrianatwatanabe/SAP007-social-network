@@ -1,8 +1,5 @@
-import { createNewPost } from './template-new-post.js';
-import { initModal } from '../general-site-components/modal.js';
-import { logout } from '../../../firebase-configuration/authentication.js';
+import { createNewPost } from '../posts/template-new-post.js';
 import { auth } from '../../../firebase-configuration/start-firebase.js';
-import { newPostValidation } from '../../pages/feed.js';
 
 export function createHeader() {
   const header = `
@@ -71,35 +68,4 @@ export function createHeader() {
     `;
 
   return header;
-}
-
-export function headerWorking() {
-  const postOpen = document.querySelector('[data-post="open"]');
-  const postClose = document.querySelector('[data-post="close"]');
-  const postContainer = document.querySelector('[data-post="container"]');
-  const menuOpen = document.querySelector('[data-menu="open"]');
-  const menuClose = document.querySelector('[data-menu="close"]');
-  const menuContainer = document.querySelector('[data-menu="container"]');
-
-  postOpen.addEventListener('focus', () => {
-    initModal(postOpen, postContainer, postClose);
-  });
-  postOpen.addEventListener('touchstart', () => {
-    initModal(postOpen, postContainer, postClose);
-  });
-  menuOpen.addEventListener('focus', () => {
-    initModal(menuOpen, menuContainer, menuClose);
-  });
-  menuOpen.addEventListener('touchstart', () => {
-    initModal(menuOpen, menuContainer, menuClose);
-  });
-
-  document.querySelector('#button-logout').addEventListener('click', () => {
-    logout().then(() => {
-      window.location.hash = '#login';
-    });
-  });
-
-  const buttonPublish = document.querySelector('#button-publish');
-  buttonPublish.addEventListener('click', newPostValidation);
 }

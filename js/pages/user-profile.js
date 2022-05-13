@@ -1,9 +1,10 @@
-import { createPost } from '../components/posts/template-view-post.js';
-import { auth } from '../../../firebase-configuration/start-firebase.js';
+import { auth } from '../../firebase-configuration/start-firebase.js';
+import { viewSingleUserPosts } from '../components/posts/post-validation.js';
 
 export function createProfile() {
   const container = document.createElement('main');
   container.setAttribute('id', 'main-container');
+  container.setAttribute('class', 'scroll');
   container.innerHTML = `
     <section class="container-internal">
       <header class="header-profile">
@@ -25,11 +26,13 @@ export function createProfile() {
             <textarea class="user-description-text" autocomplete="on" rows="1" cols="70" minlength="2" spellcheck="true" wrap="hard" readonly>texto</textarea>
           </div>
       </header>
+      <main class="container-internal-list">
+        <ul class="cards-timeline">
+        </ul>
+      </main>
+
     </section>
   `;
-
-  const listPost = container.querySelector('.container-internal');
-  listPost.append(createListPost());
-
+  viewSingleUserPosts();
   return container;
 }
