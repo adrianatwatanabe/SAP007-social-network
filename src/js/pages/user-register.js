@@ -4,7 +4,7 @@ import { validationMessage } from '../components/authentications/login-and-regis
 
 const redirectedPage = '#feed';
 
-async function registerUser(e) {
+function registerUser(e) {
   e.preventDefault();
   const name = document.querySelector('#user-name');
   const email = document.querySelector('#user-email');
@@ -16,7 +16,7 @@ async function registerUser(e) {
   if (validation !== '') {
     message.innerHTML = validation;
   } else {
-    await registerNewUser(name.value, email.value, password.value)
+    registerNewUser(name.value, email.value, password.value)
       .then(() => {
         window.location.hash = redirectedPage;
       })

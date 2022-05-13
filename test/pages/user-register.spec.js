@@ -17,11 +17,11 @@ describe('userValidation', () => {
     const password = page.querySelector('#user-password');
     const passRepeat = page.querySelector('#user-password-repeat');
     const btnRegister = page.querySelector('#new-login');
-    btnRegister.dispatchEvent(new Event('submit'));
     name.value = 'Novo Usuário';
     email.value = 'teste@teste.com';
     password.value = '123456';
     passRepeat.value = '123456';
+    btnRegister.dispatchEvent(new Event('click'));
     validationMessage(name, email, password, passRepeat);
     expect(registerNewUser).toHaveBeenCalledTimes(1);
   });
