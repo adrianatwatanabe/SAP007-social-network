@@ -17,8 +17,6 @@ describe('userValidation', () => {
     const password = page.querySelector('#user-password');
     const passRepeat = page.querySelector('#user-password-repeat');
     const btnRegister = page.querySelector('#new-login');
-    const message = page.createElement('p');
-    message.setAttribute('id', 'message');
     name.value = 'Novo Usuário';
     email.value = 'teste@teste.com';
     password.value = '123456';
