@@ -65,7 +65,6 @@
   align-items: center;
   padding: 15px 10px;
   position: relative;
-  margin: 0;
 }
 .user-post {
   padding: 30px 12px 15px 15px;
@@ -309,6 +308,7 @@ input[type='file'] {
 }
 .user-link-photo-profile {
   background: var(--color-dark-pink);
+  margin-right: 15px;
 }
 .user-link-photo-comment {
   width: 30px;
@@ -331,9 +331,6 @@ input[type='file'] {
 .user-photo-post-modal {
   width: 45px;
   height: 45px;
-}
-.user-link-photo-profile {
-  margin-right: 15px;
 }
 .user-name,
 .user-name-comment,
