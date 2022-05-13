@@ -11,10 +11,6 @@ button {
   border: var(--border-input);
   border-radius: var(--spacing-small);
 }
-.user-button:active,
-.button-edit-post:active {
-  transform: translateY(2px);
-}
 .button-modal-delete {
   background-color: var(--color-dark-yellow);
   max-width: 100px;
@@ -35,6 +31,10 @@ button {
   border-radius: var(--spacing-small);
   padding: 4px 10px;
   width: 50%;
+}
+.user-button:active,
+.button-edit-post:active {
+  transform: translateY(2px);
 }
 .button-edit-post-cancel {
   background: var(--color-dark-green);

@@ -92,7 +92,6 @@
 }
 .menu-name-user {
   font-size: 1rem;
-  color: var(--color-dark-gray);
   font-family: var(--font-emphasis);
   color: var(--color-black);
   font-weight: 600;
@@ -121,8 +120,6 @@
 @media screen and (min-width: 550px) and (max-width: 999px) {
   .menu-header {
     min-width: 480px;
-  }
-  .menu-header {
     grid-template-columns: 200px 2fr;
   }
   .container-logo {

@@ -67,13 +67,11 @@
 #form-profile {
   padding: 15px 10px;
   position: relative;
+  margin: 0;
 }
 .user-post {
   padding: 30px 12px 15px 15px;
   position: relative;
-}
-#form-profile {
-  margin: 0;
 }
 .user-form-login {
   display: flex;
@@ -117,9 +115,6 @@
 .header-profile,
 .post-header {
   margin-bottom: 10px;
-}
-.label-profile {
-  margin-top: 10px;
 }
 .post-text,
 .comment-text,
@@ -213,6 +208,7 @@
 .label-profile {
   font-weight: 600;
   font-size: 1rem;
+  margin-top: 10px;
 }
 .post-text-yellow {
   background: var(--color-dark-yellow);
@@ -242,8 +238,6 @@ input[type='file'] {
 }
 .add-comment-input {
   margin: 0 0 20px 0;
-}
-.add-post-input {
   height: 200px;
   background-color: var(--color-light-yellow);
   margin-bottom: 5px;
@@ -323,6 +317,9 @@ input[type='file'] {
 .user-link-photo-comment {
   width: 30px;
   height: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
 }
 .user-link-photo-profile,
 .user-photo-profile {
@@ -336,11 +333,6 @@ input[type='file'] {
 }
 .user-link-photo-profile {
   margin-right: 15px;
-}
-.user-photo-container-profile {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
 }
 .user-photo-comment {
   width: 30px;
