@@ -25,20 +25,4 @@ describe('registerNewUser', () => {
     validationMessage(name, email, password, passRepeat);
     expect(registerNewUser).toHaveBeenCalledTimes(1);
   });
-  it('Se o usuário for válido deve chamar registerNewUser', () => {
-    registerNewUser.mockResolvedValueOnce();
-    const page = createRegister();
-    const name = page.querySelector('#user-name');
-    const email = page.querySelector('#user-email');
-    const password = page.querySelector('#user-password');
-    const passRepeat = page.querySelector('#user-password-repeat');
-    const btnRegister = page.querySelector('#new-login');
-    name.value = 'Novo Usuário';
-    email.value = 'teste@teste.com';
-    password.value = '123456';
-    passRepeat.value = '123456';
-    btnRegister.dispatchEvent(new Event('click'));
-    validationMessage(name, email, password, passRepeat);
-    expect(registerNewUser).toHaveBeenCalledTimes(1);
-  });
 });
