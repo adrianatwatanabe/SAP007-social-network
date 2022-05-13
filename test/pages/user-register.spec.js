@@ -8,7 +8,7 @@ import { createRegister } from '../../src/js/pages/user-register.js';
 jest.mock('../../src/firebase-configuration/export.js');
 jest.mock('../../src/firebase-configuration/authentication.js');
 
-describe('userValidation', () => {
+describe('registerNewUser', () => {
   it('Se o usuário for válido deve chamar registerNewUser', () => {
     registerNewUser.mockResolvedValueOnce();
     const page = createRegister();

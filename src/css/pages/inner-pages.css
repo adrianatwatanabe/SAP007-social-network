@@ -63,8 +63,6 @@
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-}
-#form-profile {
   padding: 15px 10px;
   position: relative;
   margin: 0;
@@ -235,8 +233,6 @@ input[type='file'] {
 }
 .add-comment-input {
   border: var(--border-input-post);
-}
-.add-comment-input {
   margin: 0 0 20px 0;
   height: 200px;
   background-color: var(--color-light-yellow);
@@ -321,6 +317,11 @@ input[type='file'] {
   flex-direction: column;
   justify-content: flex-start;
 }
+.user-photo-comment {
+  width: 30px;
+  height: 30px;
+  align-self: flex-start;
+}
 .user-link-photo-profile,
 .user-photo-profile {
   width: 55px;
@@ -333,11 +334,6 @@ input[type='file'] {
 }
 .user-link-photo-profile {
   margin-right: 15px;
-}
-.user-photo-comment {
-  width: 30px;
-  height: 30px;
-  align-self: flex-start;
 }
 .user-name,
 .user-name-comment,
