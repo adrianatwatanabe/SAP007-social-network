@@ -1,4 +1,5 @@
 import { logout } from '../../../firebase-configuration/authentication.js';
+import { auth } from '../../../firebase-configuration/start-firebase.js';
 
 export default function createHeader() {
   const container = document.createElement('section');
@@ -21,13 +22,13 @@ export default function createHeader() {
           </a>
         </li>
         <li class="menu-list">
-          <a href="/#" id="openPost" class="modal-open" data-post="open">
+          <a id="openPost" class="modal-open" data-post="open">
             <img src="img/icons/icon-add.png" class="menu-icon" alt="Ícone de nova mensagem">
             <p class="menu-text">Novo Post</p>
           </a>
         </li>
         <li id="dropdown-open" class="menu-list">
-          <a href="/#" data-menu="open">
+          <a data-menu="open">
             <img src="img/icons/icon-profile.png" class="menu-icon" alt="Ícone do meu perfil">
             <p class="menu-text">Meu Perfil</p>
           </a>
@@ -43,7 +44,7 @@ export default function createHeader() {
               <a href="#user-profile" class="dropdown-link-icon">
                 <img src="img/icons/icon-profile.png" class="drop-icon" alt="Ícone do meu perfil">
                 <div class="drop-text">
-                  <p class="menu-name-user"></p>
+                  <p class="menu-name-user">${auth.currentUser.displayName}</p>
                   <p class="menu-text-small">Veja seu perfil</p>
                 </div>
               </a>

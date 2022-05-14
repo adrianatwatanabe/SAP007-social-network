@@ -1,5 +1,5 @@
 import { closeModalAutomatically, initModal } from '../components/general-site-components/modal.js';
-import { validationMessage, errorsFirebase } from '../components/authentications/login-and-registration-validation.js';
+import { validatedMessage, validatedEmailReset, errorsFirebase } from '../components/authentications/login-and-registration-validation.js';
 import { GoogleAuthProvider } from '../../firebase-configuration/export.js';
 import { authUserLabFriends, authUserWithGoogle, forgotPassword } from '../../firebase-configuration/authentication.js';
 
@@ -62,11 +62,10 @@ export default function createLogin() {
   const password = container.querySelector('#user-password-login');
   const passRepeat = '';
   const message = container.querySelector('#message');
-  const messageReset = document.querySelector('#message-reset');
 
   buttonLoginLabfriends.addEventListener('click', (e) => {
     e.preventDefault();
-    const validation = validationMessage(name, email.value, password.value, passRepeat);
+    const validation = validatedMessage(name, email.value, password.value, passRepeat);
     if (validation !== '') {
       message.innerHTML = validation;
     } else {
@@ -95,16 +94,17 @@ export default function createLogin() {
 
   buttonResetPassword.addEventListener('click', (e) => {
     e.preventDefault();
-    password.value = '';
-    const validation = validationMessage(name, emailReset.value, password.value, passRepeat);
+    const messageReset = container.querySelector('#message-reset');
+    const validation = validatedEmailReset(emailReset.value);
+
     if (validation !== '') {
       messageReset.innerHTML = validation;
     } else {
-      forgotPassword(email.value)
+      forgotPassword(emailReset.value)
         .then(() => {
           messageReset.innerHTML = 'Email enviado com sucesso!';
           setTimeout(() => {
-            email.value = '';
+            emailReset.value = '';
             messageReset.innerHTML = '';
             closeModalAutomatically(modalClose, modalContainer);
           }, 3000);
@@ -112,7 +112,7 @@ export default function createLogin() {
         .catch((error) => {
           errorsFirebase(error.code);
           setTimeout(() => {
-            email.value = '';
+            emailReset.value = '';
             messageReset.innerHTML = '';
           }, 3000);
         });

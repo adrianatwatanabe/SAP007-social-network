@@ -1,5 +1,5 @@
 import { registerNewUser } from '../../firebase-configuration/authentication.js';
-import { validationMessage, errorsFirebase } from '../components/authentications/login-and-registration-validation.js';
+import { validatedMessage, errorsFirebase } from '../components/authentications/login-and-registration-validation.js';
 
 const redirectedPage = '#feed';
 
@@ -41,7 +41,7 @@ export default function createRegister() {
 
   buttonNewUser.addEventListener('click', (e) => {
     e.preventDefault();
-    const validation = validationMessage(name.value, email.value, password.value, passRepeat.value);
+    const validation = validatedMessage(name.value, email.value, password.value, passRepeat.value);
     if (validation !== '') {
       const message = container.querySelector('#message');
       message.innerHTML = validation;

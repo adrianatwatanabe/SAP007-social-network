@@ -20,7 +20,7 @@ describe('É uma função', () => {
 });
 
 describe('authUserLabFriends', () => {
-  it('Se o usuário for válido, deve-se logar com email e senha na LabFriends', () => {
+  it('Se o usuário for válido, deve logar com email e senha na LabFriends', () => {
     authUserLabFriends.mockResolvedValueOnce();
     const page = createLogin();
     const email = page.querySelector('#user-email-login');
@@ -32,7 +32,7 @@ describe('authUserLabFriends', () => {
     btnLogin.dispatchEvent(new Event('click'));
     expect(authUserLabFriends).toHaveBeenCalledTimes(1);
   });
-  it('Se o email não for validado, deve-se mostrar o erro na tela', () => {
+  it('Se o email não for validado, deve mostrar o erro na tela', () => {
     authUserLabFriends.mockResolvedValueOnce();
     const page = createLogin();
     const email = page.querySelector('#user-email-login');
@@ -44,7 +44,7 @@ describe('authUserLabFriends', () => {
     btnLogin.dispatchEvent(new Event('click'));
     expect(authUserLabFriends).toHaveBeenCalledTimes(1);
   });
-  it('Se todos os campos estiverem vazio, deve-se mostrar o erro na tela', () => {
+  it('Se todos os campos estiverem vazio, deve mostrar o erro na tela', () => {
     authUserLabFriends.mockResolvedValueOnce();
     const page = createLogin();
     const email = page.querySelector('#user-email-login');
@@ -59,12 +59,53 @@ describe('authUserLabFriends', () => {
 });
 
 describe('authUserWithGoogle', () => {
-  it('Se o usuário for válido, deve-se logar com a conta do Google', () => {
+  it('Se o usuário for válido, deve logar com a conta do Google', () => {
     authUserWithGoogle.mockResolvedValueOnce();
     const page = createLogin();
     const btnGoogle = page.querySelector('#login-google');
-
     btnGoogle.dispatchEvent(new Event('click'));
     expect(authUserWithGoogle).toHaveBeenCalledTimes(1);
+  });
+});
+
+describe('forgotPassword', () => {
+  it('Se o email for válido, deve enviar um email de redefinição de senha', () => {
+    forgotPassword.mockResolvedValueOnce();
+    const page = createLogin();
+    const btnOpenReset = page.querySelector('[data-email="open"]');
+    btnOpenReset.dispatchEvent(new Event('click'));
+
+    const emailReset = page.querySelector('#user-email-reset');
+    emailReset.value = 'teste@teste.com';
+
+    const btnReset = page.querySelector('#button-reset-password');
+    btnReset.dispatchEvent(new Event('click'));
+    expect(forgotPassword).toHaveBeenCalledTimes(1);
+  });
+  it('Se o email não for valido, deve mostrar um erro na tela', () => {
+    forgotPassword.mockResolvedValueOnce();
+    const page = createLogin();
+    const btnOpenReset = page.querySelector('[data-email="open"]');
+    btnOpenReset.dispatchEvent(new Event('click'));
+
+    const emailReset = page.querySelector('#user-email-reset');
+    emailReset.value = 'teste@t';
+
+    const btnReset = page.querySelector('#button-reset-password');
+    btnReset.dispatchEvent(new Event('click'));
+    expect(forgotPassword).toHaveBeenCalledTimes(1);
+  });
+  it('Se o campo de email não for preenchido, deve mostrar um erro na tela', () => {
+    forgotPassword.mockResolvedValueOnce();
+    const page = createLogin();
+    const btnOpenReset = page.querySelector('[data-email="open"]');
+    btnOpenReset.dispatchEvent(new Event('click'));
+
+    const emailReset = page.querySelector('#user-email-reset');
+    emailReset.value = '';
+
+    const btnReset = page.querySelector('#button-reset-password');
+    btnReset.dispatchEvent(new Event('click'));
+    expect(forgotPassword).toHaveBeenCalledTimes(1);
   });
 });

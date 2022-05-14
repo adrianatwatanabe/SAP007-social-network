@@ -62,4 +62,20 @@ describe('registerNewUser', () => {
     btnRegister.dispatchEvent(new Event('click'));
     expect(registerNewUser).toHaveBeenCalledTimes(1);
   });
+  it('Se a senha e sua repetição não forem iguais, deve-se mostrar o erro na tela', () => {
+    registerNewUser.mockResolvedValueOnce();
+    const page = createRegister();
+    const name = page.querySelector('#user-name');
+    const email = page.querySelector('#user-email');
+    const password = page.querySelector('#user-password');
+    const passRepeat = page.querySelector('#user-password-repeat');
+    const btnRegister = page.querySelector('#new-login');
+
+    name.value = 'Novo Usuário';
+    email.value = 'teste@tes';
+    password.value = '123456';
+    passRepeat.value = '123';
+    btnRegister.dispatchEvent(new Event('click'));
+    expect(registerNewUser).toHaveBeenCalledTimes(1);
+  });
 });
