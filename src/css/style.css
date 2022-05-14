@@ -103,6 +103,9 @@ textarea {
 .scroll {
   scrollbar-width: thin;
 }
+.active {
+  display: flex;
+}
 
 @media screen and (min-width: 550px) {
   #main-container {
