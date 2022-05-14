@@ -2,7 +2,7 @@ import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   GoogleAuthProvider,
-  signInWithRedirect,
+  signInWithPopup,
   signOut,
   sendPasswordResetEmail,
   onAuthStateChanged,
@@ -21,7 +21,7 @@ export function authUserLabFriends(email, password) {
 
 export function authUserWithGoogle() {
   const provider = new GoogleAuthProvider();
-  return signInWithRedirect(auth, provider);
+  return signInWithPopup(auth, provider);
 }
 
 export function logout() {
