@@ -25,8 +25,14 @@
 - [2. HISTÓRIAS DE USUÁRIOS](#2-histórias-de-usuários)
   - [2.1. Critérios de Aceitação do Produto](#21-critérios-de-aceitação-do-produto)
   - [2.2. Definição de Pronto do Produto](#22-definição-de-pronto-do-produto)
-- [3. PROTÓTIPOS](#3-protótipos)
-  - [3.1. UX (Experiência do Usuário) e UI (Design de Interface)](#31-ux-experiência-do-usuário-e-ui-design-de-interface)
+- [3. UX (EXPERIÊNCIA DO USUÁRIO) E UI (DESIGN DE INTERFACE)](#3--ux-experiência-do-usuário-e-ui-design-de-interface)
+  - [3.1. Design do Site](#31-design-do-site)
+  - [3.2. Páginas do Site](#32-páginas-do-site)
+   - [3.2.1 Sem Autenticação de Usuárias](#321-sem-autenticação-de-usuárias)
+   - [3.2.2 Com Autenticação de Usuárias](#321-sem-autenticação-de-usuárias) 
+  - [3.3. Diferentes Tamanhos de Telas](#33-diferentes-tamanhos-de-telas)
+  - [3.4. Tipografia e Hierarquia](#34-tipografia-e-hierarquia)
+  - [3.5. Cores e Contrastes](#35-cores-e-contrastes)
 - [4. PROTÓTIPOS](#4-protótipos)
   - [4.1. Protótipo de Baixa Fidelidade](#41-protótipo-de-baixa-fidelidade)
   - [4.2. Protótipos de Alta Fidelidade](#42-protótipos-de-alta-fidelidade)
@@ -85,7 +91,7 @@ O diferencial dessa rede social é que todas as mulheres que se cadastrarem, ser
 
   - A estrutura do site seguirá usando o conceito de SPA [(Single Page Application)](https://pt.wikipedia.org/wiki/Aplicativo_de_p%C3%A1gina_%C3%BAnica), obedecendo a seguinte estrutura do site:
   
-  #### **3.2.1 SEM AUTENTICAÇÃO DE USUÁRIA:**
+  #### **3.2.1 SEM AUTENTICAÇÃO DE USUÁRIAS:**
 
    1. _**PÁGINA INICIAL**_: 
        - Está página mostrar as informações para o usuário realizar a sua autenticação para acessar a parte interna do site LabFriends. 
@@ -99,7 +105,7 @@ O diferencial dessa rede social é que todas as mulheres que se cadastrarem, ser
        - Caso seja realizado, entrará automaticamente em sua página de todas as postagens do site (PÁGINA FEED). 
        - Caso a usuária desista de criar uma nova conta, é possível voltar para a tela inicial.
 
-  #### **3.2.2 COM AUTENTICAÇÃO DE USUÁRIA:**
+  #### **3.2.2 COM AUTENTICAÇÃO DE USUÁRIAS:**
     
    1. _**PÁGINA DE FEED**_:
        - Nessa página encontra-se todas postagens de todas as usuárias da LabFriends.
@@ -121,7 +127,7 @@ O diferencial dessa rede social é que todas as mulheres que se cadastrarem, ser
        - Em cada postagem dessa página, a usuária poderá editar, excluir, comentar ou curtir a sua própria postagem.
        - O diferencial dessa página com a do FEDD, é que ela trás informações somente da dona da conta, o que inclui as informações pessoais encontradas na página LISTA DE USUÁRIAS e a sua breve descrição.
      
-### _**3.3 RESPONSIVIDADE DO SITE**_
+### _**3.3 DIFERENTES TAMANHOS DE TELAS**_
 
    - Os tamanhos de telas utilizados no site, foram escolhidos segundo as estatísticas encontradas no site Statcounter, com base em dados coletados mundialmente. Os aparelhos eletrônicos escolhidos foram: [smartphone](https://pt.wikipedia.org/wiki/Smartphone), [tablet](https://pt.wikipedia.org/wiki/Tablet) e [desktop](https://en.wikipedia.org/wiki/Desktop_computer), que são:
 
@@ -142,7 +148,7 @@ O diferencial dessa rede social é que todas as mulheres que se cadastrarem, ser
 
    - Para visualizar a hierarquia, foi usado fontes grandes para títulos de páginas. Já para destacar mais de um título em uma mesma página, o tamanho das letras serão padronizadas conforme o assunto abordado em seu conteúdo. Por fim, os demais textos, obedecem a hierarquia em relação ao título da página e ao tipo de tela em que será exibido.
 
-### _**3.5 CORES E CONSTRASTES**_
+### _**3.5 CORES E CONTRASTES**_
 
   - As cores em destaque serão feitas pelas cores: rosa, amarelo e verde, usados para detalhes como em botões, títulos e outros detalhes de destaque. Já as cores neutras, como: cinza, branco e preto, são usados para planos de fundo e letras, pois, facilita o contraste para a leitura em telas.
 
