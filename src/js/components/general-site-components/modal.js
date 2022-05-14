@@ -8,12 +8,18 @@ export function openModal(e) {
 export function closeModal(e) {
   e.preventDefault();
   modalContainer.classList.remove('active');
+  const newMessage = document.querySelector('#create-post');
+  newMessage.setAttribute('style', 'height: 80px;');
+  newMessage.value = '';
 }
 
 function outside(e) {
   if (e.target === this) {
     e.preventDefault();
     modalContainer.classList.toggle('active');
+    const newMessage = document.querySelector('#create-post');
+    newMessage.setAttribute('style', 'height: 80px;');
+    newMessage.value = '';
   }
 }
 
