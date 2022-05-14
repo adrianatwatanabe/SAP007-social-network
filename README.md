@@ -1,11 +1,11 @@
 <div align="center">
-   <img alt="Logo da Laboratoria" src="/src/img/to-readme/logo-lab.jpeg">
+   <img alt="Logo da Laboratoria" src="/src/img/to-readme/logo-labfriends.png">
 
 ## LabFriends é uma rede social para alunas do bootcamp da Laboratoria.
 
 **Status do Projeto:** _Concluído_ 
    
-** Previsto possíveis modificações para o site
+** Previsto possíveis modificações para o site **
   
 **Deploy:** [Rede Social LabFriends](https://adrianatwatanabe.github.io/SAP007-social-network/)
    
@@ -49,21 +49,30 @@ O diferencial dessa rede social é que todas as mulheres que se cadastrarem, ser
 
 > "Eu, como aluna da Lab (Laboratoria), desejo manter contato com as minhas colegas de bootcamp e também as demais de outras turmas formadas anteriormente, para tirar dúvidas sobre a carreira de programação e também de assuntos do próprio bootcamp. Também quero para ter momentos de entretenimento com as minhas colegas fora do horário do bootcamp."
 
-### 2.1. Critérios de Aceitação do Produto
+### 2.1. CRITÉRIOS DE ACEITAÇÃO DO PRODUTO
 
    - Permitir que somente as alunas e ex-alunas da Laboratoria façam parte da LabFriends, portanto, é necessário criar uma conta para acessar a parte interna do site LabFriends.
+ 
    - Todas as usuárias devem ter todos os seus dados salvos no site e mesmo saindo dele, as informações devem persistirem para que outras usuárias possam visualizar essas informações em qualquer hora.
+
    - Permitir que o perfil de cada usuária seja editável, ou seja, a própria usuária que entrou em sua conta poderá ir em seu perfil e editar as suas informações pessoais e de postagens. 
+
    - Somente a usuária que entrou com a sua conta criada, poderá criar uma postagem, editar, apagar as suas próprias postagens. 
+
    - No entanto, somente a própria usuária poderá editar as suas informações pessoais, isso inclui a edição de perfil e eventuais alterações nas postagens, quando a mesma estiver usando a conta que foi criada e essa mesma conta for a conta que criou o perfil/post escolhido para editar.
+
    - Para as demais funções do site, como comentar e curtir, são destinados a todas usuárias, isso incluir a própria usuária curtir e/ou comentar as suas postagens e postagens de terceiros.
 
-### 2.2. Definição de Pronto do Produto
+### 2.2. DEFINIÇÃO DE PRONTO DO PRODUTO
 
    - [x] O site LabFriends deve ser uma [_*SPA*_ (Single-page Application)](https://pt.wikipedia.org/wiki/Aplicativo_de_p%C3%A1gina_%C3%BAnica),ou seja, o site deve reescrever dinamicamente a página da Web atual com novos dados do servidor da Web, em vez alterar as informações da tela por meio da atualização da página.
+ 
    - [x] O site deve ser responsivo, podendo ser acessado por smartphone, tablet, notebook e desktop, adequando o conteúdo da tela para o tamanho relativo do dispositivo que está acessando-o. As principais modificações são os tamanhos de letras, ícones e imagens, de espaçamentos e disposição do gráfica dos elementos.
+
    - [x] Para qualquer erro de acesso encontrado pelo usuário, deve ser informado na tela com uma explicação do erro que está ocorrendo. Se o usuário persistir no erro, este erro deve permanecer na tela. Já para erros diferentes, a mensagem do erro na tela deve mudar para o usuário.
+
    - [x] Para ações dos usuários que ocorreram sucesso, deve ser mostrados na tela automaticamente a ação em que o usuário pretendia que acontecesse, não precisando que ele atualize a página para que a ação seja visualizada.
+
    - [x] Para acessar todas as páginas internas do site LabFriends, a usuária deve estar cadastrada seja com email e a senha que ela usou para criar a conta pertecente e, após isso, realizar o acesso ao site com essas mesmas informações. Caso a usuária não queira criar uma conta nova, haverá a possibilidade de usar a sua conta do Google, e, neste caso, o site LabFriends não terá acesso a sua senha ou qualquer meio de autenticação da conta do Google.
    
 ## 3.  UX (EXPERIÊNCIA DO USUÁRIO) E UI (DESIGN DE INTERFACE)
@@ -116,16 +125,16 @@ O diferencial dessa rede social é que todas as mulheres que se cadastrarem, ser
 
    - Os tamanhos de telas utilizados no site, foram escolhidos segundo as estatísticas encontradas no site Statcounter, com base em dados coletados mundialmente. Os aparelhos eletrônicos escolhidos foram: [smartphone](https://pt.wikipedia.org/wiki/Smartphone), [tablet](https://pt.wikipedia.org/wiki/Tablet) e [desktop](https://en.wikipedia.org/wiki/Desktop_computer), que são:
 
-     - _**Smartphone na posição vertical:**_ 360 x 640 pixels
-     - _**Tablet na posição vertical:**_ 600 x 962 pixels
-     - _**Desktop na posição horizontal:**_ 1280 x 720 pixels
+         - Smartphone na posição vertical: 360 x 640 pixels
+         - Tablet na posição vertical: 600 x 962 pixels
+         - Desktop na posição horizontal: 1280 x 720 pixels
 
   - Para utilizarmos no site essas medidas de pixels, nos baseamos na mudança de orientação da tela e na opção ativada de rotacionamento da mesma. Com isso, possuímos diferentes largura e alturas, porém o site se adequará somente a largura visível da tela. Com base em tudo isso, concluímos que os intervalos melhores para mudar os tamanhos de letras, espaçamentos, ícones, além da disposição dos elementos na página será de:
 
-     - _**De 300px a 550px de largura**_ : similar a um intervalo de tamanhos de telas para smartphones;
-     - _**De 550px a 1000px de largura**_ : similar a um intervalo de tamanhos de telas para tablets;
-     - _**De 1000px a 1800px de largura**_ : similar a um intervalo de tamanhos de telas para notebooks e desktops pequenos a médios;
-     - _**De 1800px a 2600px de largura**_ :similar a um intervalo de tamanhos de telas para desktops de grande porte;
+         - De 300px a 550px de largura: possíveis intervalos para tamanhos de smartphones;
+         - De 550px a 1000px de largura: possíveis intervalos para tamanhos de tablets;
+         - De 1000px a 1800px de largura: possíveis intervalos para tamanhos de notebooks/desktops;
+         - De 1800px a 2600px de largura: possíveis intervalos para tamanhos de desktops;
 
 ### _**3.4 TIPOGRAFIA E HIERARQUIA**_
 
@@ -145,15 +154,17 @@ O diferencial dessa rede social é que todas as mulheres que se cadastrarem, ser
 
 - Para o desenvolvimento do protótipo de alta fidelidade, foi usado uma ferramenta digital para protótipo. A ferramenta utilizada foi o [Figma](https://www.figma.com/), que é um editor gráfico de vetor e prototipagem de projetos de design baseado principalmente no navegador web.
 
-### 4.1. Protótipo de Baixa Fidelidade
+### 4.1. PROTÓTIPO DE BAIXA FIDELIDADE
 
 - O protótipo de baixa fidelidade serve para demonstrar e organizar as ideias de como os elementos estarão na página em um projeto inicial. É possíve identificar alguns problemas de usabilidade, testando conceitos e descobrindo o valor que o produto final pode gerar aos seus clientes. A seguir, estará o protótipo de baixa fidelidade do site da LabFriends.
+
+- Para este projeto aplicamos o termo MOBILE FIRST que trata-se de qualquer projeto web que leve em consideração a usabilidade em dispositivos móveis primeiro. Portanto, desde o design até o desenvolvimento das funcionalidades, tudo é pensado para o mobile e depois adaptado para o desktop.
 
    <div>
       <img alt="Protótipo de baixa fidelidade" src="/src/img/to-readme/paper-prototype.gif" height="400">
    </div>
 
-### 4.2. Protótipos de Alta Fidelidade
+### 4.2. PROTÓTIPOS DE ALTA FIDELIDADE
 
 - Já o protótipo de alta fidelidade é uma representação interativa do produto, baseada no computador ou em dispositivos móveis. Esse protótipo já apresenta maior semelhança com o design final em termos de detalhes e funcionalidade.
 
