@@ -9,19 +9,19 @@ export default function createHeader() {
     </h1>
     <nav class="menu">
       <ul>
-        <li class="menu-list">
+        <li id="friends-list" class="menu-list">
           <a href="#friends-list">
             <img src="img/icons/icon-frinds-list.png" class="menu-icon" alt="Ícone de lista de amigas">
             <p class="menu-text">Amigas</p>
           </a>
         </li>
-        <li class="menu-list">
+        <li id="feed" class="menu-list">
           <a href="#feed">
             <img src="img/icons/icon-feed.png" class="menu-icon" alt="Ícone de início">
             <p class="menu-text">Feed</p>
           </a>
         </li>
-        <li class="menu-list">
+        <li id="new-post" class="menu-list">
           <a id="openPost" class="modal-open" data-post="open">
             <img src="img/icons/icon-add.png" class="menu-icon" alt="Ícone de nova mensagem">
             <p class="menu-text">Novo Post</p>
