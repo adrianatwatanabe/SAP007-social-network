@@ -29,6 +29,14 @@ export function initModal(open, container, close) {
   }
 }
 
+export function closeModalAutomatically(modalClose, container) {
+  modalContainer = container;
+  const event = new Event('click');
+  modalClose.addEventListener('click', closeModal, false);
+  modalClose.addEventListener('touchstart', closeModal, false);
+  modalClose.dispatchEvent(event);
+}
+
 export function initModalMenuDropdown(open, container, close, closeMenu) {
   modalContainer = container;
   if (open && close && container && closeMenu) {
@@ -40,12 +48,4 @@ export function initModalMenuDropdown(open, container, close, closeMenu) {
     close.addEventListener('touchstart', closeModal);
     container.addEventListener('touchstart', outside);
   }
-}
-
-export function closeModalAutomatically(modalClose, container) {
-  modalContainer = container;
-  const event = new Event('click');
-  modalClose.addEventListener('click', closeModal, false);
-  modalClose.addEventListener('touchstart', closeModal, false);
-  modalClose.dispatchEvent(event);
 }

@@ -131,6 +131,9 @@
   color: var(--color-black);
   text-align: start;
 }
+#create-post {
+  background-color: var(--color-light-yellow);
+}
 .header-profile {
   margin-bottom: 20px;
   background-color: var(--color-dark-green);
