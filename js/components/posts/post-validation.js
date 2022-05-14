@@ -205,8 +205,8 @@ export function newPostValidation(e) {
     addNewMessage.value = '';
   } else if (validatedText || validatedTextTab || validatedTabText) {
     createNewPost(newMessage);
-    addNewMessage.value = '';
     closeModalAutomatically(postClose, postContainer);
+    addNewMessage.value = '';
   } else {
     message.innerHTML = 'Não é possível enviar um post vazio!';
     setTimeout(() => {

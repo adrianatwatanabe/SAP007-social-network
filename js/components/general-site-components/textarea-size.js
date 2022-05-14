@@ -2,6 +2,7 @@ export function onInputTextarea() {
   const heightWindow = Number(window.innerHeight);
   const heighModal = Number(document.querySelector('#create-post').offsetHeight);
   if (heighModal >= heightWindow * 0.6) {
+    this.removeEventListener('input', onInputTextarea);
     this.style.height = '60vh';
     this.style.overflow = 'scroll';
   } else {
