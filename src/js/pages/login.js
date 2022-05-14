@@ -1,6 +1,5 @@
 import { closeModalAutomatically, initModal } from '../components/general-site-components/modal.js';
 import { validatedMessage, validatedEmailReset, errorsFirebase } from '../components/authentications/login-and-registration-validation.js';
-import { GoogleAuthProvider } from '../../firebase-configuration/export.js';
 import { authUserLabFriends, authUserWithGoogle, forgotPassword } from '../../firebase-configuration/authentication.js';
 
 const redirectedPage = '#feed';
