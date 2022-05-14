@@ -86,7 +86,8 @@ export default function createLogin() {
         window.location.hash = redirectedPage;
       })
       .catch((error) => {
-        GoogleAuthProvider.credentialFromError(error);
+        const errorMessage = error.message;
+        return errorMessage;
       });
   });
 
