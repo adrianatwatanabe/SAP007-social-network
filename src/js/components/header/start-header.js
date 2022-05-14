@@ -24,6 +24,22 @@ export function creatingInternalElements() {
   const menuContainer = container.querySelector('[data-menu="container"]');
   const closeMenu = container.querySelector('.modal-dropdown');
 
+  const hashFriends = header.querySelector('#friends-list');
+  const hashFeed = header.querySelector('#feed');
+  const hashProfile = header.querySelector('#dropdown-open');
+
+  switch (window.location.hash) {
+    case '#friends-list':
+      hashFriends.style.background = '#56f894';
+      break;
+    case '#user-profile':
+      hashProfile.style.background = '#56f894';
+      break;
+    case '#feed':
+    default:
+      hashFeed.style.background = '#56f894';
+  }
+
   postOpen.addEventListener('click', () => {
     initModal(postOpen, postContainer, postClose);
   });
