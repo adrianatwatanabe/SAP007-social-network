@@ -204,7 +204,7 @@ O diferencial dessa rede social é que todas as mulheres que se cadastrarem, ser
 
 ### 5.1. MELHORIAS A SEREM APLICADAS AO SITE LABFRIENDS
 
-  1. Na tela de CADASTRO, fixar duas mensagens de que a senha deve ter no mínimo 6 caracteres, sendo localizadas abaixo dos respectivos campos de: senha e repita a senha.
+  1. Na tela de CADASTRO, fixar duas mensagens de que a senha deve ter no mínimo 6 caracteres, sendo localizadas abaixo dos respectivos campos de: senha e repita a senha. [Atualização Implementada]
 
   2. Dar a opção das usuárias fazerem autenticação no site usando as redes socias: Facebook e GitHub.
 
