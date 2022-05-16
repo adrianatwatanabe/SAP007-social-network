@@ -37,7 +37,9 @@
   - [4.1. Protótipo de Baixa Fidelidade](#41-protótipo-de-baixa-fidelidade)
   - [4.2. Protótipos de Alta Fidelidade](#42-protótipos-de-alta-fidelidade)
 - [5. TESTES DE USABILIDADE](#5-testes-de-usabilidade)
-- [6. AUTORAS](#6-autoras)
+  - [5.1 Melhorias a serem aplicadas ao site LabFriends](#51-melhorias-a-serem-aplicadas-ao-site-labfriends)
+- [6. FERRAMENTAS UTILIZADAS](#6-ferramentas-utilizadas)
+- [7. AUTORAS](#7-autoras)
 
 ---
    
@@ -51,7 +53,7 @@ O diferencial dessa rede social é que todas as mulheres que se cadastrarem, ser
 
 ## 2. HISTÓRIAS DE USUÁRIOS
 
-> "Como amante de rede social e aluna da Laboratoria quero uma rede social para que eu possa conectar com as minhas colegas da Lab, fora do horário do bootcamp. Desejo ter mais momentos de [happy hour](https://pt.wikipedia.org/wiki/Happy_hour) com elas e também poder tirar dúvidas sobre programação ou ajudar as minhas colegas. Quero uma aplicação que eu possa acessar em qualquer dispositivo, desde celular, tablet e notebook e que eu possa clicar em qualquer parte do site para criar as minhas postagens."
+> "Como amante de rede social e aluna da Laboratoria quero uma rede social para que eu possa ter mais momentos de [happy hour](https://pt.wikipedia.org/wiki/Happy_hour) com as minhas colegas e também poder tirar dúvidas sobre programação ou ajudá-las. Quero uma aplicação que eu possa acessar em qualquer dispositivo, desde celular, tablet e notebook e que eu possa clicar em qualquer parte do site para criar as minhas postagens."
 
 > "Eu, como aluna da Lab (Laboratoria), desejo manter contato com as minhas colegas de bootcamp e também as demais de outras turmas formadas anteriormente, para tirar dúvidas sobre a carreira de programação e também de assuntos do próprio bootcamp. Também quero para ter momentos de entretenimento com as minhas colegas fora do horário do bootcamp."
 
@@ -194,7 +196,46 @@ O diferencial dessa rede social é que todas as mulheres que se cadastrarem, ser
 
 ## 5. TESTES DE USABILIDADE
 
-## 6. AUTORAS
+  - Para realizar o teste de usabilidade, usamos o formulário do Google para coletar informações de outras pessoas. 
+
+  - O teste foi dividido em duas partes: uma sem autenticação no site LabFriends e a outra com autenticação. As perguntas realizadas foram referentes as páginas: Inicial, de Cadastro, do Feed e Meu Perfil, e, foram testadas: tamanho de textos, imagens e ícones, cores e as informações contidas nos textos informativos e de mensagens de erros. Também foram testados o fluxo do site, ao criar uma postagem, editá-la, excluí-la e curtir a própria postagem e a de terceiros.
+
+  - As perguntas realizadas e perguntas recebidas são encontradas nesse link: [Formulário para o Site LabFriends](https://docs.google.com/forms/d/1p862VqylZ0N1X-xF0I66WmFGJ1iL4VovPBMukOt6--k/edit#responses)
+
+### 5.1. MELHORIAS A SEREM APLICADAS AO SITE LABFRIENDS
+
+  1. Na tela de CADASTRO, fixar duas mensagens de que a senha deve ter no mínimo 6 caracteres, sendo localizadas abaixo dos respectivos campos de: senha e repita a senha. [Atualização Implementada]
+
+  2. Dar a opção das usuárias fazerem autenticação no site usando as redes socias: Facebook e GitHub.
+
+
+## 6. FERRAMENTAS UTILIZADAS
+
+- **Tecnologias Utilizadas nos Códigos:**
+
+  - **HTML**
+  - **CSS** 
+  - **JavaScript** 
+  - **Firebase - Authentication** 
+  - **Firebase - Firestore**  
+
+- **Planejamento:**
+
+  - **Scrum e Kanban:** _[Trello](https://trello.com)_
+
+- **UX/UI**:
+
+  - **Edição de Imagens:** _[Canvas](https://www.canva.com/pt_br/)_
+  - **Paleta de Cores com Acessibilidade:** _[Adobe Color](https://color.adobe.com/pt/create/color-wheel)_
+  - **Protótipo:** _[Figma](https://www.figma.com/)_
+  - **Para fazer Gif:** _[Canvas](https://www.canva.com/pt_br/)_
+  - **Para fazer o Teste de Usabilidade:** _[Google Forms](https://www.google.com/intl/pt-BR/forms/about/)_
+
+- **Web:**
+
+  - **Editor:** _[Visual Studio Code](https://code.visualstudio.com/)_
+
+## 7. AUTORAS
 
 <table>
 <td>

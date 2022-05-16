@@ -111,6 +111,12 @@ input::placeholder {
   width: 100%;
   margin: var(--spacing-error);
 }
+.password-characters {
+  text-align: right;
+  margin-bottom: 10px;
+  font-size: 0.75rem;
+  align-self: flex-end;
+}
 
 @media screen and (min-width: 550px) {
   .icon-button {
@@ -162,6 +168,9 @@ input::placeholder {
   .user-input-modal {
     height: 2.875rem;
   }
+  .password-characters {
+    font-size: 0.875rem;
+  }
 }
 
 @media screen and (min-width: 1800px) {
@@ -208,5 +217,9 @@ input::placeholder {
   }
   .user-input-modal {
     height: 3.125rem;
+  }
+  .password-characters {
+    margin-bottom: 15px;
+    font-size: 1rem;
   }
 }
