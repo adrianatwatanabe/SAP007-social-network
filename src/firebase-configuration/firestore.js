@@ -21,7 +21,7 @@ export async function createUserPost(newText) {
     socialName: auth.currentUser.displayName,
     text: newText,
     like: [],
-    date: new Date().toLocaleString(),
+    date: new Date().toLocaleString('pt-br'),
     userId: auth.currentUser.uid,
   };
   const docRef = await addDoc(postsCollection, newPost);
