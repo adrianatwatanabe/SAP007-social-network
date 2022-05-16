@@ -21,10 +21,12 @@ export default function createRegister() {
         Senha
       </label>
       <input type="password" name="user-password" id="user-password" class="user-input" placeholder="Digite sua senha">
+      <p class="password-characters">* Senha com mínimo 6 caracteres</p>
       <label for="user-password-repeat" class="user-label">
         Repita a Senha
       </label>
       <input type="password" name="user-password-repeat" id="user-password-repeat" class="user-input" placeholder="Digite sua senha novamente">
+      <p class="password-characters">* Senha com mínimo 6 caracteres</p>
       <p id="message"></p>
       <input type="submit" value="CRIAR CONTA" id="new-login" class="user-button button-green">
       <a href="#login" class="link small-text-right">
