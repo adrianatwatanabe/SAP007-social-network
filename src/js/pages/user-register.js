@@ -1,33 +1,9 @@
 import { registerNewUser } from '../../firebase-configuration/authentication.js';
-import { errorsFirebase } from '../components/authentications/errors-firebase.js';
-import { validationMessage } from '../components/authentications/login-and-registration-validation.js';
+import { validatedMessage, errorsFirebase } from '../components/authentications/login-and-registration-validation.js';
 
 const redirectedPage = '#feed';
 
-function registerUser(e) {
-  e.preventDefault();
-  const name = document.querySelector('#user-name');
-  const email = document.querySelector('#user-email');
-  const password = document.querySelector('#user-password');
-  const passRepeat = document.querySelector('#user-password-repeat');
-  const message = document.querySelector('#message');
-  const validation = validationMessage(name.value, email.value, password.value, passRepeat.value);
-
-  if (validation !== '') {
-    message.innerHTML = validation;
-  } else {
-    registerNewUser(name.value, email.value, password.value)
-      .then(() => {
-        window.location.hash = redirectedPage;
-      })
-      .catch((error) => {
-        const errorMessage = errorsFirebase(error.code);
-        message.innerHTML = errorMessage;
-      });
-  }
-}
-
-export function createRegister() {
+export default function createRegister() {
   const container = document.createElement('section');
   container.classList.add('container-login');
   container.innerHTML = `
@@ -57,7 +33,29 @@ export function createRegister() {
     </form>
     `;
 
+  const name = container.querySelector('#user-name');
+  const email = container.querySelector('#user-email');
+  const password = container.querySelector('#user-password');
+  const passRepeat = container.querySelector('#user-password-repeat');
   const buttonNewUser = container.querySelector('#new-login');
-  buttonNewUser.addEventListener('click', registerUser);
+
+  buttonNewUser.addEventListener('click', (e) => {
+    e.preventDefault();
+    const validation = validatedMessage(name.value, email.value, password.value, passRepeat.value);
+    if (validation !== '') {
+      const message = container.querySelector('#message');
+      message.innerHTML = validation;
+    } else {
+      registerNewUser(name.value, email.value, password.value)
+        .then(() => {
+          window.location.hash = redirectedPage;
+        })
+        .catch((error) => {
+          const errorMessage = errorsFirebase(error.code);
+          const message = container.querySelector('#message');
+          message.innerHTML = errorMessage;
+        });
+    }
+  });
   return container;
 }

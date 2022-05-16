@@ -21,12 +21,10 @@
   justify-content: center;
   align-items: center;
 }
-.modal-container-dark {
-  background-color: var(--transparent-medium);
-}
+.modal-container-dark,
 [data-menu='container'],
 .modal-container-light {
-  background-color: var(--transparent-light);
+  background-color: var(--transparent-medium);
 }
 .modal-container-dark.active {
   display: grid;

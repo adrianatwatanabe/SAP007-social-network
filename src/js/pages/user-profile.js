@@ -4,9 +4,9 @@ import { viewSingleUserPosts } from '../components/posts/post-validation.js';
 export function createProfile() {
   const container = document.createElement('main');
   container.setAttribute('id', 'main-container');
-  container.setAttribute('class', 'scroll');
+  container.style.overflowY = 'scroll';
   container.innerHTML = `
-    <section class="container-internal">
+    <section class="container-internal scroll">
       <header class="header-profile">
           <div class="user-photo-container-profile">
             <a class="user-link-photo  user-link-photo-profile">

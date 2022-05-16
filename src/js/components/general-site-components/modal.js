@@ -8,12 +8,18 @@ export function openModal(e) {
 export function closeModal(e) {
   e.preventDefault();
   modalContainer.classList.remove('active');
+  const newMessage = document.querySelector('#create-post');
+  newMessage.setAttribute('style', 'height: 80px;');
+  newMessage.value = '';
 }
 
 function outside(e) {
   if (e.target === this) {
     e.preventDefault();
     modalContainer.classList.toggle('active');
+    const newMessage = document.querySelector('#create-post');
+    newMessage.setAttribute('style', 'height: 80px;');
+    newMessage.value = '';
   }
 }
 
@@ -29,6 +35,14 @@ export function initModal(open, container, close) {
   }
 }
 
+export function closeModalAutomatically(modalClose, container) {
+  modalContainer = container;
+  const event = new Event('click');
+  modalClose.addEventListener('click', closeModal, false);
+  modalClose.addEventListener('touchstart', closeModal, false);
+  modalClose.dispatchEvent(event);
+}
+
 export function initModalMenuDropdown(open, container, close, closeMenu) {
   modalContainer = container;
   if (open && close && container && closeMenu) {
@@ -40,12 +54,4 @@ export function initModalMenuDropdown(open, container, close, closeMenu) {
     close.addEventListener('touchstart', closeModal);
     container.addEventListener('touchstart', outside);
   }
-}
-
-export function closeModalAutomatically(modalClose, container) {
-  modalContainer = container;
-  const event = new Event('click');
-  modalClose.addEventListener('click', closeModal, false);
-  modalClose.addEventListener('touchstart', closeModal, false);
-  modalClose.dispatchEvent(event);
 }

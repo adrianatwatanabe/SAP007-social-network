@@ -89,19 +89,19 @@ textarea {
   text-align: center;
   color: var(--color-dark-green);
 }
-.scroll::-webkit-scrollbar {
+#main-container::-webkit-scrollbar {
   width: 7px;
 }
-.scroll::-webkit-scrollbar-track {
+#main-container::-webkit-scrollbar-track {
   background: var(--color-light-gray);
   border-radius: 20px;
 }
-.scroll::-webkit-scrollbar-thumb {
+#main-container::-webkit-scrollbar-thumb {
   background-color: var(--color-dark-green);
   border-radius: 20px;
 }
-.scroll {
-  scrollbar-width: thin;
+.active {
+  display: flex;
 }
 
 @media screen and (min-width: 550px) {
