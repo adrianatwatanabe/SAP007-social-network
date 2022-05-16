@@ -1,22 +1,6 @@
 import { onInputTextarea } from '../general-site-components/textarea-size.js';
 import { auth } from '../../../firebase-configuration/start-firebase.js';
 
-const now = new Date();
-const monthName = [
-  'janeiro',
-  'fevereiro',
-  'março',
-  'abril',
-  'maio',
-  'junho',
-  'julho',
-  'agosto',
-  'setembro',
-  'outubro',
-  'novembro',
-  'dezembro',
-];
-
 export default function createNewPost() {
   const container = document.createElement('section');
   container.setAttribute('class', 'modal-container-light');
@@ -33,7 +17,7 @@ export default function createNewPost() {
               <a href="/#">
                 <p class="user-name">${auth.currentUser.displayName}</p>
               </a>
-              <time class="post-date">${now.getDate()} de ${monthName[now.getMonth()]} de ${now.getFullYear()}</time>
+              <time class="post-date">${new Date().toLocaleString('pt-br')}</time>
             </div>
           </header>
           <textarea id="create-post" class="add-post-input" autocomplete="on" rows="1" minlength="2" spellcheck="true" wrap="hard" placeholder="Escreva uma mensagem..." autofocus="true"></textarea>
