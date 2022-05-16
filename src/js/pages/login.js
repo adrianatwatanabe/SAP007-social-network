@@ -15,6 +15,7 @@ export default function createLogin() {
         <input type="email" id="user-email-login" class="user-input" placeholder="Digite seu email">
         <label for="user-password" class="user-label">Senha</label>
         <input type="password" id="user-password-login" class="user-input input-password-spacing" placeholder="Digite sua senha">
+        <p class="password-characters">* Senha com mínimo 6 caracteres</p>
         <a href="#" type="button" class="link small-text-right" data-email="open">
           Esqueceu a senha?
         </a>
@@ -60,12 +61,12 @@ export default function createLogin() {
   const emailReset = container.querySelector('#user-email-reset');
   const password = container.querySelector('#user-password-login');
   const passRepeat = '';
-  const message = container.querySelector('#message');
 
   buttonLoginLabfriends.addEventListener('click', (e) => {
     e.preventDefault();
     const validation = validatedMessage(name, email.value, password.value, passRepeat);
     if (validation !== '') {
+      const message = container.querySelector('#message');
       message.innerHTML = validation;
     } else {
       authUserLabFriends(email.value, password.value)
@@ -73,7 +74,9 @@ export default function createLogin() {
           window.location.hash = redirectedPage;
         })
         .catch((error) => {
-          errorsFirebase(error.code);
+          const errorMessage = errorsFirebase(error.code);
+          const message = container.querySelector('#message');
+          message.innerHTML = errorMessage;
         });
     }
   });
@@ -85,8 +88,9 @@ export default function createLogin() {
         window.location.hash = redirectedPage;
       })
       .catch((error) => {
-        const errorMessage = error.message;
-        return errorMessage;
+        const errorMessage = errorsFirebase(error.code);
+        const message = container.querySelector('#message');
+        message.innerHTML = errorMessage;
       });
   });
 
@@ -94,14 +98,15 @@ export default function createLogin() {
 
   buttonResetPassword.addEventListener('click', (e) => {
     e.preventDefault();
-    const messageReset = container.querySelector('#message-reset');
     const validation = validatedEmailReset(emailReset.value);
 
     if (validation !== '') {
+      const messageReset = container.querySelector('#message-reset');
       messageReset.innerHTML = validation;
     } else {
       forgotPassword(emailReset.value)
         .then(() => {
+          const messageReset = container.querySelector('#message-reset');
           messageReset.innerHTML = 'Email enviado com sucesso!';
           setTimeout(() => {
             emailReset.value = '';
@@ -110,7 +115,9 @@ export default function createLogin() {
           }, 3000);
         })
         .catch((error) => {
-          errorsFirebase(error.code);
+          const errorMessage = errorsFirebase(error.code);
+          const messageReset = container.querySelector('#message-reset');
+          messageReset.innerHTML = errorMessage;
           setTimeout(() => {
             emailReset.value = '';
             messageReset.innerHTML = '';

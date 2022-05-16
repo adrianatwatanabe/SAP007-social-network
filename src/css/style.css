@@ -135,13 +135,13 @@ textarea {
 @media screen and (min-width: 550px) and (max-width: 1799px) {
   .container-login {
     max-width: 31rem;
-    max-height: 35rem;
+    max-height: 37.5rem;
   }
 }
 
 @media screen and (min-width: 1800px) {
   .container-login {
     max-width: 37rem;
-    max-height: 45rem;
+    max-height: 47.5rem;
   }
 }
