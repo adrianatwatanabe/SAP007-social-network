@@ -77,7 +77,7 @@ export async function editPost(postId, editedText) {
     text: editedText,
   });
 }
-
+// ?
 export async function viewPostCollectionSingle() {
   const postsArray = [];
   const clause = where('userId', '==', auth.currentUser.uid);

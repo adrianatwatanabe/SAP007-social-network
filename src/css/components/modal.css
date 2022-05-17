@@ -9,23 +9,20 @@
   display: none;
   z-index: 2;
 }
-.modal-container-light,
-.modal-container-dark {
+.modal-container-light, .modal-container-dark {
   grid-template-columns: 1fr;
   justify-content: center;
   align-items: center;
   padding: 0 20px;
+  background-color: var(--transparent-medium);
 }
 [data-menu='container'] {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-}
-.modal-container-dark,
-[data-menu='container'],
-.modal-container-light {
   background-color: var(--transparent-medium);
 }
+
 .modal-container-dark.active {
   display: grid;
 }

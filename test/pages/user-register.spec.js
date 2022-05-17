@@ -4,7 +4,7 @@
 import { registerNewUser } from '../../src/firebase-configuration/authentication.js';
 import createRegister from '../../src/js/pages/user-register.js';
 
-jest.mock('../../src/firebase-configuration/export.js'); 
+jest.mock('../../src/firebase-configuration/export.js');
 jest.mock('../../src/firebase-configuration/authentication.js');
 
 describe('É uma função', () => {
@@ -14,6 +14,9 @@ describe('É uma função', () => {
 });
 
 describe('registerNewUser', () => {
+  beforeEach(() => {
+    jest.clearAllMocks();
+  });
   it('Se o usuário for válido, deve-se criar um novo Usuário', () => {
     registerNewUser.mockResolvedValueOnce();
     const page = createRegister();
@@ -44,7 +47,7 @@ describe('registerNewUser', () => {
     password.value = '123456';
     passRepeat.value = '123456';
     btnRegister.dispatchEvent(new Event('click'));
-    expect(registerNewUser).toHaveBeenCalledTimes(1);
+    expect(registerNewUser).not.toHaveBeenCalled();
   });
   it('Se todos os campos estiverem vazio, deve-se mostrar o erro na tela', () => {
     registerNewUser.mockResolvedValueOnce();
@@ -60,7 +63,7 @@ describe('registerNewUser', () => {
     password.value = '';
     passRepeat.value = '';
     btnRegister.dispatchEvent(new Event('click'));
-    expect(registerNewUser).toHaveBeenCalledTimes(1);
+    expect(registerNewUser).not.toHaveBeenCalled();
   });
   it('Se a senha e sua repetição não forem iguais, deve-se mostrar o erro na tela', () => {
     registerNewUser.mockResolvedValueOnce();
@@ -76,7 +79,7 @@ describe('registerNewUser', () => {
     password.value = '123456';
     passRepeat.value = '123';
     btnRegister.dispatchEvent(new Event('click'));
-    expect(registerNewUser).toHaveBeenCalledTimes(1);
+    expect(registerNewUser).not.toHaveBeenCalled();
   });
   it('Se o email não for válido deve mostrar error', () => {
     registerNewUser.mockResolvedValueOnce();
@@ -86,12 +89,13 @@ describe('registerNewUser', () => {
     const password = page.querySelector('#user-password');
     const passRepeat = page.querySelector('#user-password-repeat');
     const btnRegister = page.querySelector('#new-login');
+    const error = page.querySelector('#message');
     name.value = 'Novo Usuário';
     email.value = 'teste@';
     password.value = '123456';
     passRepeat.value = '123456';
     btnRegister.dispatchEvent(new Event('click'));
-    validationMessage(name, email, password, passRepeat);
-    expect(registerNewUser).toHaveBeenCalledTimes(1);
+    expect(registerNewUser).not.toHaveBeenCalled();
+    expect(error.message).toEqual('Preencha o campo de email corretamente!');
   });
 });
