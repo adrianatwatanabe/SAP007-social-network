@@ -41,6 +41,7 @@ describe('registerNewUser', () => {
     const password = page.querySelector('#user-password');
     const passRepeat = page.querySelector('#user-password-repeat');
     const btnRegister = page.querySelector('#new-login');
+    const error = page.querySelector('#message');
 
     name.value = 'Novo Usuário';
     email.value = 'teste@tes';
@@ -48,6 +49,7 @@ describe('registerNewUser', () => {
     passRepeat.value = '123456';
     btnRegister.dispatchEvent(new Event('click'));
     expect(registerNewUser).not.toHaveBeenCalled();
+    expect().toEqual('Preencha o campo de email corretamente!');
   });
   it('Se todos os campos estiverem vazio, deve-se mostrar o erro na tela', () => {
     registerNewUser.mockResolvedValueOnce();
@@ -75,27 +77,10 @@ describe('registerNewUser', () => {
     const btnRegister = page.querySelector('#new-login');
 
     name.value = 'Novo Usuário';
-    email.value = 'teste@tes';
+    email.value = 'teste@teste.com';
     password.value = '123456';
     passRepeat.value = '123';
     btnRegister.dispatchEvent(new Event('click'));
     expect(registerNewUser).not.toHaveBeenCalled();
-  });
-  it('Se o email não for válido deve mostrar error', () => {
-    registerNewUser.mockResolvedValueOnce();
-    const page = createRegister();
-    const name = page.querySelector('#user-name');
-    const email = page.querySelector('#user-email');
-    const password = page.querySelector('#user-password');
-    const passRepeat = page.querySelector('#user-password-repeat');
-    const btnRegister = page.querySelector('#new-login');
-    const error = page.querySelector('#message');
-    name.value = 'Novo Usuário';
-    email.value = 'teste@';
-    password.value = '123456';
-    passRepeat.value = '123456';
-    btnRegister.dispatchEvent(new Event('click'));
-    expect(registerNewUser).not.toHaveBeenCalled();
-    expect(error.message).toEqual('Preencha o campo de email corretamente!');
   });
 });
