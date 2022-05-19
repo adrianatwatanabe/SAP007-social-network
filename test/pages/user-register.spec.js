@@ -49,7 +49,7 @@ describe('registerNewUser', () => {
     passRepeat.value = '123456';
     btnRegister.dispatchEvent(new Event('click'));
     expect(registerNewUser).not.toHaveBeenCalled();
-    expect(error.textContent).toEqual('Preencha o campode email corretamente!');
+    expect(error.textContent).toEqual('Preencha o campo<br>de email corretamente!');
   });
   it('Se todos os campos estiverem vazio, deve-se mostrar o erro na tela', () => {
     registerNewUser.mockResolvedValueOnce();
@@ -85,8 +85,8 @@ describe('registerNewUser', () => {
     btnRegister.dispatchEvent(new Event('click'));
     expect(registerNewUser).not.toHaveBeenCalled();
   });
-  it('Se o email já estiver cadastrado, deve-se mostrar o erro na tela', () => {
-    registerNewUser.mockResolvedValueOnce();
+  it('Se o email já estiver cadastrado, deve-se mostrar o erro na tela', async () => {
+    registerNewUser.mockRejectedValueOnce({ code: 'auth/email-already-in-use' });
     const page = createRegister();
     const name = page.querySelector('#user-name');
     const email = page.querySelector('#user-email');
@@ -100,7 +100,8 @@ describe('registerNewUser', () => {
     password.value = '123456';
     passRepeat.value = '123456';
     btnRegister.dispatchEvent(new Event('click'));
-    expect(registerNewUser).not.toHaveBeenCalled();
+    expect(registerNewUser).toHaveBeenCalledTimes(1);
+    await new Promise(process.nextTick);
     expect(error.textContent).toEqual('Email já cadastrado! Escolha outro email.');
   });
 });

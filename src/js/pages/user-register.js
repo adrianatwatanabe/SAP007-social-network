@@ -40,22 +40,22 @@ export default function createRegister() {
   const password = container.querySelector('#user-password');
   const passRepeat = container.querySelector('#user-password-repeat');
   const buttonNewUser = container.querySelector('#new-login');
+  const message = container.querySelector('#message');
 
   buttonNewUser.addEventListener('click', (e) => {
     e.preventDefault();
     const validation = validatedMessage(name.value, email.value, password.value, passRepeat.value);
     if (validation !== '') {
-      const message = container.querySelector('#message');
-      message.innerHTML = validation;
+      message.textContent = validation;
     } else {
       registerNewUser(name.value, email.value, password.value)
         .then(() => {
           window.location.hash = redirectedPage;
         })
         .catch((error) => {
+          console.log(error);
           const errorMessage = errorsFirebase(error.code);
-          const message = container.querySelector('#message');
-          message.innerHTML = errorMessage;
+          message.textContent = errorMessage;
         });
     }
   });
