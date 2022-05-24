@@ -169,7 +169,7 @@ O diferencial dessa rede social é que todas as mulheres que se cadastrarem, ser
 - Para este projeto aplicamos o termo MOBILE FIRST que trata-se de qualquer projeto web que leve em consideração a usabilidade em dispositivos móveis primeiro. Portanto, desde o design até o desenvolvimento das funcionalidades, tudo é pensado para o mobile e depois adaptado para o desktop.
 
    <div>
-      <img alt="Protótipo de baixa fidelidade" src="/src/img/to-readme/paper-prototype.gif" height="400">
+      <img alt="Protótipo de baixa fidelidade" src="/src/img/to-readme/paper-prototype.gif">
    </div>
 
 ### 4.2. PROTÓTIPOS DE ALTA FIDELIDADE
@@ -179,19 +179,19 @@ O diferencial dessa rede social é que todas as mulheres que se cadastrarem, ser
    #### 4.2.1 Protótipo para telas com largura entre 300 pixels a 550 pixels
    
      <div>
-        <img alt="Protótipo para telas de 300px a 550px" src="/src/img/to-readme/prototype-smartphone.gif" height="400">
+        <img alt="Protótipo para telas de 300px a 550px" src="/src/img/to-readme/prototype-smartphone.gif">
      </div>
 
    #### 4.2.2. Protótipo para telas com largura entre 550 pixels a 1.000 pixels
 
      <div>
-        <img alt="Protótipo para telas de 550px a 1.000px" src="/src/img/to-readme/prototype-tablet.gif" height="600">
+        <img alt="Protótipo para telas de 550px a 1.000px" src="/src/img/to-readme/prototype-tablet.gif">
      </div>
 
    #### 4.2.3. Protótipo para telas com largura acima de 1.000 pixels
 
      <div>
-        <img alt="Protótipo para telas acima de 1.000px" src="/src/img/to-readme/prototype-desktop.gif" height="500">
+        <img alt="Protótipo para telas acima de 1.000px" src="/src/img/to-readme/prototype-desktop.gif">
      </div>
 
 ## 5. TESTES DE USABILIDADE
